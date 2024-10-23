@@ -1,4 +1,4 @@
-NAME := Megaphone
+NAME := megaphone
 .DEFAULT_GOAL := all
 CPP := c++
 AR := ar
