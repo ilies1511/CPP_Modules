@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cctype>
 
 std::string str_toupper(std::string str)
 {
