@@ -20,7 +20,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS :=	test.cpp main.cpp megaphone.cpp
+SRCS :=	megaphone.cpp
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 
@@ -38,10 +38,16 @@ CFLAGS := -Wall -Werror -Wextra -Wpedantic -Wshadow -std=c++17 -Wconversion -Wsi
 LDFLAGS :=
 ARFLAGS := -rcs
 
+# ANSI color codes
+GREEN := \033[0;32m
+BOLD := \033[1m
+NC := \033[0m # No Color
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@echo "$(BOLD)$(GREEN)Successful Compilation$(NC)"
 
 # Rule to compile .o files
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
