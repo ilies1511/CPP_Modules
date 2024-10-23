@@ -1,4 +1,4 @@
-NAME := megaphone
+NAME := Megaphone
 .DEFAULT_GOAL := all
 CPP := c++
 AR := ar
@@ -46,7 +46,8 @@ NC := \033[0m # No Color
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+#$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	$(CPP) $(LDFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)Successful Compilation$(NC)"
 
 # Rule to compile .o files
