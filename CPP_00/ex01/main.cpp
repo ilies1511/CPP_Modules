@@ -15,10 +15,7 @@ void generate_phonebook()
 		// Extract the first word as the action
 		ss >> action;
 		if (action == "ADD" && !(ss >> action))
-		{
-			// std::cout << "Parser is good\n";
 			add_contact();
-		}
 		else if (command == "SEARCH")
 			;// pb.search_contact();
 		else if (command == "REMOVE")
@@ -38,9 +35,6 @@ void generate_phonebook()
 			log.mf_set_level(INFO);
 			log.mf_info("Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
 		}
-		// std::system("clear");
-		if (std::cin.eof())
-			exit(1);
 	}
 }
 

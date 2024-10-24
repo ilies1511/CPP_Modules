@@ -114,6 +114,14 @@ public:
 		else if (type == DARKEST_SECRET)
 			std::cout << darkest_secret << '\n';
 	}
+	void	get_all(void)
+	{
+		std::cout << first_name << '\n';
+		std::cout << last_name << '\n';
+		std::cout << nickname << '\n';
+		std::cout << phone_number << '\n';
+		std::cout << darkest_secret << '\n';
+	}
 };
 
 class PhoneBook
@@ -128,12 +136,25 @@ public:
 	//Constructor
 	PhoneBook()
 	{
+		amount_contacts = 0;
 		// std::cout << "PhoneBook build\n";
 	}
 	//Destructor
 	~PhoneBook()
 	{
 		// std::cout << "PhoneBook destroyed\n";
+	}
+public:
+	size_t	amount_contacts;
+	void	add_contact_to_pb(Contact new_contact)
+	{
+		contacts[amount_contacts] = new_contact;
+		amount_contacts++;
+	}
+	void	print_contact_data(Contact new_contact, std::size_t index)
+	{
+		(void)new_contact;
+		contacts[index].get_all();
 	}
 };
 

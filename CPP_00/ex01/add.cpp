@@ -130,11 +130,14 @@ void	add_first_name(Contact *new_contact)
 
 void	add_contact(void)
 {
-	Contact new_contact;
+	PhoneBook	pb;
+	Contact		new_contact;
 
 	add_first_name(&new_contact);
 	add_last_name(&new_contact);
 	add_nickname(&new_contact);
 	add_phone_nbr(&new_contact);
 	add_darkest_secret(&new_contact);
+	pb.add_contact_to_pb(new_contact);
+	pb.print_contact_data(new_contact, 0);
 }
