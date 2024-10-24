@@ -1,9 +1,0 @@
-.vscode
-megaphone
-_obj/
-_obj/*.o
-_obj/*.d
-*.o
-*.d
-cpp00.pdf
-*.DS_Store

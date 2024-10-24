@@ -20,7 +20,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS :=	main.cpp
+SRCS :=	main.cpp add.cpp
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 
@@ -35,7 +35,7 @@ OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 
 # CFLAGS := -Wall -Wextra -Werror -g -MMD -MP -I$(INC_DIRS)
 CFLAGS := -Wall -Werror -Wextra -Wpedantic -Wshadow -std=c++17 -Wconversion -Wsign-conversion -g -MMD -MP $(addprefix -I, $(INC_DIRS))
-LDFLAGS :=
+LDFLAGS := -lncurses
 ARFLAGS := -rcs
 
 # ANSI color codes

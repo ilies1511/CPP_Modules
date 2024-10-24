@@ -14,12 +14,13 @@ const std::string BOLD = "\033[1m";
 const std::string NC = "\033[0m";// Zurücksetzen
 
 // FNC-Prototypes
+void	add_contact(void);
 
 /*
 	Usage:
 		std::cout << coloring("Dieser Text ist grün!", GREEN) << std::endl;
 */
-std::string coloring(const std::string text, const std::string &color)
+inline std::string coloring(const std::string text, const std::string &color)
 {
 	return (color + text + NC);
 }
@@ -77,6 +78,41 @@ public:
 	~Contact()
 	{
 		// std::cout << "Contact destroyed\n";
+	}
+	enum Add
+	{
+		FIRST_NAME,
+		LAST_NAME,
+		NICKNAME,
+		PHONE_NBR,
+		DARKEST_SECRET
+	};
+	//Helperfunction
+	void	add_x(std::string input_str, Add type)
+	{
+		if (type == FIRST_NAME)
+			first_name = input_str;
+		else if (type == LAST_NAME)
+			last_name = input_str;
+		else if (type == NICKNAME)
+			nickname = input_str;
+		else if (type == PHONE_NBR)
+			phone_number = input_str;
+		else if (type == DARKEST_SECRET)
+			darkest_secret = input_str;
+	}
+	void	get_x(Add type)
+	{
+		if (type == FIRST_NAME)
+			std::cout << first_name << '\n';
+		else if (type == LAST_NAME)
+			std::cout << last_name << '\n';
+		else if (type == NICKNAME)
+			std::cout << nickname << '\n';
+		else if (type == PHONE_NBR)
+			std::cout << phone_number << '\n';
+		else if (type == DARKEST_SECRET)
+			std::cout << darkest_secret << '\n';
 	}
 };
 
