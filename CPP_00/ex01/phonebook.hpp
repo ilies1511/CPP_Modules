@@ -13,9 +13,6 @@ const std::string BLUE = "\033[0;34m";
 const std::string BOLD = "\033[1m";
 const std::string NC = "\033[0m";// Zurücksetzen
 
-// FNC-Prototypes
-void	add_contact(void);
-
 /*
 	Usage:
 		std::cout << coloring("Dieser Text ist grün!", GREEN) << std::endl;
@@ -122,6 +119,14 @@ public:
 		std::cout << phone_number << '\n';
 		std::cout << darkest_secret << '\n';
 	}
+
+	void	get_sorted(std::size_t highest_index)
+	{
+		std::cout << highest_index << "|";
+		std::cout << first_name << "|";
+		std::cout << last_name << "|";
+		std::cout << nickname << '\n';
+	}
 };
 
 class PhoneBook
@@ -146,6 +151,7 @@ public:
 	}
 public:
 	size_t	amount_contacts;
+
 	void	add_contact_to_pb(Contact new_contact)
 	{
 		contacts[amount_contacts] = new_contact;
@@ -156,6 +162,14 @@ public:
 		(void)new_contact;
 		contacts[index].get_all();
 	}
+	void	print_data(std::size_t index)
+	{
+		contacts[index].get_sorted(amount_contacts);
+	}
 };
+
+// FNC-Prototypes
+void	add_contact(PhoneBook *pb);
+void	search_contact(PhoneBook *pb);
 
 #endif

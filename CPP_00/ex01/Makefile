@@ -20,7 +20,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS :=	main.cpp add.cpp
+SRCS :=	main.cpp add.cpp search.cpp
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 

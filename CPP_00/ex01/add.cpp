@@ -13,6 +13,7 @@ void	add_darkest_secret(Contact *new_contact)
 	ss >> action;
 	new_contact->add_x(action, new_contact->DARKEST_SECRET);
 	new_contact->get_x((new_contact->DARKEST_SECRET));
+	std::system("clear");
 }
 
 bool	is_valid_nbr(const std::string &nbr)
@@ -40,6 +41,11 @@ void	add_phone_nbr(Contact *new_contact)
 
 	while (1)
 	{
+		if (std::cin.eof())
+		{
+			std::system("clear");
+			exit(1);
+		}
 		std::cout << "Enter phone number: ";
 		std::getline(std::cin, str);
 		std::stringstream ss(str);
@@ -128,16 +134,17 @@ void	add_first_name(Contact *new_contact)
 	}
 }
 
-void	add_contact(void)
+void	add_contact(PhoneBook *pb)
 {
-	PhoneBook	pb;
 	Contact		new_contact;
 
+	std::cout << "PRE ADD Operation: " << pb->amount_contacts << '\n';
 	add_first_name(&new_contact);
 	add_last_name(&new_contact);
 	add_nickname(&new_contact);
 	add_phone_nbr(&new_contact);
 	add_darkest_secret(&new_contact);
-	pb.add_contact_to_pb(new_contact);
-	pb.print_contact_data(new_contact, 0);
+	pb->add_contact_to_pb(new_contact);
+	std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
+	// pb.print_contact_data(new_contact, 0);
 }

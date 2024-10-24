@@ -15,9 +15,9 @@ void generate_phonebook()
 		// Extract the first word as the action
 		ss >> action;
 		if (action == "ADD" && !(ss >> action))
-			add_contact();
+			add_contact(&pb);
 		else if (command == "SEARCH")
-			;// pb.search_contact();
+			search_contact(&pb);
 		else if (command == "REMOVE")
 			;// pb.search_contact();
 		else if (action == "EXIT" && !(ss >> action))
@@ -38,11 +38,11 @@ void generate_phonebook()
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	Log log;
-	Contact contact;
-	PhoneBook pb;
+	Log			log;
+	Contact		contact;
+	PhoneBook	pb;
 
 	(void)argc;
 	(void)argv;
