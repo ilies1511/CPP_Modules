@@ -17,7 +17,10 @@ void	search_contact(PhoneBook *pb)
 			std::system("clear");
 			exit(0) ;
 		}
-		std::cout << "Enter Index to display (1-8), or 'q' to quit: ";
+		if (pb->amount_contacts == 0)
+			std::cout << "PhoneBook still empty. Enter 'q' to quit: ";
+		else
+			std::cout << "Enter Index to display (1-8), or 'q' to quit: ";
 		std::getline(std::cin, input);
 		std::istringstream ss(input);
 		if (ss >> action && !(ss >> action))

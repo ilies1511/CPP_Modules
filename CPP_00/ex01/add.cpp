@@ -181,10 +181,7 @@ void	add_contact(PhoneBook *pb)
 	add_nickname(&new_contact);
 	add_phone_nbr(&new_contact);
 	add_darkest_secret(&new_contact);
-	if (pb->amount_contacts == 8)
-		pb->add_contact_to_pb(new_contact, true);
-	else
-		pb->add_contact_to_pb(new_contact, false);
+	pb->add_contact_to_pb(new_contact);
 	std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
 	// std:: cout << coloring("\nContact succesfully added\n", GREEN);
 	// pb.print_contact_data(new_contact, 0);

@@ -198,9 +198,9 @@ class PhoneBook
 		size_t amount_contacts;
 		static size_t manage_overflow;
 
-		void add_contact_to_pb(Contact new_contact, bool full)
+		void add_contact_to_pb(Contact new_contact)
 		{
-			if (full)
+			if (amount_contacts == 8)
 			{
 				if (manage_overflow == 8)
 					manage_overflow = 0;
