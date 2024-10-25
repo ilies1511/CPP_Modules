@@ -1,5 +1,13 @@
 #include "phonebook.hpp"
 
+void	print_log(Status status, const std::string &str)
+{
+	Log			log;
+
+	log.mf_set_level(status);
+	log.mf_info(str);
+}
+
 void generate_phonebook()
 {
 	std::string	command;
@@ -15,7 +23,10 @@ void generate_phonebook()
 		// Extract the first word as the action
 		ss >> action;
 		if (action == "ADD" && !(ss >> action))
+		{
+			std:: system("clear");
 			add_contact(&pb);
+		}
 		else if (command == "SEARCH")
 			search_contact(&pb);
 		else if (command == "REMOVE")
@@ -31,10 +42,7 @@ void generate_phonebook()
 			exit(1);
 		}
 		else
-		{
-			log.mf_set_level(INFO);
-			log.mf_info("Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
-		}
+			print_log(INFO, "Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
 	}
 }
 

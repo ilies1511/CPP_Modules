@@ -6,14 +6,42 @@ void	add_darkest_secret(Contact *new_contact)
 	std::string	str;
 	Log			status;
 
-	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, str);
-	std::stringstream ss(str);
-	ss >> action;
-	ss >> action;
-	new_contact->add_x(action, new_contact->DARKEST_SECRET);
-	new_contact->get_x((new_contact->DARKEST_SECRET));
-	std::system("clear");
+	// while (1)
+	// {
+	// 	std::cout << "Enter darkest secret: ";
+	// 	std::getline(std::cin, str);
+	// 	std::stringstream ss(str);
+	// 	if (ss >> action)
+	// 	{
+	// 		new_contact->add_x(action, new_contact->DARKEST_SECRET);
+	// 		new_contact->get_x((new_contact->DARKEST_SECRET));
+	// 	}
+	// 	else
+	// 	{
+	// 		status.mf_set_level(ERROR);
+	// 		status.mf_error("Please enter valid input");
+	// 	}
+	// 	// std::system("clear");
+	// }
+	while (1)
+	{
+		std::cout << "Enter darkest secret: ";
+		std::getline(std::cin, str);
+		std::stringstream ss(str);
+		if (!(ss >> action))
+		{
+			status.mf_set_level(ERROR);
+			status.mf_error("Please enter valid input...)");
+			continue ;
+		}
+		// ss >> action;
+		// ss >> action;
+		new_contact->add_x(str, new_contact->DARKEST_SECRET);
+		// new_contact->add_x(action, new_contact->DARKEST_SECRET);
+		new_contact->get_x((new_contact->DARKEST_SECRET));
+		break;
+		// std::system("clear");
+	}
 }
 
 bool	is_valid_nbr(const std::string &nbr)
@@ -67,13 +95,22 @@ void	add_nickname(Contact *new_contact)
 {
 	std::string	action;
 	std::string	str;
+	Log			status;
 
-	std::cout << "Enter nickname: ";
-	std::getline(std::cin, str);
-	std::stringstream ss(str);
-	ss >> action;
-	new_contact->add_x(action, new_contact->NICKNAME);
-	new_contact->get_x((new_contact->NICKNAME));
+	while (1)
+	{
+		std::cout << "Enter nickname: ";
+		std::getline(std::cin, str);
+		std::stringstream ss(str);
+		if (ss >> action && !(ss >> action))
+		{
+			new_contact->add_x(action, new_contact->NICKNAME);
+			new_contact->get_x((new_contact->NICKNAME));
+			break ;
+		}
+		status.mf_set_level(ERROR);
+		status.mf_error("Please enter valid Nickname (Only name)");
+	}
 }
 
 void	add_last_name(Contact *new_contact)
