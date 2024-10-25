@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 00:23:25 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 01:02:27 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int	Account::getNbWithdrawals(void)
 	return (_totalNbWithdrawals);
 }
 
-void	Account::displayAccountsInfos(void)
+void	Account::_displayTimestamp(void)
 {
-	;
-}
+	std::time_t now = std::time(nullptr);
+	std::tm localTime;
 
+	localtime_r(&now, &localTime);
+	std::cout << std::put_time(&localTime, "[%Y%m%d_%H%M%S]") << std::endl;
+}
