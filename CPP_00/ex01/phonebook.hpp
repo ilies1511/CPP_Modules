@@ -185,6 +185,7 @@ class PhoneBook
 		PhoneBook()
 		{
 			amount_contacts = 0;
+			manage_overflow = 0;
 			// std::cout << "PhoneBook build\n";
 		}
 		// Destructor
@@ -195,11 +196,22 @@ class PhoneBook
 
 	public:
 		size_t amount_contacts;
+		static size_t manage_overflow;
 
-		void add_contact_to_pb(Contact new_contact)
+		void add_contact_to_pb(Contact new_contact, bool full)
 		{
-			contacts[amount_contacts] = new_contact;
-			amount_contacts++;
+			if (full)
+			{
+				if (manage_overflow == 8)
+					manage_overflow = 0;
+				contacts[manage_overflow] = new_contact;
+				manage_overflow++;
+			}
+			else
+			{
+				contacts[amount_contacts] = new_contact;
+				amount_contacts++;
+			}
 			// std:: cout << coloring("Contact succesfully added\n", GREEN);
 		}
 		void print_contact_data(Contact new_contact, std::size_t index)
@@ -208,7 +220,7 @@ class PhoneBook
 			contacts[index].get_all();
 		}
 
-		void	print_data(std::size_t index)
+		void	print_table(std::size_t index)
 		{
 			contacts[index].get_formated(index);
 		}

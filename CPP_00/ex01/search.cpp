@@ -9,7 +9,7 @@ void	search_contact(PhoneBook *pb)
 	Log			log;
 
 	for (std::size_t i = 0; i < pb->amount_contacts; i++)
-		pb->print_data(i);
+		pb->print_table(i);
 	while (1)
 	{
 		if (std::cin.eof())
