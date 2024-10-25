@@ -8,6 +8,27 @@
 // 	log.mf_info(str);
 // }
 
+//
+void	handle_exit(void)
+{
+	std:: system("clear");
+	exit(1);
+}
+
+void	handle_search(PhoneBook *pb)
+{
+	std::system("clear");
+	search_contact(pb);
+	std::system("clear");
+}
+
+void	handle_add(PhoneBook *pb)
+{
+	std:: system("clear");
+	add_contact(pb);
+	std:: system("clear");
+}
+
 void generate_phonebook()
 {
 	std::string	command;
@@ -17,31 +38,16 @@ void generate_phonebook()
 
 	while (true)
 	{
-		// std:: system("clear");
 		std::cout << "Enter command: ";
 		std::getline(std::cin, command);
 		std::stringstream ss(command);
-		// Extract the first word as the action
 		ss >> action;
 		if (action == "ADD" && !(ss >> action))
-		{
-			std:: system("clear");
-			add_contact(&pb);
-			std:: system("clear");
-		}
-		else if (command == "SEARCH")
-		{
-			std::system("clear");
-			search_contact(&pb);
-			std::system("clear");
-		}
-		else if (command == "REMOVE")
-			;// pb.search_contact();
+			handle_add(&pb);
+		else if (action == "SEARCH")
+			handle_search(&pb);
 		else if (action == "EXIT" && !(ss >> action))
-		{
-			std:: system("clear");
-			break;
-		}
+			handle_exit();
 		else if (std::cin.eof())
 		{
 			std:: system("clear");
@@ -52,14 +58,8 @@ void generate_phonebook()
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	Log			log;
-	Contact		contact;
-	PhoneBook	pb;
-
-	(void)argc;
-	(void)argv;
 	std::system("clear");
 	generate_phonebook();
 	return (0);
