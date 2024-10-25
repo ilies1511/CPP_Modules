@@ -33,7 +33,7 @@ void	search_contact(PhoneBook *pb)
 		{
 			if ((input_index >= 1 && input_index <= 8)
 					&& (size_t)input_index <= pb->amount_contacts && !(sp >> action))
-				pb->display_contact_data((size_t)input_index);
+				pb->display_contact_data((size_t)input_index - 1);
 			else
 			{
 				log.mf_set_level(INFO);
