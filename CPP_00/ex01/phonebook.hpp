@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 // ANSI Escape Codes
 const std::string GREEN = "\033[0;32m";
@@ -122,11 +123,14 @@ public:
 	}
 	void get_all(void)
 	{
-		std::cout << "First Name: "<< first_name << '\n';
-		std::cout << "Last Name: " << last_name << '\n';
-		std::cout << "Nickname: " << nickname << '\n';
-		std::cout << "Phone Number: " << phone_number << '\n';
-		std::cout << "Darkest Secret: " << darkest_secret << '\n';
+		const int label_width = 20;
+
+		std::cout << std::left;
+		std::cout << std:: setw(label_width) << "First Name: "<< first_name << '\n';
+		std::cout << std:: setw(label_width) << "Last Name: " << last_name << '\n';
+		std::cout << std:: setw(label_width) << "Nickname: " << nickname << '\n';
+		std::cout << std:: setw(label_width) << "Phone Number: " << phone_number << '\n';
+		std::cout << std:: setw(label_width) << "Darkest Secret: " << darkest_secret << '\n';
 	}
 
 	// std::string	format_string(const std::string &str)
