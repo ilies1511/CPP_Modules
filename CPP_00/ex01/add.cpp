@@ -183,5 +183,6 @@ void	add_contact(PhoneBook *pb)
 	add_darkest_secret(&new_contact);
 	pb->add_contact_to_pb(new_contact);
 	std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
+	// std:: cout << coloring("\nContact succesfully added\n", GREEN);
 	// pb.print_contact_data(new_contact, 0);
 }

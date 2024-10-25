@@ -52,6 +52,13 @@ public:
 		if (m_loglevel == INFO)
 			std::cout << coloring("[INFO]: " + msg, BLUE) << '\n';
 	}
+	void	print_log(Status status, const std::string &str)
+	{
+		// Log			log;
+
+		mf_set_level(status);
+		mf_info(str);
+	}
 	// Constructor/Destructor
 public:
 	Log() {}
@@ -115,11 +122,11 @@ public:
 	}
 	void get_all(void)
 	{
-		std::cout << first_name << '\n';
-		std::cout << last_name << '\n';
-		std::cout << nickname << '\n';
-		std::cout << phone_number << '\n';
-		std::cout << darkest_secret << '\n';
+		std::cout << "First Name: "<< first_name << '\n';
+		std::cout << "Last Name: " << last_name << '\n';
+		std::cout << "Nickname: " << nickname << '\n';
+		std::cout << "Phone Number: " << phone_number << '\n';
+		std::cout << "Darkest Secret: " << darkest_secret << '\n';
 	}
 
 	// std::string	format_string(const std::string &str)
@@ -151,7 +158,7 @@ public:
 	// 	std::cout << last_name << "|";
 	// 	std::cout << nickname << '\n';
 	// }
-	void get_sorted(std::size_t highest_index) const
+	void get_formated(std::size_t highest_index) const
 	{
 		std::cout << formatColumn(std::to_string(highest_index + 1)) << "|";
 		std::cout << formatColumn(first_name) << "|";
@@ -189,6 +196,7 @@ class PhoneBook
 		{
 			contacts[amount_contacts] = new_contact;
 			amount_contacts++;
+			// std:: cout << coloring("Contact succesfully added\n", GREEN);
 		}
 		void print_contact_data(Contact new_contact, std::size_t index)
 		{
@@ -196,13 +204,19 @@ class PhoneBook
 			contacts[index].get_all();
 		}
 
-		void print_data(std::size_t index)
+		void	print_data(std::size_t index)
 		{
-			contacts[index].get_sorted(index);
+			contacts[index].get_formated(index);
+		}
+
+		void	display_contact_data(size_t index)
+		{
+			std::system("clear");
+			contacts[index].get_all();
 		}
 	};
 	// FNC-Prototypes
-	void add_contact(PhoneBook *pb);
-	void search_contact(PhoneBook *pb);
+	void	add_contact(PhoneBook *pb);
+	void	search_contact(PhoneBook *pb);
 
 #endif

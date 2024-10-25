@@ -1,12 +1,12 @@
 #include "phonebook.hpp"
 
-void	print_log(Status status, const std::string &str)
-{
-	Log			log;
+// void	print_log(Status status, const std::string &str)
+// {
+// 	Log			log;
 
-	log.mf_set_level(status);
-	log.mf_info(str);
-}
+// 	log.mf_set_level(status);
+// 	log.mf_info(str);
+// }
 
 void generate_phonebook()
 {
@@ -17,6 +17,7 @@ void generate_phonebook()
 
 	while (true)
 	{
+		// std:: system("clear");
 		std::cout << "Enter command: ";
 		std::getline(std::cin, command);
 		std::stringstream ss(command);
@@ -26,9 +27,14 @@ void generate_phonebook()
 		{
 			std:: system("clear");
 			add_contact(&pb);
+			std:: system("clear");
 		}
 		else if (command == "SEARCH")
+		{
+			std::system("clear");
 			search_contact(&pb);
+			std::system("clear");
+		}
 		else if (command == "REMOVE")
 			;// pb.search_contact();
 		else if (action == "EXIT" && !(ss >> action))
@@ -42,7 +48,7 @@ void generate_phonebook()
 			exit(1);
 		}
 		else
-			print_log(INFO, "Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
+			log.print_log(INFO, "Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
 	}
 }
 
