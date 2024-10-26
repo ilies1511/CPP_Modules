@@ -73,14 +73,14 @@ void	add_contact(PhoneBook *pb)
 {
 	Contact		new_contact;
 
-	std::cout << "PRE ADD Operation: " << pb->amount_contacts << '\n';
+	// std::cout << "PRE ADD Operation: " << pb->amount_contacts << '\n';
 	add_universal_template(&new_contact, Contact::FIRST_NAME, "FirstName", is_valid_name);
 	add_universal_template(&new_contact, Contact::LAST_NAME, "LastName", is_valid_name);
 	add_universal_template(&new_contact, Contact::NICKNAME, "NickName", is_valid_name);
 	add_universal_template(&new_contact, Contact::PHONE_NBR, "PhoneNumber", is_valid_phone_nbr);
 	add_universal_template(&new_contact, Contact::DARKEST_SECRET, "DarkestSecret");
 	pb->add_contact_to_pb(new_contact);
-	std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
+	// std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
 	// std:: cout << coloring("\nContact succesfully added\n", GREEN);
 	// pb.print_contact_data(new_contact, 0);
 }
