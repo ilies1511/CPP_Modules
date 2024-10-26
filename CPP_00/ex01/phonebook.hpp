@@ -82,13 +82,6 @@ public:
 	void get_all(void);
 	// Funktion zur Formatierung der Spalte mit Trunkierung und Rechtsausrichtung
 	std::string formatColumn(const std::string &text) const;
-	// void get_sorted(std::size_t highest_index)
-	// {
-	// 	std::cout << highest_index + 1 << "|";
-	// 	std::cout << first_name << "|";
-	// 	std::cout << last_name << "|";
-	// 	std::cout << nickname << '\n';
-	// }
 	void get_formated(std::size_t highest_index) const;
 };
 

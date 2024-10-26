@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 21:08:35 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 21:12:36 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 21:26:30 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,3 +71,11 @@ void Contact::get_formated(std::size_t highest_index) const
 	std::cout << formatColumn(last_name) << "|";
 	std::cout << formatColumn(nickname) << '\n';
 }
+
+// void get_sorted(std::size_t highest_index)
+// {
+// 	std::cout << highest_index + 1 << "|";
+// 	std::cout << first_name << "|";
+// 	std::cout << last_name << "|";
+// 	std::cout << nickname << '\n';
+// }
