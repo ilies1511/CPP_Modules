@@ -80,7 +80,6 @@ public:
 	void add_x(std::string input_str, Add type);
 	void get_x(Add type);
 	void get_all(void);
-	// Funktion zur Formatierung der Spalte mit Trunkierung und Rechtsausrichtung
 	std::string formatColumn(const std::string &text) const;
 	void get_formated(std::size_t highest_index) const;
 };

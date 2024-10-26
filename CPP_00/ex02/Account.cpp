@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 20:45:12 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 23:03:03 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	Account::makeDeposit(int deposit)
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
-	//TODO: check if totalAmount > withdrawal --> if false, cout error msg
 	if (_amount == 0 || _amount < withdrawal)
 	{
 		_displayTimestamp();
