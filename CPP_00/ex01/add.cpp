@@ -1,6 +1,16 @@
 #include "phonebook.hpp"
 #include <regex>
 
+bool	is_valid_secret(std::string &str)
+{
+	std::string	action;
+
+	std::stringstream ss(str);
+	if (!(ss >> action))
+		return (false);
+	return (true);
+}
+
 bool	is_valid_nbr(std::string &nbr)
 {
 	size_t	start = 0;
@@ -64,7 +74,7 @@ void	add_universal_template(Contact *new_contact, Contact::Add type,
 			continue ;
 		}
 		new_contact->add_x(str, type);
-		new_contact->get_x((type));
+		// new_contact->get_x((type));
 		break ;
 	}
 }
@@ -78,7 +88,7 @@ void	add_contact(PhoneBook *pb)
 	add_universal_template(&new_contact, Contact::LAST_NAME, "LastName", is_valid_name);
 	add_universal_template(&new_contact, Contact::NICKNAME, "NickName", is_valid_name);
 	add_universal_template(&new_contact, Contact::PHONE_NBR, "PhoneNumber", is_valid_phone_nbr);
-	add_universal_template(&new_contact, Contact::DARKEST_SECRET, "DarkestSecret");
+	add_universal_template(&new_contact, Contact::DARKEST_SECRET, "DarkestSecret", is_valid_secret);
 	pb->add_contact_to_pb(new_contact);
 	// std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
 	// std:: cout << coloring("\nContact succesfully added\n", GREEN);
