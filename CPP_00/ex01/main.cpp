@@ -29,6 +29,18 @@ void	handle_add(PhoneBook *pb)
 	std:: system("clear");
 }
 
+void generate_art(void)
+{
+	std::cout << "======================================" << std::endl;
+	std::cout << "========== WELCOME TO MY PB! =========" << std::endl;
+	std::cout << "======================================" << std::endl;
+	std::cout << "=== THE ULTIMATE PHONEBOOK SYSTEM! ===" << std::endl;
+	std::cout << "==== SAVE AND MANAGE CONTACTS! ====" << std::endl;
+	std::cout << "=== KEEP YOUR TOP 8 CONTACTS CLOSE! ==" << std::endl;
+	std::cout << "======================================" << std::endl;
+	std::cout << std::endl;
+}
+
 void generate_phonebook()
 {
 	std::string	command;
@@ -36,6 +48,7 @@ void generate_phonebook()
 	PhoneBook	pb;
 	Log			log;
 
+	generate_art();
 	while (true)
 	{
 		std::cout << "Enter command: ";
