@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 17:51:47 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 19:33:44 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,3 +120,28 @@ bool	Account::makeWithdrawal(int withdrawal)
 	_amount = _amount - withdrawal;
 	return (true);
 }
+
+int	Account::checkAmount(void) const
+{
+	//TODO: Check if _totalAmount or with getter (getTotalAmount( void );)
+	return (_totalAmount);
+}
+
+void	Account::displayStatus( void ) const
+{
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount \
+		<< ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals \
+			<< std::endl;
+	return ;
+}
+
+// //Old Versoon
+// void	Account::displayStatus( void ) const
+// {
+// 	_displayTimestamp();
+// 	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount\
+// 		<< ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals\
+// 			<< std::endl;
+// 	return ;
+// }
