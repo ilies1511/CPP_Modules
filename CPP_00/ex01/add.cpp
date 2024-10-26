@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:31:31 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 23:31:34 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 23:54:52 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	add_contact(PhoneBook *pb)
 	Contact		new_contact;
 
 	// std::cout << "PRE ADD Operation: " << pb->amount_contacts << '\n';
-	add_universal_template(&new_contact, Contact::FIRST_NAME, "FirstName", is_valid_name);
-	add_universal_template(&new_contact, Contact::LAST_NAME, "LastName", is_valid_name);
-	add_universal_template(&new_contact, Contact::NICKNAME, "NickName", is_valid_name);
-	add_universal_template(&new_contact, Contact::PHONE_NBR, "PhoneNumber", is_valid_phone_nbr);
-	add_universal_template(&new_contact, Contact::DARKEST_SECRET, "DarkestSecret", is_valid_secret);
+	add_universal_template(&new_contact, Contact::FIRST_NAME, "First Name", is_valid_name);
+	add_universal_template(&new_contact, Contact::LAST_NAME, "Last Name", is_valid_name);
+	add_universal_template(&new_contact, Contact::NICKNAME, "Nickname", is_valid_name);
+	add_universal_template(&new_contact, Contact::PHONE_NBR, "Phone Number", is_valid_phone_nbr);
+	add_universal_template(&new_contact, Contact::DARKEST_SECRET, "Darkest Secret", is_valid_secret);
 	pb->add_contact_to_pb(new_contact);
 	// std::cout << "POST ADD Operation: " << pb->amount_contacts << '\n';
 	// std:: cout << coloring("\nContact succesfully added\n", GREEN);

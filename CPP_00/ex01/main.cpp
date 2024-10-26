@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:31:37 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 23:31:38 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/27 00:04:51 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,26 @@ void generate_phonebook()
 	generate_art();
 	while (true)
 	{
+		if (std::cin.eof())
+		{
+			std:: system("clear");
+			exit(1);
+		}
 		std::cout << "Enter command: ";
 		std::getline(std::cin, command);
 		std::stringstream ss(command);
 		ss >> action;
+		if (!is_valid_name(command))
+		{
+			log.print_log(INFO, "Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
+			continue ;
+		}
 		if (action == "ADD" && !(ss >> action))
 			handle_add(&pb);
 		else if (action == "SEARCH")
 			handle_search(&pb);
 		else if (action == "EXIT" && !(ss >> action))
 			handle_exit();
-		else if (std::cin.eof())
-		{
-			std:: system("clear");
-			exit(1);
-		}
 		else
 			log.print_log(INFO, "Invalid command. Available Commands:\n\"ADD\", \"SEARCH\", \"REMOVE\" or \"EXIT\"!");
 	}

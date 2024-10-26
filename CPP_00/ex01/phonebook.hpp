@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:31:47 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 23:31:49 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 23:57:23 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,6 @@ public:
 // FNC-Prototypes
 void add_contact(PhoneBook *pb);
 void search_contact(PhoneBook *pb);
+bool is_valid_name(std::string &str);
 
 #endif
