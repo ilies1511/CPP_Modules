@@ -34,7 +34,7 @@ OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 ################################################################################
 
 # CFLAGS := -Wall -Wextra -Werror -g -MMD -MP -I$(INC_DIRS)
-CFLAGS := -Wall -Werror -Wextra -Wpedantic -Wshadow -std=c++17 -Wconversion -Wsign-conversion -g -MMD -MP $(addprefix -I, $(INC_DIRS))
+CFLAGS := -Wall -Werror -Wextra -Wpedantic -Wshadow -std=c++98 -Wconversion -Wsign-conversion -g -MMD -MP $(addprefix -I, $(INC_DIRS))
 LDFLAGS := -lncurses
 ARFLAGS := -rcs
 
