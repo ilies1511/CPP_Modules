@@ -6,11 +6,16 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 01:02:27 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 17:04:21 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
+
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
 
 int	Account::getNbAccounts(void)
 {
@@ -39,4 +44,45 @@ void	Account::_displayTimestamp(void)
 
 	localtime_r(&now, &localTime);
 	std::cout << std::put_time(&localTime, "[%Y%m%d_%H%M%S]") << std::endl;
+}
+
+void	Account::displayAccountsInfos(void)
+{
+	_displayTimestamp();
+	std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount() \
+		<< ";deposits:" << getNbDeposits() \
+			<< ";withdrawals:" << getNbWithdrawals() << std::endl;
+}
+
+Account::Account(int initial_doposit)
+{
+	_accountIndex = getNbAccounts();
+	_amount = initial_doposit;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount \
+		<< ";created" << std::endl;
+}
+
+Account::Account()
+{
+	_accountIndex = getNbAccounts();
+	_amount = 0;
+	_totalAmount = _totalAmount + _amount;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
+	_nbAccounts++;
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount \
+		<< ";created" << std::endl;
+	return ;
+}
+
+Account::~Account()
+{
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount \
+		<< ";closed" << std::endl;
+	return ;
 }
