@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 17:31:51 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 17:51:47 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ Account::~Account()
 void	Account::makeDeposit(int deposit)
 {
 	_totalAmount = _totalAmount + deposit;
+	_nbDeposits++;
 	_totalNbDeposits++;
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount \
@@ -97,4 +98,25 @@ void	Account::makeDeposit(int deposit)
 			<< ";nb_deposits:" << _nbDeposits << std::endl;
 	_amount = _amount + deposit;
 	return ;
+}
+
+bool	Account::makeWithdrawal(int withdrawal)
+{
+	//TODO: check if totalAmount > withdrawal --> if false, cout error msg
+	if (_amount == 0 || _amount < withdrawal)
+	{
+		_displayTimestamp();
+		std::cout << " index:" << _accountIndex << ";p_amount:" << _amount \
+			<< ";withdrawal:refused" << std::endl;
+		return (false);
+	}
+	_totalAmount = _totalAmount - withdrawal;
+	_nbWithdrawals++;
+	_totalNbWithdrawals++;
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount \
+		<< ";withdrawal:" << withdrawal << ";amount:" << _amount - withdrawal \
+			<< ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+	_amount = _amount - withdrawal;
+	return (true);
 }
