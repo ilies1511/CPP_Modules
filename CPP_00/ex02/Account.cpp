@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:06:49 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 17:04:21 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/26 17:31:51 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,17 @@ Account::~Account()
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";amount:" << _amount \
 		<< ";closed" << std::endl;
+	return ;
+}
+
+void	Account::makeDeposit(int deposit)
+{
+	_totalAmount = _totalAmount + deposit;
+	_totalNbDeposits++;
+	_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount \
+		<< ";deposit:" << deposit << ";amount:" << _amount + deposit\
+			<< ";nb_deposits:" << _nbDeposits << std::endl;
+	_amount = _amount + deposit;
 	return ;
 }
