@@ -6,11 +6,31 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:32:20 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/26 23:32:22 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/27 15:33:12 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
+/*
+	Blueprint Lambda function in C++:
+	[capture list] (parameter list) -> return type { function body };
+	- []: tracks variables outside the lambda fnc, if empty: no extern var. used
+	- (param list): fnc. accepts 'unsigned char'
+	- return type: optional since compiler is doing it autom.
+		in this case: return type ==> unsigned char
+	- { function }
+
+	std::transform:
+		1. arg: start point: str.begin().
+		2. arg: end point: str.end().
+		3. arg: where to write/'store'
+		4. arg: Lambda Function: gets called for every char.
+
+	==> In summary, the lambda function converts each character to uppercase
+		individually, while std::transform ensures that this function is
+		applied to each character.
+*/
 
 std::string str_toupper(std::string str)
 {
