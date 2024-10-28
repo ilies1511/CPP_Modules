@@ -5,7 +5,9 @@ _obj/*.o
 _obj/*.d
 *.o
 *.d
+*.pdf
 cpp00.pdf
+cpp01.pdf
 *.DS_Store
 phonebook
 19920104_091532.log
