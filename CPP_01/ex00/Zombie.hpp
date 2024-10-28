@@ -28,6 +28,15 @@ class Zombie
 		std::string name;
 	public:
 		void announce(void);
-}
+		void set_name(const std::string &input_name);
+	// (De)Constructor
+	public:
+		Zombie(){};
+		~Zombie()
+		{
+			std::cout << coloring(name + " destroyed\n", RED);
+		};
+
+};
 
 #endif
