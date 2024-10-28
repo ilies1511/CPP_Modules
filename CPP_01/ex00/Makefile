@@ -20,7 +20,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS :=	main.cpp
+SRCS :=	main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 

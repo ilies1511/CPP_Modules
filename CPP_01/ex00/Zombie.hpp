@@ -39,4 +39,8 @@ class Zombie
 
 };
 
+//FNC Prototypes
+Zombie *newZombie(std::string name);
+void randomChump(std::string name);
+
 #endif
