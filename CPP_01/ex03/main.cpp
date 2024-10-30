@@ -17,6 +17,7 @@
 */
 int	main(void)
 {
+	//Object from Class 'HumanA' --> always weapon
 	{
 		Weapon club = Weapon("crude spiked club"); // same as 'club.setType("crude spiked club")' but more efficient. Most efficient: Weapon club("crude spiked club");
 		HumanA bob("Bob", club);
@@ -24,6 +25,7 @@ int	main(void)
 		club.setType("some other type of club");
 		bob.attack();
 	}
+	//Object from Class 'HumanB' --> weapon
 	{
 		Weapon club("crude spiked club");
 		HumanB jim("Jim");
@@ -31,6 +33,11 @@ int	main(void)
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
+	}
+	//Object from Class 'HumanB' --> no weapon
+	{
+		HumanB BruceLee("Bruce Lee");
+		BruceLee.attack();
 	}
 	return (0);
 }
