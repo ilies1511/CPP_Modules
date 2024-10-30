@@ -1,4 +1,5 @@
 #include "HumanA.hpp"
+#include "HumanB.hpp"
 /*
 	In object-oriented programming, aggregation and composition are two ways to define relationships between classes.
 
@@ -22,6 +23,14 @@ int	main(void)
 		bob.attack();
 		club.setType("some other type of club");
 		bob.attack();
+	}
+	{
+		Weapon club("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
 	return (0);
 }
