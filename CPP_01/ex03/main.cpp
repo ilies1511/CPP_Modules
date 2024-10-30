@@ -60,3 +60,25 @@ The difference between the two initialization methods for a Weapon object is as 
 In modern C++ practices, the second method (direct initialization) is
 	preferred for its clarity and performance benefits.
 */
+
+
+/*
+Summary of HumanA and HumanB Classes:
+
+1. **HumanA**:
+	- Always requires a Weapon.
+	- Uses a reference to Weapon to ensure that it cannot exist without one.
+	- Constructor initializes the Weapon reference, guaranteeing it is valid during the object's lifetime.
+
+2. **HumanB**:
+	- May or may not have a Weapon.
+	- Uses a pointer to Weapon, allowing for optionality.
+	- If the pointer is nullptr, it indicates that HumanB currently has no weapon.
+	- The setWeapon() method can assign a Weapon object to HumanB.
+
+**Key Considerations**:
+- **References** are used when a relationship is mandatory (as in HumanA).
+- **Pointers** are suitable when the relationship is optional (as in HumanB), allowing for easy null checks and reassignment.
+
+This design ensures clear semantics regarding weapon ownership and accessibility for both classes.
+*/
