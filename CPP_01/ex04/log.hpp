@@ -43,6 +43,7 @@ public:
 	void mf_set_level(Status level);
 	void mf_error(const std::string &msg);
 	void mf_info(const std::string &msg);
+	void mf_success(const std::string &msg);
 	// Constructor/Destructor
 public:
 	Log() {}
