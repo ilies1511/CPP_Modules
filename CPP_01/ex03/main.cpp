@@ -64,6 +64,9 @@ In modern C++ practices, the second method (direct initialization) is
 
 /*
 Summary of HumanA and HumanB Classes:
+	(subject-Sheet: In which case do you think it would be best to use a pointer to
+	Weapon? And a reference to Weapon? Why? Think about it before
+	tarting this exercise.)
 
 1. **HumanA**:
 	- Always requires a Weapon.
