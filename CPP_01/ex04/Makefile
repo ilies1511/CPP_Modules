@@ -1,4 +1,4 @@
-NAME := sed
+NAME := sed.out
 .DEFAULT_GOAL := all
 CPP := c++
 AR := ar
@@ -20,7 +20,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS :=	main.cpp
+SRCS :=	main.cpp methodes_log.cpp
 # EXTRA_SRC := alo.cpp test.cpp
 # EXTRA_SRC := $(addprefix src/, $(EXTRA_SRC))
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
