@@ -22,13 +22,15 @@ void	copy_content(const std::string& filename, \
 			const std::string& s1, const std::string& s2)
 {
 	std::string line;
-	std::string location;
+	size_t		found_pos = 0;
 
 	if (filename.empty() || s1.empty() || s2.empty())
 	{
 		print_log(ERROR, "Can't work with string being NULL");
-		exit(1);
+		return ;
 	}
+	if (!s1.compare(s2))
+		return (print_log(INFO, "s1 and s2 exactly the same"));
 	std::ifstream infile (filename);
 	if (!infile)
 	{
@@ -36,9 +38,33 @@ void	copy_content(const std::string& filename, \
 		return ;
 	}
 	std::ofstream outfile (filename + ".replace");
-	while (getline(infile, line))
-		outfile << line + "\n";
+	if (!outfile)
+	{
+		print_log(ERROR, "Error opening outfile");
+		return ;
+	}
+	while (std::getline(infile, line))
+	{
+		found_pos = 0;
+		while (true)
+		{
+			found_pos = line.find(s1, found_pos);
+			if (found_pos == std::string::npos)
+				break ;
+			line.erase(found_pos, s1.length());
+			line.insert(found_pos, s2);
+			found_pos = found_pos + s2.length();
+		}
+		outfile << line << "\n";
+		/* TODO:
+		Add error Check:
+			outfile.bad();
+			outfile.fail();
+		*/
+	}
 	outfile.close();
+	infile.close();
+	print_log(INFO, filename + ".replace file created");
 	return ;
 }
 
