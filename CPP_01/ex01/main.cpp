@@ -14,6 +14,11 @@ int	main(void)
 
 	N = 15;
 	rethorde = zombieHorde(N, "zizou");
+	if (rethorde == nullptr)
+	{
+		std::cerr << coloring("[ERRRO]: Failed to create zombie horde!", RED);
+		return (1);
+	}
 	for (int i = 0; i < N; i++)
 	{
 		rethorde[i].announce();
