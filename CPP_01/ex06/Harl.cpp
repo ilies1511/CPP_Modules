@@ -1,5 +1,4 @@
 #include "Harl.hpp"
-#include "log.hpp"
 
 void Harl::debug( void )
 {

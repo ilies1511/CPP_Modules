@@ -1,11 +1,10 @@
 #include "Harl.hpp"
-#include "log.hpp"
 
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		print_log(INFO, "Usage: ./filter <status_log> (ERROR, WARNING, DEBUG, INFO)");
+		std::cout << BLUE << "Usage: ./filter <status_log> (ERROR, WARNING, DEBUG, INFO)" << NC << std::endl;
 		return (0);
 	}
 
