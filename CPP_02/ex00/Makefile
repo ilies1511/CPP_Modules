@@ -20,16 +20,9 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-# SRCS :=	main.cpp Fixed.cpp
-EXTRA_SRC := main.cpp Fixed.cpp
-S2 := src2cpp.cpp
-PSR := test.cpp alo.cpp
+SRC := main.cpp Fixed.cpp
 
-# SRCS := main.cpp Fixed.cpp
-SRCS := $(addprefix src/, $(EXTRA_SRC))
-PARSER := $(addprefix src/parser/, $(PSR))
-S2 := $(addprefix src2/, $(S2))
-SRCS += $(PARSER) $(S2)
+SRCS := $(addprefix src/, $(SRC))
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 # SRCS += $(EXTRA_SRC)

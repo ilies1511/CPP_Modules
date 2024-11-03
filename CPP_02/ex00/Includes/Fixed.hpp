@@ -7,8 +7,6 @@
 
 //Class
 
+// FNC-Prototype
 void	printer(void);
-void	alo(void);
-void	src2(void);
-
 #endif
