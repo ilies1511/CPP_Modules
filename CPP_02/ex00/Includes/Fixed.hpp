@@ -7,6 +7,24 @@
 
 //Class
 
+class FixPointNbr
+{
+	private:
+		int					fix_point_value;
+		static const int	fractional_bits;
+	public:
+		//Default Constructor that initializes the fixed-point number value to 0
+		FixPointNbr();
+		//Copy Constructor
+		FixPointNbr(const FixPointNbr& copy);
+		//Copy assignment operator overload
+		FixPointNbr &operator=(const FixPointNbr&);
+		~FixPointNbr();
+
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
+};
+
 // FNC-Prototype
-void	printer(void);
+// void	printer(void);
 #endif

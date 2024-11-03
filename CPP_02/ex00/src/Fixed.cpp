@@ -1,7 +1,6 @@
 #include "Fixed.hpp"
 
-void	printer(void)
-{
-	std::cout << "Ouey Zizou\n";
-	return ;
-}
+FixPointNbr::FixPointNbr() : fix_point_value(0){}
+
+FixPointNbr::~FixPointNbr(){};
+
