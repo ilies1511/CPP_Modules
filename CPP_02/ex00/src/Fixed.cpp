@@ -27,7 +27,7 @@ Fixed &Fixed::operator=(const Fixed& og)
 //Destructor
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	std::cout << "Destructor called" << std::endl;
 }
 // Orthodox Canonical Form (Design) - End
 
