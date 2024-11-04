@@ -42,20 +42,20 @@
 
 //Class
 
-class FixPointNbr
+class Fixed
 {
 	private:
 		int					_fix_point_value;
 		static const int	_fractional_bits = 8;
 	public:
 		//Default Constructor that initializes the fixed-point number value to 0
-		FixPointNbr();
+		Fixed();
 		//Copy Constructor
-		FixPointNbr(const FixPointNbr& og);
+		Fixed(const Fixed& og);
 		//Copy assignment operator overload
-		FixPointNbr &operator=(const FixPointNbr& og);
+		Fixed &operator=(const Fixed& og);
 		//Destructor
-		~FixPointNbr();
+		~Fixed();
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );

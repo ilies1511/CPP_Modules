@@ -2,14 +2,21 @@
 
 // Orthodox Canonical Form (Design) - Begin
 //Default Constructor
-FixPointNbr::FixPointNbr() : _fix_point_value(0){}
+Fixed::Fixed() : _fix_point_value(0)
+{
+	std::cout << "Default constructor called" << std::endl;
+}
 
 //Copy Constructor
-FixPointNbr::FixPointNbr(const FixPointNbr& og) : _fix_point_value(og._fix_point_value){}
+Fixed::Fixed(const Fixed& og) : _fix_point_value(og._fix_point_value)
+{
+	std::cout << "Copy constructor called" << std::endl;
+}
 
 //Copy assignment operator
-FixPointNbr &FixPointNbr::operator=(const FixPointNbr& og)
+Fixed &Fixed::operator=(const Fixed& og)
 {
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &og)
 	{
 		_fix_point_value = og._fix_point_value;
@@ -18,16 +25,20 @@ FixPointNbr &FixPointNbr::operator=(const FixPointNbr& og)
 }
 
 //Destructor
-FixPointNbr::~FixPointNbr(){};
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called\n";
+}
 // Orthodox Canonical Form (Design) - End
 
 //Methodes Implementation - Begin
-int FixPointNbr::getRawBits( void ) const
+int Fixed::getRawBits( void ) const
 {
+	std::cout << "getRawBits member function called" << std::endl;
 	return (_fix_point_value);
 }
 
-void FixPointNbr::setRawBits( int const raw )
+void Fixed::setRawBits( int const raw )
 {
 	_fix_point_value = raw;
 }
