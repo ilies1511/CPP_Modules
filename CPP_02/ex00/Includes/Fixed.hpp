@@ -18,7 +18,7 @@ class FixPointNbr
 		//Copy Constructor
 		FixPointNbr(const FixPointNbr& og);
 		//Copy assignment operator overload
-		FixPointNbr &operator=(const FixPointNbr& og);
+		//Destructor
 		~FixPointNbr();
 
 		int getRawBits( void ) const;
