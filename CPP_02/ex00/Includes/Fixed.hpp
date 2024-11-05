@@ -46,7 +46,7 @@ class Fixed
 {
 	private:
 		int					_fix_point_value;
-		static const int	_fractional_bits = 8;
+		static const int	_fractional_bits;
 	public:
 		//Default Constructor that initializes the fixed-point number value to 0
 		Fixed();

@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int	Fixed::_fractional_bits = 8;
+
 // Orthodox Canonical Form (Design) - Begin
 //Default Constructor
 Fixed::Fixed() : _fix_point_value(0)
@@ -12,6 +14,13 @@ Fixed::Fixed(const Fixed& og) : _fix_point_value(og._fix_point_value)
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
+
+// //Copy Constructor, not efficient syntax
+// Fixed::Fixed(const Fixed& og)
+// {
+// 	std::cout << "Copy constructor called" << std::endl;
+// 	_fix_point_value = og._fix_point_value;
+// }
 
 //Copy assignment operator
 Fixed &Fixed::operator=(const Fixed& og)
