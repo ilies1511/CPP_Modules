@@ -1,10 +1,25 @@
 #include "Fixed.hpp"
 
+const int Fixed::_fractional_bits = 8;
+
 // Orthodox Canonical Form (Design) - Begin
 //Default Constructor
 Fixed::Fixed() : _fix_point_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+//Constructor with const int as param
+Fixed::Fixed(const int input)
+{
+	std::cout << "Int constructor called" << std::endl;
+	_fix_point_value = input << _fractional_bits;
+}
+
+Fixed::Fixed(const float input)
+{
+	std::cout << "Float constructor called" << std::endl;
+	_fix_point_value = static_cast<int>(roundf(input * (1 << _fractional_bits)));
 }
 
 //Copy Constructor
