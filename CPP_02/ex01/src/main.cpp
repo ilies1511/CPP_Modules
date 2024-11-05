@@ -8,7 +8,6 @@ int	main(void)
 	Fixed const d( b );
 
 	a = Fixed( 1234.4321f );
-	// std::cout << "Ouey Zizou\n";
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

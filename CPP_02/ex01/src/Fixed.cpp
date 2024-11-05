@@ -47,7 +47,7 @@ Fixed::~Fixed()
 // Orthodox Canonical Form (Design) - End
 
 //Methodes Implementation - Begin
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (_fix_point_value);
@@ -58,12 +58,12 @@ void Fixed::setRawBits( int const raw )
 	_fix_point_value = raw;
 }
 
-float Fixed::toFloat( void ) const
+float Fixed::toFloat(void) const
 {
 	return (static_cast<float>(_fix_point_value) / (1 << _fractional_bits));
 }
 
-int Fixed::toInt( void ) const
+int Fixed::toInt(void) const
 {
 	return (_fix_point_value >> _fractional_bits);
 }
