@@ -9,6 +9,7 @@ class Point
 	private:
 		const Fixed x;
 		const Fixed y;
+		// const Fixed z;
 	public:
 		//Default Constructor that initializes the fixed-point number value to 0
 		Point();
@@ -22,5 +23,8 @@ class Point
 		//Destructor
 		~Point();
 };
+
+//FNC-Prototypes
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
