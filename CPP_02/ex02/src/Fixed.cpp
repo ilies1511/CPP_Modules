@@ -2,6 +2,7 @@
 #include "../Includes/Fixed.hpp"
 
 const int Fixed::_fractional_bits = 8;
+const int Fixed:: _epsilon = 1;
 
 // Orthodox Canonical Form (Design) - Begin
 //Default Constructor
@@ -137,6 +138,36 @@ Fixed	Fixed::operator/(const Fixed &input) const
 
 	res.setRawBits(((int64_t)(this->_fix_point_value) << _fractional_bits) / input.getRawBits());
 	return (res);
+}
+
+//Pre de/in-crement
+Fixed	&Fixed::operator++()
+{
+	this->_fix_point_value += _epsilon;
+	return (*this);
+}
+
+Fixed	&Fixed::operator--()
+{
+	this->_fix_point_value -= _epsilon;
+	return (*this);
+}
+
+//Post de/in-crement
+Fixed	Fixed::operator++(int)
+{
+	Fixed	stash = *this;
+
+	this->_fix_point_value+= _epsilon;
+	return (stash);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	stash = *this;
+
+	this->_fix_point_value -= _epsilon;
+	return (stash);
 }
 
 //Methodes Implementation - End

@@ -48,6 +48,7 @@ class Fixed
 	private:
 		int					_fix_point_value;
 		static const int	_fractional_bits;
+		static const int	_epsilon;
 	public:
 		//Default Constructor that initializes the fixed-point number value to 0
 		Fixed();
@@ -78,7 +79,13 @@ class Fixed
 		Fixed	operator-(const Fixed &input) const;
 		Fixed	operator*(const Fixed &input) const;
 		Fixed	operator/(const Fixed &input) const;
-
+		//Increment/Decrement operators
+			//Pre
+		Fixed	&operator++();
+		Fixed	&operator--();
+			//Post
+		Fixed	operator++(int);
+		Fixed	operator--(int);
 };
 
 // FNC-Prototype
