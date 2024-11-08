@@ -66,13 +66,18 @@ class Fixed
 		void setRawBits(int const raw);
 		float toFloat(void) const;
 		int toInt(void) const;
-		//Overload
+		//Overload Operators
 		bool	operator>(const Fixed &input);
 		bool	operator<(const Fixed &input);
 		bool	operator>=(const Fixed &input);
 		bool	operator<=(const Fixed &input);
 		bool	operator==(const Fixed &input);
 		bool	operator!=(const Fixed &input);
+		//arithmetic operators
+		Fixed	operator+(const Fixed &input) const;
+		Fixed	operator-(const Fixed &input) const;
+		Fixed	operator*(const Fixed &input) const;
+		Fixed	operator/(const Fixed &input) const;
 
 };
 

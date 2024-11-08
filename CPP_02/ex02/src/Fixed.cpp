@@ -106,4 +106,37 @@ bool	Fixed::operator!=(const Fixed &input)
 	return (this->_fix_point_value != input.getRawBits());
 }
 
+//Arithmetic Operators
+Fixed	Fixed::operator+(const Fixed &input) const
+{
+	Fixed	res;
+
+	res.setRawBits(this->_fix_point_value + input.getRawBits());
+	return (res);
+}
+
+Fixed	Fixed::operator-(const Fixed &input) const
+{
+	Fixed	res;
+
+	res.setRawBits(this->_fix_point_value - input.getRawBits());
+	return (res);
+}
+
+Fixed	Fixed::operator*(const Fixed &input) const
+{
+	Fixed	res;
+
+	res.setRawBits(((int64_t)this->_fix_point_value * input.getRawBits()) >> _fractional_bits);
+	return (res);
+}
+
+Fixed	Fixed::operator/(const Fixed &input) const
+{
+	Fixed	res;
+
+	res.setRawBits(((int64_t)(this->_fix_point_value) << _fractional_bits) / input.getRawBits());
+	return (res);
+}
+
 //Methodes Implementation - End
