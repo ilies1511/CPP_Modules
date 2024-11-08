@@ -78,7 +78,32 @@ std::ostream	&operator<<(std::ostream& os, const Fixed &num)
 
 bool	Fixed::operator>(const Fixed &input)
 {
-	return this->_fix_point_value > input.getRawBits(); //If true --> return (true)
+	return (this->_fix_point_value > input.getRawBits()); //If true --> return (true)
+}
+
+bool	Fixed::operator<(const Fixed &input)
+{
+	return (this->_fix_point_value < input.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed &input)
+{
+	return (this->_fix_point_value >= input.getRawBits());
+}
+
+bool	Fixed::operator<=(const Fixed &input)
+{
+	return (this->_fix_point_value <= input.getRawBits());
+}
+
+bool	Fixed::operator==(const Fixed &input)
+{
+	return (this->_fix_point_value == input.getRawBits());
+}
+
+bool	Fixed::operator!=(const Fixed &input)
+{
+	return (this->_fix_point_value != input.getRawBits());
 }
 
 //Methodes Implementation - End

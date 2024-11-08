@@ -67,7 +67,12 @@ class Fixed
 		float toFloat(void) const;
 		int toInt(void) const;
 		//Overload
-		bool	operator>(const Fixed &fp_int);
+		bool	operator>(const Fixed &input);
+		bool	operator<(const Fixed &input);
+		bool	operator>=(const Fixed &input);
+		bool	operator<=(const Fixed &input);
+		bool	operator==(const Fixed &input);
+		bool	operator!=(const Fixed &input);
 
 };
 
