@@ -8,32 +8,32 @@ const int Fixed:: _epsilon = 1;
 //Default Constructor
 Fixed::Fixed() : _fix_point_value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 //Constructor with const int as param
 Fixed::Fixed(const int input)
 {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	_fix_point_value = input << _fractional_bits;
 }
 
 Fixed::Fixed(const float input)
 {
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 	_fix_point_value = static_cast<int>(roundf(input * (1 << _fractional_bits)));
 }
 
 //Copy Constructor
 Fixed::Fixed(const Fixed& og) : _fix_point_value(og._fix_point_value)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 }
 
 //Copy assignment operator
 Fixed &Fixed::operator=(const Fixed& og)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &og)
 	{
 		_fix_point_value = og._fix_point_value;
@@ -44,14 +44,14 @@ Fixed &Fixed::operator=(const Fixed& og)
 //Destructor
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 // Orthodox Canonical Form (Design) - End
 
 //Methodes Implementation - Begin
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (_fix_point_value);
 }
 
