@@ -1,4 +1,6 @@
-#include "Fixed.hpp"
+// #include "Fixed.hpp"
+#include "../Includes/Fixed.hpp"
+
 
 int	main(void)
 {
