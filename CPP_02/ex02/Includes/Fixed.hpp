@@ -86,6 +86,12 @@ class Fixed
 			//Post
 		Fixed	operator++(int);
 		Fixed	operator--(int);
+		//return Min/Max FNC
+		static Fixed	&min(Fixed &input1, Fixed &input2);
+		static Fixed	&max(Fixed &input1, Fixed &input2);
+			//takes const
+		static const Fixed	&min(const Fixed &input1, const Fixed &input2);
+		static const Fixed	&max(const Fixed &input1, const Fixed &input2);
 };
 
 // FNC-Prototype

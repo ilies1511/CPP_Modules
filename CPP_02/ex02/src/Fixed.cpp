@@ -128,7 +128,7 @@ Fixed	Fixed::operator*(const Fixed &input) const
 {
 	Fixed	res;
 
-	res.setRawBits(((int64_t)this->_fix_point_value * input.getRawBits()) >> _fractional_bits);
+	res.setRawBits(static_cast<int>((int64_t)this->_fix_point_value * input.getRawBits()) >> _fractional_bits);
 	return (res);
 }
 
@@ -136,7 +136,7 @@ Fixed	Fixed::operator/(const Fixed &input) const
 {
 	Fixed	res;
 
-	res.setRawBits(((int64_t)(this->_fix_point_value) << _fractional_bits) / input.getRawBits());
+	res.setRawBits(static_cast<int>((int64_t)(this->_fix_point_value) << _fractional_bits) / input.getRawBits());
 	return (res);
 }
 
@@ -168,6 +168,34 @@ Fixed	Fixed::operator--(int)
 
 	this->_fix_point_value -= _epsilon;
 	return (stash);
+}
+
+Fixed	&Fixed::min(Fixed &input1, Fixed &input2)
+{
+	if (input1.getRawBits() < input2.getRawBits())
+		return (input1);
+	return (input2);
+}
+
+Fixed	&Fixed::max(Fixed &input1, Fixed &input2)
+{
+	if (input1.getRawBits() > input2.getRawBits())
+		return (input1);
+	return (input2);
+}
+
+const Fixed	&Fixed::min(const Fixed &input1, const Fixed &input2)
+{
+	if (input1.getRawBits() < input2.getRawBits())
+		return (input1);
+	return (input2);
+}
+
+const Fixed	&Fixed::max(const Fixed &input1, const Fixed &input2)
+{
+	if (input1.getRawBits() > input2.getRawBits())
+		return (input1);
+	return (input2);
 }
 
 //Methodes Implementation - End
