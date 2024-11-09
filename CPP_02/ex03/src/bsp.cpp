@@ -1,7 +1,7 @@
 #include "../Includes/Point.hpp"
 
 /*
-    Cross-Product Approach for Determining Point Position Relative to a Triangle
+	Cross-Product Approach for Determining Point Position Relative to a Triangle
 
 	The cross-product method helps calculate the orientation between vectors
 	that form the sides of the triangle and the point in question, without
@@ -17,7 +17,7 @@
 		triangle, and the vectors AP, BP, and CP that point from the triangle
 		vertices to the point P.
 
-    2. **Using the Cross-Product for Orientation**:
+	2. **Using the Cross-Product for Orientation**:
 		- To determine the orientation, we calculate the cross-product
 			between the following vectors:
 			- Orient_ABP = (B - A) × (P - A)
