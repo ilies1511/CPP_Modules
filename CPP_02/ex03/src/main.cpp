@@ -4,7 +4,7 @@
 int main(void)
 {
 	std::cout << "TESTS\n";
-	Point const	a1(0, 0), b1(1, 0), c1(0, 1);
+	Point const	a1(0, 0), b1(0, 1), c1(0, 3);
 
 	Point const	point1(1.0f, 1.0f);
 	Point const	point2(0.2f, 0.2f);

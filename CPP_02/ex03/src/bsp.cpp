@@ -34,6 +34,16 @@ Fixed	calculate_orient(Point const &vertice1, Point const &vertice2, Point const
 		(vertice2.getY() - vertice1.getY()) * (p.getX() - vertice1.getX());
 }
 
+bool	is_valid_triagel(Point const &a, Point const &b, Point const &c)
+{
+	Fixed crossproduct;
+
+	crossproduct = calculate_orient(a, b, c);
+	if (crossproduct == 0)
+		return (std::cout << coloring("[ERROR]: Points are collinear. Not a valid triangle\n", RED), false);
+	return (true);
+}
+
 /*
 	BSP = Binary space partitioning
 	orients[0] = orient_abp;
@@ -44,6 +54,8 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
 	Fixed	orients[3];
 
+	if (!is_valid_triagel(a, b, c))
+		return (false);
 	orients[0] = calculate_orient(a, b, point);
 	orients[1] = calculate_orient(b, c, point);
 	orients[2] = calculate_orient(c, a, point);
