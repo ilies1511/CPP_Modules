@@ -10,7 +10,9 @@ Fixed::Fixed() : _fix_point_value(0)
 }
 
 //Copy Constructor
-Fixed::Fixed(const Fixed& og) : _fix_point_value(og._fix_point_value)
+
+// Fixed::Fixed(const Fixed& og) : _fix_point_value(og._fix_point_value)
+Fixed::Fixed(const Fixed& og) : _fix_point_value(og.getRawBits())
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
@@ -28,7 +30,8 @@ Fixed &Fixed::operator=(const Fixed& og)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &og)
 	{
-		_fix_point_value = og._fix_point_value;
+		// _fix_point_value = og._fix_point_value;
+		_fix_point_value = og.getRawBits();
 	}
 	return (*this);
 }
