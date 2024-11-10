@@ -70,10 +70,32 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_EnergyPoint > 0)
 	{
-		std::cout << "ClapTrap" << _name << "repaired" << amount << "\n";
+		std::cout << "ClapTrap" << this->getName() << "repaired" << amount << "\n";
 		this->_HitPoint += amount;
 		this->_EnergyPoint--;
 	}
 	else
 		std::cout << this->_name <<"has no Energy Points left to repair\n";
+}
+
+//getter
+
+std::string	ClapTrap::getName(void) const
+{
+	return (_name);
+}
+
+size_t	ClapTrap::getHitPoint(void) const
+{
+	return (_HitPoint);
+}
+
+size_t	ClapTrap::getEnergyPoint(void) const
+{
+	return (_EnergyPoint);
+}
+
+size_t	ClapTrap::getAttackDamage(void) const
+{
+	return (_AttackDamage);
 }
