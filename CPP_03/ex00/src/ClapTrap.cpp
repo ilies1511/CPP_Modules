@@ -82,20 +82,20 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 std::string	ClapTrap::getName(void) const
 {
-	return (_name);
+	return (this->_name);
 }
 
 size_t	ClapTrap::getHitPoint(void) const
 {
-	return (_HitPoint);
+	return (this->_HitPoint);
 }
 
 size_t	ClapTrap::getEnergyPoint(void) const
 {
-	return (_EnergyPoint);
+	return (this->_EnergyPoint);
 }
 
 size_t	ClapTrap::getAttackDamage(void) const
 {
-	return (_AttackDamage);
+	return (this->_AttackDamage);
 }
