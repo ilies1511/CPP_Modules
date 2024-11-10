@@ -31,7 +31,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& og)
 		this->_AttackDamage = og._AttackDamage;
 	}
 	else
-		std::cout << coloring("[ERROR]: trying to assign the same value\n");
+		std::cout << coloring("[ERROR]: trying to assign the same value\n", RED);
 	return (*this);
 }
 
@@ -39,4 +39,18 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& og)
 ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called\n";
+}
+
+//Memebers
+void ClapTrap::attack(const std::string& target)
+{
+	if (this->_HitPoint > 0 && this->_EnergyPoint > 0)
+	{
+		std::cout << this->_name << " used attack on " << target << " !\n";
+		this->_EnergyPoint--;
+	}
+	else if (this->_HitPoint == 0)
+		std::cout << this->_name << " lacks Hit Points to attack\n";
+	else if (this->_EnergyPoint == 0)
+		std::cout << this->_name << " lacks Energy Points to attack\n";
 }

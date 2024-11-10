@@ -19,7 +19,9 @@ class ClapTrap
 {
 	private:
 		std::string _name;
+		//represent the health of the ClapTrap
 		size_t		_HitPoint;
+		//attacking and repairing cost 1 energy point each
 		size_t		_EnergyPoint;
 		size_t		_AttackDamage;
 	//Orthodox Canonical Form
