@@ -63,19 +63,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 		this->_HitPoint -= amount;
 	}
 	else
-		std::cout << this->_name << "is dead\n";
+		std::cout << this->_name << " is dead\n";
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_EnergyPoint > 0)
 	{
-		std::cout << "ClapTrap" << this->getName() << "repaired" << amount << "\n";
+		std::cout << "ClapTrap" << this->getName() << " repaired" << amount << "\n";
 		this->_HitPoint += amount;
 		this->_EnergyPoint--;
 	}
 	else
-		std::cout << this->_name <<"has no Energy Points left to repair\n";
+		std::cout << this->getName() << " has no Energy Points left to repair\n";
 }
 
 //getter
