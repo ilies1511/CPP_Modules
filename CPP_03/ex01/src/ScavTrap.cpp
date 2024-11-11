@@ -53,3 +53,9 @@ void ScavTrap::attack(const std::string& target)
 	else
 		std::cout << "ScavTrap " << getName() << " lacks resources to attack\n";
 }
+
+// guardGate-Methode
+void ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << getName() << " is now in Gatekeeper mode!\n";
+}
