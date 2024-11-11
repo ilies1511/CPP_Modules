@@ -106,3 +106,13 @@ void	ClapTrap::setAttackDamage(size_t const damage)
 	this->_AttackDamage = damage;
 }
 
+void	ClapTrap::setHitPoint(size_t const InputHitPoint)
+{
+	this->_HitPoint = InputHitPoint;
+}
+
+void	ClapTrap::setEnergyPoint(size_t const InputEnergyPoint)
+{
+	this->_EnergyPoint = InputEnergyPoint;
+}
+

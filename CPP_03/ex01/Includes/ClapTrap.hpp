@@ -46,6 +46,8 @@ class ClapTrap
 		//setter
 			// void		setName(void);
 		void setAttackDamage(size_t const damage);
+		void setHitPoint(size_t const InputHitPoint);
+		void setEnergyPoint(size_t const InputEnergyPoint);
 		//getter
 		std::string	getName(void) const;
 		size_t		getHitPoint(void) const;
