@@ -21,7 +21,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRC := main.cpp ClapTrap.cpp extra.cpp
+SRC := main.cpp ClapTrap.cpp extra.cpp ScavTrap.cpp
 
 SRCS := $(addprefix src/, $(SRC))
 
