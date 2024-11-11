@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 //Default Contructor
-ClapTrap::ClapTrap() : _name("Zizou"), _HitPoint(10), _EnergyPoint(10), _AttackDamage(0)
+ClapTrap::ClapTrap() : _name("Ayfon"), _HitPoint(10), _EnergyPoint(10), _AttackDamage(0)
 {
 	std::cout << "Default Constructor called\n";
 }

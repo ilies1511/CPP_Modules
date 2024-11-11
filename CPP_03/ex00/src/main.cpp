@@ -1,8 +1,11 @@
 #include "ClapTrap.hpp"
 
-void	test3(ClapTrap &Blayer1, ClapTrap &Blayer2, ClapTrap &Blayer3)
+void	test3(ClapTrap &Blayer1, ClapTrap &Blayer3)
 {
-
+	std::cout << coloring("\nTEST3\n", RED);
+	Blayer3.setAttackDamage(10000);
+	Blayer3.attack(Blayer1.getName());
+	Blayer1.takeDamage(static_cast<unsigned int>(Blayer3.getAttackDamage()));
 }
 
 void	test2(ClapTrap &Blayer1, ClapTrap &Blayer2, ClapTrap &Blayer3)
@@ -10,6 +13,7 @@ void	test2(ClapTrap &Blayer1, ClapTrap &Blayer2, ClapTrap &Blayer3)
 	(void)Blayer3;
 	std::cout << coloring("\nTEST2\n", RED);
 	Blayer2.beRepaired(30);
+	Blayer1.beRepaired(50);
 	while (1)
 	{
 		if (Blayer2.getHitPoint() <= 0 || Blayer1.getEnergyPoint() <= 0)
@@ -41,6 +45,6 @@ int	main()
 
 	test1(Blayer1, Blayer2, Blayer3);
 	test2(Blayer1, Blayer2, Blayer3);
-	test3();
+	test3(Blayer1, Blayer3);
 	return (0);
 }
