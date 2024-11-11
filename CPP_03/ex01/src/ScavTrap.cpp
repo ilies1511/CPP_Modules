@@ -40,3 +40,16 @@ ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap destructor called\n";
 }
+
+// Overwritten Methode
+void ScavTrap::attack(const std::string& target)
+{
+	if (getHitPoint() > 0 && getEnergyPoint() > 0)
+	{
+		std::cout << "ScavTrap " << getName() << " ferociously attacks " << target \
+				<< " causing " << getAttackDamage() << " points of damage!\n";
+		setEnergyPoint(getEnergyPoint() - 1);
+	}
+	else
+		std::cout << "ScavTrap " << getName() << " lacks resources to attack\n";
+}
