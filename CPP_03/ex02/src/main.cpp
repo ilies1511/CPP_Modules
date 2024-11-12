@@ -110,17 +110,6 @@
 
 #include "FragTrap.hpp"
 
-// Function to test ClapTrap functionality
-void testClapTrap()
-{
-	ClapTrap clapTrap1("ClapBot");
-
-	std::cout << coloring("\nTesting ClapTrap:\n", RED);
-	clapTrap1.attack("Enemy1"); // Should attack the target
-	clapTrap1.takeDamage(5);    // Should take damage
-	clapTrap1.beRepaired(10);   // Should repair ClapTrap
-}
-
 // Function to test ScavTrap with default constructor
 void testScavTrapDefaultConstructor()
 {
@@ -134,7 +123,7 @@ void testScavTrapDefaultConstructor()
 // Function to test FragTrap with named constructor
 void testScavTrapNamedConstructor()
 {
-	FragTrap fragTrap2("Scavenger");
+	FragTrap fragTrap2("Frager");
 
 	std::cout << coloring("\nTesting FragTrap (named constructor):\n", RED);
 	fragTrap2.attack("Enemy3");  // Should attack the target using FragTrap's attack method
@@ -144,7 +133,7 @@ void testScavTrapNamedConstructor()
 // Function to test FragTrap with copy constructor
 void testFragTrapCopyConstructor()
 {
-	FragTrap fragTrap2("Scavenger");
+	FragTrap fragTrap2("Frager");
 
 	FragTrap scavTrap3(fragTrap2);  // Use copy constructor
 	std::cout << coloring("\nTesting FragTrap (copy constructor):\n", RED);
@@ -155,7 +144,7 @@ void testFragTrapCopyConstructor()
 // Function to test FragTrap with assignment operator
 void testScavTrapAssignmentOperator()
 {
-	FragTrap fragTrap2("Scavenger");
+	FragTrap fragTrap2("Frager");
 	FragTrap scavTrap4;
 	scavTrap4 = fragTrap2;  // Use assignment operator
 	std::cout << coloring("\nTesting FragTrap (assignment operator):\n", RED);
@@ -165,7 +154,6 @@ void testScavTrapAssignmentOperator()
 
 int main()
 {
-	testClapTrap();
 	testScavTrapDefaultConstructor();
 	testScavTrapNamedConstructor();
 	testFragTrapCopyConstructor();
