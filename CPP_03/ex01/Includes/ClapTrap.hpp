@@ -17,7 +17,7 @@ const std::string NC = "\033[0m"; // Zurücksetzen
 //Class
 class ClapTrap
 {
-	private:
+	protected:
 		std::string _name;
 		//represent the health of the ClapTrap
 		size_t		_HitPoint;
