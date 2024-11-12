@@ -1,4 +1,4 @@
-NAME := ex01.out
+NAME := ex02.out
 .DEFAULT_GOAL := all
 CPP := c++
 AR := ar
