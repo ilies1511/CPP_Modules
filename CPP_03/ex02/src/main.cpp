@@ -108,7 +108,7 @@
  *   before the derived class, ensuring a well-formed object.
  */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 // Function to test ClapTrap functionality
 void testClapTrap()
@@ -124,51 +124,51 @@ void testClapTrap()
 // Function to test ScavTrap with default constructor
 void testScavTrapDefaultConstructor()
 {
-	ScavTrap scavTrap1;
+	FragTrap fragTrap1;
 
-	std::cout << coloring("\nTesting ScavTrap (default constructor):\n", RED);
-	scavTrap1.attack("Enemy2");  // Should attack the target using ScavTrap's attack method
-	scavTrap1.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	std::cout << coloring("\nTesting FragTrap (default constructor):\n", RED);
+	fragTrap1.attack("Enemy2");  // Should attack the target using FragTrap's attack method
+	fragTrap1.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
 }
 
-// Function to test ScavTrap with named constructor
+// Function to test FragTrap with named constructor
 void testScavTrapNamedConstructor()
 {
-	ScavTrap scavTrap2("Scavenger");
+	FragTrap fragTrap2("Scavenger");
 
-	std::cout << coloring("\nTesting ScavTrap (named constructor):\n", RED);
-	scavTrap2.attack("Enemy3");  // Should attack the target using ScavTrap's attack method
-	scavTrap2.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	std::cout << coloring("\nTesting FragTrap (named constructor):\n", RED);
+	fragTrap2.attack("Enemy3");  // Should attack the target using FragTrap's attack method
+	fragTrap2.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
 }
 
-// Function to test ScavTrap with copy constructor
-void testScavTrapCopyConstructor()
+// Function to test FragTrap with copy constructor
+void testFragTrapCopyConstructor()
 {
-	ScavTrap scavTrap2("Scavenger");
+	FragTrap fragTrap2("Scavenger");
 
-	ScavTrap scavTrap3(scavTrap2);  // Use copy constructor
-	std::cout << coloring("\nTesting ScavTrap (copy constructor):\n", RED);
+	FragTrap scavTrap3(fragTrap2);  // Use copy constructor
+	std::cout << coloring("\nTesting FragTrap (copy constructor):\n", RED);
 	scavTrap3.attack("Enemy4");  // Should attack the target
-	scavTrap3.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap3.highFivesGuys();
 }
 
-// Function to test ScavTrap with assignment operator
+// Function to test FragTrap with assignment operator
 void testScavTrapAssignmentOperator()
 {
-	ScavTrap scavTrap2("Scavenger");
-	ScavTrap scavTrap4;
-	scavTrap4 = scavTrap2;  // Use assignment operator
-	std::cout << coloring("\nTesting ScavTrap (assignment operator):\n", RED);
+	FragTrap fragTrap2("Scavenger");
+	FragTrap scavTrap4;
+	scavTrap4 = fragTrap2;  // Use assignment operator
+	std::cout << coloring("\nTesting FragTrap (assignment operator):\n", RED);
 	scavTrap4.attack("Enemy5");  // Should attack the target
-	scavTrap4.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap4.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
 }
 
 int main()
 {
-	testClapTrap();                    // Test ClapTrap functionality
-	testScavTrapDefaultConstructor();  // Test ScavTrap with default constructor
-	testScavTrapNamedConstructor();    // Test ScavTrap with named constructor
-	testScavTrapCopyConstructor();     // Test ScavTrap with copy constructor
-	testScavTrapAssignmentOperator();  // Test ScavTrap with assignment operator
+	testClapTrap();
+	testScavTrapDefaultConstructor();
+	testScavTrapNamedConstructor();
+	testFragTrapCopyConstructor();
+	testScavTrapAssignmentOperator();
 	return (0);
 }

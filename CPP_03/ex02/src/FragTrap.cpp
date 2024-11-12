@@ -27,7 +27,7 @@ FragTrap &FragTrap::operator=(const FragTrap &og)
 	std::cout << "FragTrap assignment operator called\n";
 	if (this != &og)
 	{
-		FragTrap::operator=(og);
+		ClapTrap::operator=(og); //Ueberfluessig ?
 		_HitPoint = og._HitPoint;
 		_EnergyPoint = og._EnergyPoint;
 		_AttackDamage = og._AttackDamage;
