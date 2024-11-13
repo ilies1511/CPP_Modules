@@ -13,7 +13,7 @@ class FragTrap : virtual public ClapTrap
 		explicit FragTrap(std::string InputName);
 		FragTrap(const FragTrap &og);
 		FragTrap& operator=(const FragTrap &og);
-		~FragTrap();
+		virtual ~FragTrap();
 	//Memebers
 	public:
 		void highFivesGuys(void);

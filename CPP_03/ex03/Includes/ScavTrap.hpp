@@ -13,7 +13,7 @@ class ScavTrap : virtual public ClapTrap
 		explicit ScavTrap(std::string InputName);
 		ScavTrap(const ScavTrap &og);
 		ScavTrap& operator=(const ScavTrap &og);
-		~ScavTrap();
+		virtual ~ScavTrap();
 	//Memebers
 	public:
 		void attack(const std::string& target) override; // override spezifiziert, dass wir die Methode überschreiben

@@ -35,7 +35,7 @@ class ClapTrap
 		//Coopy Assignment operator
 		ClapTrap& operator=(const ClapTrap& og);
 		//Destructor
-		~ClapTrap();
+		virtual ~ClapTrap();
 	//Members
 	public:
 		virtual void	attack(const std::string& target);
