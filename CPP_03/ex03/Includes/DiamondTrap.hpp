@@ -7,10 +7,10 @@
 #include "ScavTrap.hpp"
 
 //Class
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap :  public ScavTrap, public FragTrap
 {
 	private:
-		std::string mDT_name;
+		std::string mDiamondTrap_name; // own Name for DiamondTrap Instance
 	//OCF
 	public:
 		DiamondTrap(void);
@@ -20,6 +20,8 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		~DiamondTrap(void);
 	public:
 		void whoAmI();
+		using ScavTrap::attack;
+		// void	attack(const std::string& target);
 };
 
 #endif
