@@ -5,7 +5,7 @@
 # include "ClapTrap.hpp"
 //Classes
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	//OCF
 	public:
