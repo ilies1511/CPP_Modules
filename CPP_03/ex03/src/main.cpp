@@ -108,55 +108,14 @@
  *   before the derived class, ensuring a well-formed object.
  */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-// Function to test ScavTrap with default constructor
-void testScavTrapDefaultConstructor()
+int	main()
 {
-	FragTrap fragTrap1;
+	DiamondTrap	diamondTrap;
 
-	std::cout << coloring("\nTesting FragTrap (default constructor):\n", RED);
-	fragTrap1.attack("Enemy2");  // Should attack the target using FragTrap's attack method
-	fragTrap1.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
-}
-
-// Function to test FragTrap with named constructor
-void testScavTrapNamedConstructor()
-{
-	FragTrap fragTrap2("Frager");
-
-	std::cout << coloring("\nTesting FragTrap (named constructor):\n", RED);
-	fragTrap2.attack("Enemy3");  // Should attack the target using FragTrap's attack method
-	fragTrap2.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
-}
-
-// Function to test FragTrap with copy constructor
-void testFragTrapCopyConstructor()
-{
-	FragTrap fragTrap2("Frager");
-
-	FragTrap scavTrap3(fragTrap2);  // Use copy constructor
-	std::cout << coloring("\nTesting FragTrap (copy constructor):\n", RED);
-	scavTrap3.attack("Enemy4");  // Should attack the target
-	scavTrap3.highFivesGuys();
-}
-
-// Function to test FragTrap with assignment operator
-void testScavTrapAssignmentOperator()
-{
-	FragTrap fragTrap2("Frager");
-	FragTrap scavTrap4;
-	scavTrap4 = fragTrap2;  // Use assignment operator
-	std::cout << coloring("\nTesting FragTrap (assignment operator):\n", RED);
-	scavTrap4.attack("Enemy5");  // Should attack the target
-	scavTrap4.highFivesGuys();       // Should print FragTrap entering Gatekeeper mode
-}
-
-int main()
-{
-	testScavTrapDefaultConstructor();
-	testScavTrapNamedConstructor();
-	testFragTrapCopyConstructor();
-	testScavTrapAssignmentOperator();
+	std::cout << "Hitpoints: " << diamondTrap.getHitPoint() << "\n";
+	std::cout << "Energy Point: " << diamondTrap.getEnergyPoint() << "\n";
+	std::cout << "Attack Point: " << diamondTrap.getAttackDamage() << "\n";
 	return (0);
 }

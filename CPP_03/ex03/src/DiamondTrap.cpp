@@ -1,6 +1,18 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap(), mDiamondTrap_name("DefaultDiamondTrap")
+// Konstruktor mit Namen
+// DiamondTrap::DiamondTrap(std::string InputName) : ClapTrap(InputName + "_clap_name"), ScavTrap(), FragTrap(), mDiamondTrap_name(InputName)
+// {
+// 	ScavTrap	tmp;
+
+// 	std::cout << "DiamondTrap Name Constructor called for " << InputName << "\n";
+// 	this->_HitPoint = FragTrap::_HitPoint;
+// 	this->_AttackDamage = FragTrap::_AttackDamage;
+// 	this->_EnergyPoint = tmp.getEnergyPoint();
+// }
+
+DiamondTrap::DiamondTrap(void)
+	: ClapTrap("Default_clap_name"), ScavTrap(), FragTrap(), mDiamondTrap_name("DefaultDiamondTrap")
 {
 	ScavTrap	tmp;
 
@@ -10,8 +22,8 @@ DiamondTrap::DiamondTrap(void) : ClapTrap("Default_clap_name"), ScavTrap(), Frag
 	this->_EnergyPoint = tmp.getEnergyPoint();
 }
 
-// Konstruktor mit Namen
-DiamondTrap::DiamondTrap(std::string InputName) : ClapTrap(InputName + "_clap_name"), ScavTrap(), FragTrap(), mDiamondTrap_name(InputName)
+DiamondTrap::DiamondTrap(std::string InputName)
+	: ClapTrap(InputName + "_clap_name"), ScavTrap(), FragTrap(), mDiamondTrap_name(InputName)
 {
 	ScavTrap	tmp;
 
@@ -22,11 +34,10 @@ DiamondTrap::DiamondTrap(std::string InputName) : ClapTrap(InputName + "_clap_na
 }
 
 //Copy Constructor
-DiamondTrap::DiamondTrap(const DiamondTrap &og) : ClapTrap(og), ScavTrap(og), FragTrap(og)
+DiamondTrap::DiamondTrap(const DiamondTrap &og)
+	: ClapTrap(og), ScavTrap(og), FragTrap(og), mDiamondTrap_name(og.mDiamondTrap_name)
 {
 	std::cout << "DiamondTrap copy constructor called\n";
-	// *this = og;
-	this->mDiamondTrap_name = og._name;
 }
 
 //Copy Assignment Operator
@@ -36,7 +47,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &og)
 	if (this != &og)
 	{
 		ClapTrap::operator=(og);
-		this->mDiamondTrap_name = og._name;
+		this->mDiamondTrap_name = og.mDiamondTrap_name;
 	}
 	return (*this);
 }
