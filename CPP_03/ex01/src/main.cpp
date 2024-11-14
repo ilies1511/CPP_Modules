@@ -116,9 +116,9 @@ void testClapTrap()
 	ClapTrap clapTrap1("ClapBot");
 
 	std::cout << coloring("\nTesting ClapTrap:\n", RED);
-	clapTrap1.attack("Enemy1"); // Should attack the target
-	clapTrap1.takeDamage(5);    // Should take damage
-	clapTrap1.beRepaired(10);   // Should repair ClapTrap
+	clapTrap1.attack("Enemy1");
+	clapTrap1.takeDamage(5);
+	clapTrap1.beRepaired(10);
 }
 
 // Function to test ScavTrap with default constructor
@@ -127,8 +127,8 @@ void testScavTrapDefaultConstructor()
 	ScavTrap scavTrap1;
 
 	std::cout << coloring("\nTesting ScavTrap (default constructor):\n", RED);
-	scavTrap1.attack("Enemy2");  // Should attack the target using ScavTrap's attack method
-	scavTrap1.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap1.attack("Enemy2");
+	scavTrap1.guardGate();
 }
 
 // Function to test ScavTrap with named constructor
@@ -137,8 +137,8 @@ void testScavTrapNamedConstructor()
 	ScavTrap scavTrap2("Scavenger");
 
 	std::cout << coloring("\nTesting ScavTrap (named constructor):\n", RED);
-	scavTrap2.attack("Enemy3");  // Should attack the target using ScavTrap's attack method
-	scavTrap2.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap2.attack("Enemy3");
+	scavTrap2.guardGate();
 }
 
 // Function to test ScavTrap with copy constructor
@@ -146,10 +146,10 @@ void testScavTrapCopyConstructor()
 {
 	ScavTrap scavTrap2("Scavenger");
 
-	ScavTrap scavTrap3(scavTrap2);  // Use copy constructor
+	ScavTrap scavTrap3(scavTrap2);
 	std::cout << coloring("\nTesting ScavTrap (copy constructor):\n", RED);
-	scavTrap3.attack("Enemy4");  // Should attack the target
-	scavTrap3.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap3.attack("Enemy4");
+	scavTrap3.guardGate();
 }
 
 // Function to test ScavTrap with assignment operator
@@ -157,18 +157,18 @@ void testScavTrapAssignmentOperator()
 {
 	ScavTrap scavTrap2("Scavenger");
 	ScavTrap scavTrap4;
-	scavTrap4 = scavTrap2;  // Use assignment operator
+	scavTrap4 = scavTrap2;
 	std::cout << coloring("\nTesting ScavTrap (assignment operator):\n", RED);
-	scavTrap4.attack("Enemy5");  // Should attack the target
-	scavTrap4.guardGate();       // Should print ScavTrap entering Gatekeeper mode
+	scavTrap4.attack("Enemy5");
+	scavTrap4.guardGate();
 }
 
 int main()
 {
-	testClapTrap();                    // Test ClapTrap functionality
-	testScavTrapDefaultConstructor();  // Test ScavTrap with default constructor
-	testScavTrapNamedConstructor();    // Test ScavTrap with named constructor
-	testScavTrapCopyConstructor();     // Test ScavTrap with copy constructor
-	testScavTrapAssignmentOperator();  // Test ScavTrap with assignment operator
+	testClapTrap();
+	testScavTrapDefaultConstructor();
+	testScavTrapNamedConstructor();
+	testScavTrapCopyConstructor();
+	testScavTrapAssignmentOperator();
 	return (0);
 }
