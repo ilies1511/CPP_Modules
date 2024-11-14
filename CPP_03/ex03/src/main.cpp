@@ -17,8 +17,32 @@
 
 #include "DiamondTrap.hpp"
 
+void	Blayer()
+{
+	DiamondTrap Blayer1("Perpetrator");
+	DiamondTrap Blayer2("Victim");
+
+	std::cout << coloring("\nBlayerCheck\n", BLUE);
+	Blayer1.setEnergyPoint(99999);
+	Blayer1.setAttackDamage(1);
+	Blayer2.setHitPoint(5);
+	std::cout << RED << "[PRE Blayer1]: Perpetrator Energy: "<< Blayer1.getEnergyPoint() << NC << "\n";
+	std::cout << RED << "[PRE Blayer1]: Attack Damage: "<< Blayer1.getAttackDamage() << NC << "\n";
+	std::cout << RED << "[PRE Blayer2]: HitPoints: "<< Blayer2.getHitPoint() << NC << "\n";
+	// std::cout << RED << "[PRE]: Victim HitPoints: "<< Blayer2.getHitPoint() << NC << "\n";
+	while (1)
+	{
+		if (Blayer2.getHitPoint() <= 0 || Blayer1.getEnergyPoint() <= 0)
+			break ;
+		Blayer1.attack(Blayer2.getName());
+		Blayer2.takeDamage(static_cast<unsigned int>(Blayer1.getAttackDamage()));
+		std::cout << RED << "[WHILE]: HitPoints: "<< Blayer2.getHitPoint() << NC << "\n";
+	}
+	std::cout << RED << "[POST]: Victim HitPoints: "<< Blayer2.getHitPoint() << NC << "\n";
+}
 void	complexCheck()
 {
+	std::cout << coloring("\nComplex Test\n", BLUE);
 	DiamondTrap	dt("Ilies");
 	dt.setAttackDamage(99);
 	dt.setHitPoint(1511);
@@ -30,6 +54,11 @@ void	complexCheck()
 	std::cout << RED << "Attack Damage Cpy: "<< cpy.getAttackDamage() << NC << "\n";
 	std::cout << RED << "ATTACK!!" << NC << "\n";
 	cpy.attack(dt.getName());
+
+	std::cout << RED << "PRE REPAIR - Hit Point Cpy: "<< cpy.getHitPoint() << NC << "\n";
+	cpy.setEnergyPoint(1);
+	cpy.beRepaired(100);
+	std::cout << RED << "POST REPAIR - Hit Point Cpy: "<< cpy.getHitPoint() << NC << "\n";
 }
 
 void	nameConstructorCheck()
@@ -41,14 +70,14 @@ void	nameConstructorCheck()
 
 void	attackCheck()
 {
-	std::cout << coloring("\nTEST2: check if attack is like in ScavTrap\n", RED);
+	std::cout << coloring("\nTEST2: check if attack is like in ScavTrap\n", BLUE);
 	DiamondTrap	dt;
 	dt.attack("Gwyneth");
 }
 
 void	valueCheck()
 {
-	std::cout << coloring("\nTEST 1: check if value of attributes correct\n", RED);
+	std::cout << coloring("\nTEST 1: check if value of attributes correct\n", BLUE);
 	DiamondTrap	diamondTrap;
 
 	std::cout << "Hitpoints: " << diamondTrap.getHitPoint() << "\n";
@@ -58,9 +87,10 @@ void	valueCheck()
 
 int	main()
 {
-	// valueCheck();
-	// attackCheck();
-	// nameConstructorCheck();
+	valueCheck();
+	attackCheck();
+	nameConstructorCheck();
 	complexCheck();
+	Blayer();
 	return (0);
 }
