@@ -1,3 +1,8 @@
+/*
+	explicit prevents implicit conversion from std::string to ScavTrap,
+	ensuring ScavTrap can only be constructed with a string explicitly.
+*/
+
 #ifndef SCAV_TRAP_HPP
 # define SCAV_TRAP_HPP
 
