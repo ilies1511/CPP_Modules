@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 16:46:28 by iziane            #+#    #+#             */
+/*   Updated: 2024/11/14 16:46:29 by iziane           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 	The "using" keyword allows DiamondTrap to explicitly bring
 	the attack method from ScavTrap into the class. This is necessary

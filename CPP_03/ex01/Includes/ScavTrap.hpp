@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 16:45:23 by iziane            #+#    #+#             */
+/*   Updated: 2024/11/14 16:45:25 by iziane           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 	explicit prevents implicit conversion from std::string to ScavTrap,
 	ensuring ScavTrap can only be constructed with a string explicitly.

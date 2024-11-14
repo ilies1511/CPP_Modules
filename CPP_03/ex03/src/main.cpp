@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 16:47:49 by iziane            #+#    #+#             */
+/*   Updated: 2024/11/14 16:47:50 by iziane           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 	The "Diamond Problem" arises due to multiple inheritance in C++,
 	where a class inherits from two classes that have a common base class.

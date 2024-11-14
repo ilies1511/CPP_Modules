@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 16:46:30 by iziane            #+#    #+#             */
+/*   Updated: 2024/11/14 16:46:32 by iziane           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 	The 'virtual' keyword in the context of inheritance allows for dynamic binding,
 	enabling polymorphism. When a class is inherited virtually, like ScavTrap
