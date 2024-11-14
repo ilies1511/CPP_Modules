@@ -1,3 +1,13 @@
+/*
+	The "using" keyword allows DiamondTrap to explicitly bring
+	the attack method from ScavTrap into the class. This is necessary
+	because DiamondTrap inherits from both ScavTrap and FragTrap,
+	which both define their own attack methods. Without "using",
+	the compiler would not know which attack method to call, causing
+	ambiguity. By using "using ScavTrap::attack;", we specify that
+	DiamondTrap should use the attack method from ScavTrap.
+*/
+
 #ifndef DIAMOND_TRAP_HPP
 # define DIAMOND_TRAP_HPP
 
