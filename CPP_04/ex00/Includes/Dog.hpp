@@ -12,13 +12,13 @@ class Dog : public Animal
 	//OCF
 	public:
 		Dog();
-		Dog(std::string name);
+		// Dog(std::string name);
 		Dog(const Dog &og);
 		Dog& operator=(const Dog &og);
 		~Dog();
 	//Methodes
 	public:
-		void	makeSound() override;
+		void	makeSound() const override;
 };
 
 #endif
