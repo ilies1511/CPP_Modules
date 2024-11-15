@@ -9,7 +9,7 @@
 class WrongAnimal
 {
 	protected:
-		std::string type;
+		std::string _m_type;
 	//OCF
 	public:
 		WrongAnimal();
@@ -19,7 +19,11 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 	//Methodes:
 	public:
-		virtual void	makeSound();
+		virtual void	makeSound() const ;
+		//Getter
+		std::string		getType(void) const;
+		//Setter
+		void			setType(std::string name);
 
 };
 
