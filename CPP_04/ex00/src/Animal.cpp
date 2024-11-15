@@ -3,14 +3,14 @@
 //Default Constructor
 Animal::Animal() : _m_type("Animal")
 {
-	std::cout << "ANIMAL Default Constructor called for " << _m_type << "\n";
+	std::cout << "ANIMAL Default Constructor called for " << getType() << "\n";
 	// std::cout << "ANIMAL Default Constructor called\n";
 }
 
 //Default Name Constructor
 Animal::Animal(std::string InputType) : _m_type(InputType)
 {
-	std::cout << "ANIMAL NameDefault Constructor called for " << InputType << "\n";
+	std::cout << "ANIMAL NameDefault Constructor called for " << getType() << "\n";
 	// std::cout << "ANIMAL Default Constructor called for " << _m_type << "\n";
 	// std::cout << "ANIMAL NameDefault Constructor called\n";
 }
