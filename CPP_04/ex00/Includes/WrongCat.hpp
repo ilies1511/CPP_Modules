@@ -12,11 +12,11 @@ class WrongCat : public WrongAnimal
 		WrongCat();
 		WrongCat(std::string name);
 		WrongCat(const WrongCat &og);
-		WrongCat operator=(const WrongCat &og);
+		WrongCat& operator=(const WrongCat &og);
 		~WrongCat();
 	//Methodes
 	public:
-		void	makeSound() override;
+		void	makeSound() const override;
 };
 
 #endif
