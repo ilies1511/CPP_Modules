@@ -12,7 +12,12 @@ int main(void)
 	// j->makeSound();
 	// meta->makeSound();
 	// //And more own tests
-
 	std::cout << "Alo\n";
+
+	Animal hayuan;
+	// Animal hayuan2("Musti");
+
+	hayuan.makeSound();
+	// hayuan2.makeSound();
 	return (0);
 }
