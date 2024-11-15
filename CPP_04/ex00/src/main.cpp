@@ -1,5 +1,7 @@
 
 #include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 int main(void)
 {
@@ -12,12 +14,19 @@ int main(void)
 	// j->makeSound();
 	// meta->makeSound();
 	// //And more own tests
-	std::cout << "Alo\n";
+	// std::cout << "Alo\n";
 
-	Animal hayuan;
+	// // Animal hayuan;
 	// Animal hayuan2("Musti");
 
-	hayuan.makeSound();
-	// hayuan2.makeSound();
+	// // hayuan.makeSound();
+	// // hayuan2.makeS.ound();
+	Cat	cat;
+	cat.makeSound();
+
+	std::cout << "\n";
+	Dog dog;
+	dog.makeSound();
+
 	return (0);
 }
