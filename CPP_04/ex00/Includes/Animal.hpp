@@ -25,8 +25,10 @@ class Animal
 	//Methodes:
 	public:
 		virtual void	makeSound(void) const;
-		//Getter/Setter
+		//Getter
 		std::string		getType(void) const;
+		//Setter
+		void			setType(std::string name);
 };
 
 #endif

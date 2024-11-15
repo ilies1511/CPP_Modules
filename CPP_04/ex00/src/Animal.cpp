@@ -47,3 +47,9 @@ std::string	Animal::getType(void) const
 {
 	return (this->_m_type);
 }
+
+void	Animal::setType(std::string name)
+{
+	this->_m_type = name;
+}
+
