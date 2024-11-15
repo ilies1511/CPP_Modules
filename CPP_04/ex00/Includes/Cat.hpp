@@ -14,14 +14,14 @@ class Cat : public Animal
 		//Default Constructor
 		Cat();
 		//Default Name Constructor
-		Cat(std::string name);
+		// Cat(std::string name);
 		//Copy Constructor
 		Cat(const Cat &og);
 		Cat& operator=(const Cat &og);
 		~Cat();
 	//Methodes
 	public:
-		void	makeSound() override;
+		void	makeSound() const override;
 };
 
 #endif
