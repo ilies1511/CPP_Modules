@@ -1,12 +1,12 @@
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
 	setType("Dog");
 	std::cout << "[DOG]: Default Constructor called for " << getType() << "\n";
 }
 
-Dog::Dog(const Dog &og)
+Dog::Dog(const Dog &og) : Animal(og)
 {
 	*this = og;
 	std::cout << "[DOG]: Copy Constructor called for " << getType() << "\n";

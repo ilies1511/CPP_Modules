@@ -1,12 +1,12 @@
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal()
 {
 	setType("Cat");
 	std::cout << "[CAT]: Default Constructor called for " << getType() << "\n";
 }
 
-Cat::Cat(const Cat &og)
+Cat::Cat(const Cat &og) : Animal(og)
 {
 	*this = og;
 	std::cout << "[CAT]: Copy Constructor called for " << getType() << "\n";
