@@ -93,10 +93,32 @@ namespace runner
 
 namespace noninteractive
 {
+	void	copy_assigment()
+	{
+		printer::Header("copy assigment");
+
+		Animal	og_animal;
+		og_animal.setType("Loewe");
+		Animal	animal2 = og_animal;
+
+		std::cout << og_animal.getType() << "\n";
+		std::cout << animal2.getType() << "\n";
+	}
+
+	void	copy_constructor()
+	{
+		printer::Header("copy constructor");
+
+		Animal	og_animal;
+		og_animal.setType("Loewe");
+		Animal	animal2(og_animal);
+
+		std::cout << og_animal.getType() << "\n";
+		std::cout << animal2.getType() << "\n";
+	}
+
 	void	subj(void)
 	{
-		Animal test;
-
 		runner::TestAnimalUniversal<Animal>("Animal");
 		runner::TestAnimalUniversal<Dog>("Dog");
 		runner::TestAnimalUniversal<Cat>("Cat");
@@ -107,7 +129,8 @@ namespace noninteractive
 	void	test_runner()
 	{
 		subj();
-		// wrong_animal();
+		copy_constructor();
+		copy_assigment();
 	}
 }
 
