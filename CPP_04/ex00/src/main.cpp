@@ -19,16 +19,23 @@ namespace printer
 		std::cout << coloring(Input, ORANGE) << "\n";
 	}
 
-	void	Universel_Animal(const Animal &animal)
+	// void	Universel_Animal(const Animal &animal)
+	// {
+	// 	std::cout << animal.getType() << "\n";
+	// 	animal.makeSound();
+	// }
+
+	// void	Universel_WrongAnimal(const WrongAnimal &wronganimal)
+	// {
+	// 	std::cout << wronganimal.getType() << "\n";
+	// 	wronganimal.makeSound();
+	// }
+
+	template <typename DataType>
+	void PrintUniversal(const DataType &animal)
 	{
 		std::cout << animal.getType() << "\n";
 		animal.makeSound();
-	}
-
-	void	Universel_WrongAnimal(const WrongAnimal &wronganimal)
-	{
-		std::cout << wronganimal.getType() << "\n";
-		wronganimal.makeSound();
 	}
 }
 
@@ -50,6 +57,20 @@ void	subj_example(void)
 
 namespace noninteractive
 {
+	template <typename Datatype>
+	void	TestAnimalUniversal(const std::string &header)
+	{
+		printer::Header(header);
+		const Datatype *animal = new (std::nothrow) Datatype();
+		if (!animal)
+		{
+			std::cerr << "Memory allocation failed for " << header "\n";
+			return ;
+		}
+		printer::PrintUniversal(*animal);
+		delete animal;
+	}
+
 	void	wrong_animal()
 	{
 		try
@@ -58,8 +79,10 @@ namespace noninteractive
 			const WrongAnimal* i = new WrongCat();
 
 			printer::Header("Wrong Animal");
-			printer::Universel_WrongAnimal(*meta);
-			printer::Universel_WrongAnimal(*i);
+			// printer::Universel_WrongAnimal(*meta);
+			// printer::Universel_WrongAnimal(*i);
+			printer::PrintUniversal(*meta);
+			printer::PrintUniversal(*i);
 			delete i;
 			delete meta;
 		}
@@ -76,9 +99,12 @@ namespace noninteractive
 		const Animal* i = new Cat();
 
 		printer::Header("Normal Animal - Welcome in the ZOO");
-		printer::Universel_Animal(*meta);
-		printer::Universel_Animal(*j);
-		printer::Universel_Animal(*i);
+		// printer::Universel_Animal(*meta);
+		// printer::Universel_Animal(*j);
+		// printer::Universel_Animal(*i);
+		printer::PrintUniversal(*meta);
+		printer::PrintUniversal(*j);
+		printer::PrintUniversal(*i);
 		delete j;
 		delete i;
 		delete meta;
