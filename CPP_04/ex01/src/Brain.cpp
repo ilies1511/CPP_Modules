@@ -16,7 +16,7 @@ Brain::Brain(const Brain &og)
 
 Brain &Brain::operator=(const Brain &og)
 {
-	std::cout << "[BRAIN]: Copy Assignment operator called for\n";
+	std::cout << "[BRAIN]: Copy Assignment operator called\n";
 	if (this != &og)
 	{
 		for (int i; i < 100; i++)
@@ -27,7 +27,7 @@ Brain &Brain::operator=(const Brain &og)
 
 Brain::~Brain()
 {
-	std::cout << "[BRAIN]: Destructor called for\n";
+	std::cout << "[BRAIN]: Destructor called\n";
 }
 
 //Methodes
