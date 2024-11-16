@@ -3,7 +3,6 @@
 
 //Includes
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 //Class
 class Cat : public Animal

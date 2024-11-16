@@ -3,6 +3,7 @@
 
 //Includes
 #include <iostream>
+#include "Brain.hpp"
 #include <string>
 
 //Class

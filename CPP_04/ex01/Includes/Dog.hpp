@@ -3,13 +3,12 @@
 
 //Includes
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 //Class
 class Dog : public Animal
 {
 	private:
-		Brain	*_brain;
+		Brain* _brain;
 	//OCF
 	public:
 		Dog();

@@ -22,7 +22,7 @@ vpath %.cpp $(SRC_DIRS)
 ################################################################################
 
 SRC :=	main.cpp Animal.cpp Cat.cpp Dog.cpp extra.cpp WrongCat.cpp \
-		WrongAnimal.cpp
+		WrongAnimal.cpp Brain.cpp
 
 SRCS := $(addprefix src/, $(SRC))
 
