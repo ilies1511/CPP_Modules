@@ -5,6 +5,7 @@
 #include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "extra.hpp"
+#include <new>
 
 /*
 	Leaks Check:
@@ -51,14 +52,21 @@ namespace noninteractive
 {
 	void	wrong_animal()
 	{
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* i = new WrongCat();
+		try
+		{
+			const WrongAnimal* meta = new WrongAnimal();
+			const WrongAnimal* i = new WrongCat();
 
-		printer::Header("Wrong Animal");
-		printer::Universel_WrongAnimal(*meta);
-		printer::Universel_WrongAnimal(*i);
-		delete i;
-		delete meta;
+			printer::Header("Wrong Animal");
+			printer::Universel_WrongAnimal(*meta);
+			printer::Universel_WrongAnimal(*i);
+			delete i;
+			delete meta;
+		}
+		catch (const std::bad_alloc &e)
+		{
+			std::cerr << "Memory allocation error: " << e.what() << std::endl;
+		}
 	}
 
 	void	subj(void)
