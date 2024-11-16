@@ -6,6 +6,7 @@
 #include "Dog.hpp"
 #include "extra.hpp"
 #include <new>
+#include <string>
 #include <sstream>
 
 /*
@@ -32,6 +33,22 @@ void	subj_example(void)
 
 namespace printer
 {
+	enum class MessageType { INFO, PROMPT, ERROR, HEADER };
+
+	//Usage: printer::PrintMessage("Memory allocation failed for " + header, printer::MessageType::ERROR);
+	void PrintMessage(const std::string &message, MessageType type = MessageType::INFO)
+	{
+		std::string color;
+		switch (type)
+		{
+			case MessageType::INFO:		color = PURPLE;	break;
+			case MessageType::PROMPT:	color = BLUE;	break;
+			case MessageType::ERROR:	color = RED;	break;
+			case MessageType::HEADER:	color = ORANGE;	break;
+		}
+		std::cout << coloring(message, color) << "\n";
+	}
+
 	void	Header(const std::string &Input)
 	{
 		std::cout << coloring(Input, ORANGE) << "\n";
@@ -65,7 +82,8 @@ namespace runner
 		const Datatype *animal = new (std::nothrow) Datatype();
 		if (!animal)
 		{
-			std::cerr << "Memory allocation failed for " << header << "\n";
+			// std::cerr << "Memory allocation failed for " << header << "\n";
+			printer::PrintMessage("Memory allocation failed for " + header, printer::MessageType::ERROR);
 			return ;
 		}
 		printer::PrintUniversal(*animal);
@@ -77,6 +95,8 @@ namespace noninteractive
 {
 	void	subj(void)
 	{
+		Animal test;
+
 		runner::TestAnimalUniversal<Animal>("Animal");
 		runner::TestAnimalUniversal<Dog>("Dog");
 		runner::TestAnimalUniversal<Cat>("Cat");
@@ -172,7 +192,8 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		std::cout << "[USAGE]: " << "<> or <Animal> or <Cat> <Dog> <WrongAnimal> <WrongCat>" <<"\n";
+		// std::cerr << "Usage: " << argv[0] << " [-i]" << std::endl;
+		printer::PrintMessage("Usage: " + static_cast<std::string>(argv[0]) + " [-i]", printer::MessageType::INFO);
 		return (EXIT_FAILURE);
 	}
 	return (0);
