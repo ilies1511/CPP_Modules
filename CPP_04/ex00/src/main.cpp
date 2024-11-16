@@ -13,6 +13,23 @@
 		dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex00.out
 */
 
+//subj.pdf Example
+void	subj_example(void)
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
+}
+
 namespace printer
 {
 	void	Header(const std::string &Input)
@@ -39,23 +56,7 @@ namespace printer
 	}
 }
 
-void	subj_example(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
-}
-
-namespace noninteractive
+namespace runner
 {
 	template <typename Datatype>
 	void	TestAnimalUniversal(const std::string &header)
@@ -70,14 +71,17 @@ namespace noninteractive
 		printer::PrintUniversal(*animal);
 		delete animal;
 	}
+}
 
+namespace noninteractive
+{
 	void	subj(void)
 	{
-		TestAnimalUniversal<Animal>("Animal");
-		TestAnimalUniversal<Dog>("Dog");
-		TestAnimalUniversal<Cat>("Cat");
-		TestAnimalUniversal<WrongAnimal>("WrongAnimal");
-		TestAnimalUniversal<WrongCat>("WrongCat");
+		runner::TestAnimalUniversal<Animal>("Animal");
+		runner::TestAnimalUniversal<Dog>("Dog");
+		runner::TestAnimalUniversal<Cat>("Cat");
+		runner::TestAnimalUniversal<WrongAnimal>("WrongAnimal");
+		runner::TestAnimalUniversal<WrongCat>("WrongCat");
 	}
 
 	void	test_runner()
@@ -89,6 +93,30 @@ namespace noninteractive
 
 namespace interactive
 {
+	void	ExecuteCommand(const std::string& action)
+	{
+		if (action == "animal")
+			runner::TestAnimalUniversal<Animal>("Animal");
+		else if (action == "cat")
+			runner::TestAnimalUniversal<Cat>("Cat");
+		else if (action == "dog")
+			runner::TestAnimalUniversal<Dog>("Dog");
+		else if (action == "wronganimal")
+			runner::TestAnimalUniversal<WrongAnimal>("WrongAnimal");
+		else if (action == "wrongcat")
+			runner::TestAnimalUniversal<WrongCat>("WrongCat");
+		else if (action == "clear")
+			std:: system("clear");
+		else if (action == "exit")
+		{
+			std:: system("clear");
+			exit(0);
+		}
+		else
+			printer::print_invalidInput();
+	}
+
+	//Checks wether input is valid
 	bool	is_valid_name(std::string &str)
 	{
 		std::string	action;
@@ -101,6 +129,7 @@ namespace interactive
 		}
 		return (false);
 	}
+
 	void	test_runner_interactive()
 	{
 		std::string	command;
@@ -122,29 +151,10 @@ namespace interactive
 				printer::print_invalidInput();
 				continue ;
 			}
-			if (action == "animal")
-				noninteractive::TestAnimalUniversal<Animal>("Animal");
-			else if (action == "cat")
-				noninteractive::TestAnimalUniversal<Cat>("Cat");
-			else if (action == "dog")
-				noninteractive::TestAnimalUniversal<Dog>("Dog");
-			else if (action == "wronganimal")
-				noninteractive::TestAnimalUniversal<WrongAnimal>("WrongAnimal");
-			else if (action == "wrongcat")
-				noninteractive::TestAnimalUniversal<WrongCat>("WrongCat");
-			else if (action == "clear")
-				std:: system("clear");
-			else if (action == "exit")
-			{
-				std:: system("clear");
-				exit(0);
-			}
-			else
-				printer::print_invalidInput();
+			ExecuteCommand(action);
 		}
 	}
 }
-
 
 int main(int argc, char **argv)
 {
@@ -156,6 +166,7 @@ int main(int argc, char **argv)
 	}
 	else if (argc == 2)
 	{
+		std:: system("clear");
 		interactive::test_runner_interactive();
 		return (EXIT_SUCCESS);
 	}
