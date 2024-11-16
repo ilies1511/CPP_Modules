@@ -6,6 +6,7 @@
 #include "Dog.hpp"
 #include "extra.hpp"
 #include <new>
+#include <sstream>
 
 /*
 	Leaks Check:
@@ -17,6 +18,17 @@ namespace printer
 	void	Header(const std::string &Input)
 	{
 		std::cout << coloring(Input, ORANGE) << "\n";
+	}
+
+	void	print_Interactive(const std::string &Input)
+	{
+		std::cout << coloring(Input, BLUE);
+	}
+
+	void	print_invalidInput()
+	{
+		std::cout << \
+			coloring("[INFO]: Invalid Command. USAGE: <animal> <cat> <dog> <wronganimal> <wrongcat> <clear> <exit>", RED) << "\n";
 	}
 
 	template <typename DataType>
@@ -75,6 +87,65 @@ namespace noninteractive
 	}
 }
 
+namespace interactive
+{
+	bool	is_valid_name(std::string &str)
+	{
+		std::string	action;
+
+		std::stringstream ss(str);
+		if (ss >> action && !(ss >> action))
+		{
+			str.assign(action);
+			return (true);
+		}
+		return (false);
+	}
+	void	test_runner_interactive()
+	{
+		std::string	command;
+		std::string	action;
+
+		while (1)
+		{
+			if (std::cin.eof())
+			{
+				std:: system("clear");
+				exit(0);
+			}
+			printer::print_Interactive("Enter a command: ");
+			std::getline(std::cin, command);
+			std::stringstream ss(command);
+			ss >> action;
+			if (!is_valid_name(command))
+			{
+				printer::print_invalidInput();
+				continue ;
+			}
+			if (action == "animal")
+				noninteractive::TestAnimalUniversal<Animal>("Animal");
+			else if (action == "cat")
+				noninteractive::TestAnimalUniversal<Cat>("Cat");
+			else if (action == "dog")
+				noninteractive::TestAnimalUniversal<Dog>("Dog");
+			else if (action == "wronganimal")
+				noninteractive::TestAnimalUniversal<WrongAnimal>("WrongAnimal");
+			else if (action == "wrongcat")
+				noninteractive::TestAnimalUniversal<WrongCat>("WrongCat");
+			else if (action == "clear")
+				std:: system("clear");
+			else if (action == "exit")
+			{
+				std:: system("clear");
+				exit(0);
+			}
+			else
+				printer::print_invalidInput();
+		}
+	}
+}
+
+
 int main(int argc, char **argv)
 {
 	(void)argv;
@@ -82,11 +153,11 @@ int main(int argc, char **argv)
 	{
 		noninteractive::test_runner();
 		return (EXIT_SUCCESS);
-		//Geht einfach durch alle Tests ohne auf einen spezifisch einzugehen
 	}
 	else if (argc == 2)
 	{
-		;//Hier kommt man dann in den Interactiven Modus rein.
+		interactive::test_runner_interactive();
+		return (EXIT_SUCCESS);
 	}
 	else
 	{
