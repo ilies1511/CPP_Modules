@@ -19,12 +19,24 @@ namespace printer
 		std::cout << coloring(Input, ORANGE) << "\n";
 	}
 
-	template <typename DataType>
-	void PrintUniversal(const DataType &animal)
+	void	Universel_Animal(const Animal &animal)
 	{
 		std::cout << animal.getType() << "\n";
 		animal.makeSound();
 	}
+
+	void	Universel_WrongAnimal(const WrongAnimal &wronganimal)
+	{
+		std::cout << wronganimal.getType() << "\n";
+		wronganimal.makeSound();
+	}
+
+	// template <typename Input>
+	// void PrintAnimalGeneric(const Input &animal)
+	// {
+	// 	std::cout << animal.getType() << "\n";
+	// 	animal.makeSound();
+	// }
 }
 
 void	subj_example(void)
@@ -45,33 +57,44 @@ void	subj_example(void)
 
 namespace noninteractive
 {
-	template <typename Datatype>
-	void	TestAnimalUniversal(const std::string &header)
+	void	wrong_animal()
 	{
-		printer::Header(header);
-		const Datatype *animal = new (std::nothrow) Datatype();
-		if (!animal)
+		try
 		{
-			std::cerr << "Memory allocation failed for " << header << "\n";
-			return ;
+			const WrongAnimal* meta = new WrongAnimal();
+			const WrongAnimal* i = new WrongCat();
+
+			printer::Header("Wrong Animal");
+			printer::Universel_WrongAnimal(*meta);
+			printer::Universel_WrongAnimal(*i);
+			delete i;
+			delete meta;
 		}
-		printer::PrintUniversal(*animal);
-		delete animal;
+		catch (const std::bad_alloc &e)
+		{
+			std::cerr << "Memory allocation error: " << e.what() << std::endl;
+		}
 	}
 
 	void	subj(void)
 	{
-		TestAnimalUniversal<Animal>("Animal");
-		TestAnimalUniversal<Dog>("Dog");
-		TestAnimalUniversal<Cat>("Cat");
-		TestAnimalUniversal<WrongAnimal>("WrongAnimal");
-		TestAnimalUniversal<WrongCat>("WrongCat");
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+
+		printer::Header("Normal Animal - Welcome in the ZOO");
+		printer::Universel_Animal(*meta);
+		printer::Universel_Animal(*j);
+		printer::Universel_Animal(*i);
+		delete j;
+		delete i;
+		delete meta;
 	}
 
 	void	test_runner()
 	{
 		subj();
-		// wrong_animal();
+		wrong_animal();
 	}
 }
 

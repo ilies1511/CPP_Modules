@@ -19,6 +19,18 @@ namespace printer
 		std::cout << coloring(Input, ORANGE) << "\n";
 	}
 
+	// void	Universel_Animal(const Animal &animal)
+	// {
+	// 	std::cout << animal.getType() << "\n";
+	// 	animal.makeSound();
+	// }
+
+	// void	Universel_WrongAnimal(const WrongAnimal &wronganimal)
+	// {
+	// 	std::cout << wronganimal.getType() << "\n";
+	// 	wronganimal.makeSound();
+	// }
+
 	template <typename DataType>
 	void PrintUniversal(const DataType &animal)
 	{
@@ -57,6 +69,28 @@ namespace noninteractive
 		}
 		printer::PrintUniversal(*animal);
 		delete animal;
+	}
+
+	//Redundant durch Template Funktion template <typename Datatype> void	TestAnimalUniversal(const std::string &header)
+	void	wrong_animal()
+	{
+		try
+		{
+			const WrongAnimal* meta = new WrongAnimal();
+			const WrongAnimal* i = new WrongCat();
+
+			printer::Header("Wrong Animal");
+			// printer::Universel_WrongAnimal(*meta);
+			// printer::Universel_WrongAnimal(*i);
+			printer::PrintUniversal(*meta);
+			printer::PrintUniversal(*i);
+			delete i;
+			delete meta;
+		}
+		catch (const std::bad_alloc &e)
+		{
+			std::cerr << "Memory allocation error: " << e.what() << std::endl;
+		}
 	}
 
 	void	subj(void)
