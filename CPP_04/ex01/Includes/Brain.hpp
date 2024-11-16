@@ -3,7 +3,7 @@
 
 
 //Includes
-#include "Animal.hpp"
+#include <string>
 
 //Classes
 class Brain
