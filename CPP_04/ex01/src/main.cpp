@@ -112,6 +112,7 @@ namespace noninteractive
 				zoo[i] = new Dog;
 		}
 		//Destructor LOOP
+		printer::Header("ZOO Array Deleter");
 		for (size_t i = 0; i < 10; i++)
 		{
 			delete zoo[i];
