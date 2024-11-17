@@ -1,9 +1,11 @@
 
 #include "AAnimal.hpp"
 #include "WrongAnimal.hpp"
-#include "Cat.hpp"
+// #include "Cat.hpp"
+#include "../Includes/Cat.hpp"
 #include "WrongCat.hpp"
-#include "Dog.hpp"
+// #include "Dog.hpp"
+#include "../Includes/Dog.hpp"
 #include "extra.hpp"
 #include <new>
 #include <string>
@@ -50,7 +52,7 @@ namespace printer
 	void	print_invalidInput()
 	{
 		std::cout << \
-			coloring("[INFO]: Invalid Command. USAGE: <animal> <cat> <dog> <wronganimal> <wrongcat> <clear> <exit>", RED) << "\n";
+			coloring("[INFO]: Invalid Command. USAGE: <cat> <dog> <wronganimal> <wrongcat> <clear> <exit>", RED) << "\n";
 	}
 
 	template <typename DataType>
@@ -81,6 +83,17 @@ namespace runner
 
 namespace noninteractive
 {
+	void ex02(AAnimal* zoo[], size_t len)
+	{
+		// MakeSound Function Check
+		printer::Header("EX02: ZOO MakeSound Check");
+		for (size_t i = 0; i < len; i++)
+		{
+			zoo[i]->makeSound();
+		}
+		// MakeSound Function Check END
+	}
+
 	int	ex01()
 	{
 		printer::Header("ZOO Array Filler");
@@ -94,6 +107,7 @@ namespace noninteractive
 			else
 				zoo[i] = new Dog;
 		}
+		ex02(zoo, 10);
 		//Destructor LOOP
 		printer::Header("ZOO Array Deleter");
 		for (size_t i = 0; i < 10; i++)

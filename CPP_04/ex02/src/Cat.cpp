@@ -1,4 +1,5 @@
-#include "Cat.hpp"
+// #include "Cat.hpp"
+#include "../Includes/Cat.hpp"
 
 Cat::Cat() : AAnimal(), _brain(new Brain())
 {
