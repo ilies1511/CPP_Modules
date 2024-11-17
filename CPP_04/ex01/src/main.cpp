@@ -98,6 +98,26 @@ namespace runner
 
 namespace noninteractive
 {
+	int	ex01()
+	{
+		printer::Header("ZOO Array Filler");
+		// size_t	len = 10;
+		Animal*	zoo[10];
+
+		for (size_t i = 0; i < 10; i++)
+		{
+			if (i % 2 == 0)
+				zoo[i] = new Cat;
+			else
+				zoo[i] = new Dog;
+		}
+		//Destructor LOOP
+		for (size_t i = 0; i < 10; i++)
+		{
+			delete zoo[i];
+		}
+		return (EXIT_SUCCESS);
+	}
 	void	copy_assigment()
 	{
 		printer::Header("copy assigment");
@@ -133,9 +153,10 @@ namespace noninteractive
 
 	void	test_runner()
 	{
-		subj();
-		copy_constructor();
-		copy_assigment();
+		// subj();
+		// copy_constructor();
+		// copy_assigment();
+		ex01();
 	}
 }
 
