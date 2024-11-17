@@ -129,8 +129,6 @@ namespace noninteractive
 	void	test_runner()
 	{
 		// subj();
-		// copy_constructor();
-		// copy_assigment();
 		ex01();
 	}
 }
