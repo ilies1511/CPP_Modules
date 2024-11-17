@@ -1,4 +1,5 @@
-#include "Dog.hpp"
+// #include "Dog.hpp"
+#include "../Includes/Dog.hpp"
 
 Dog::Dog() : Animal(), _brain(new Brain())
 {

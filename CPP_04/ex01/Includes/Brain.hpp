@@ -4,6 +4,7 @@
 
 //Includes
 #include <string>
+#include <iostream>
 
 //Classes
 class Brain

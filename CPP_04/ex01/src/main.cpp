@@ -12,6 +12,11 @@
 /*
 	Leaks Check:
 		dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex00.out
+	rm link between repos (ex00, ex01):
+		1.Cmd + Shift + P
+		2.Reset IntelliSense Database
+		3.Close and reopen VS Code after resetting the cache
+		4. .vscode -> c_cpp_properties.json -> Explicit Paths: By specifying ${workspaceFolder}/Includes and ${workspaceFolder}/src
 */
 
 //subj.pdf Example
