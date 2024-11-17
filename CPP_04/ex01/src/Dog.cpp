@@ -19,7 +19,7 @@ Dog &Dog::operator=(const Dog &og)
 	if (this != &og)
 	{
 		this->_m_type = og._m_type;
-		_brain = og._brain;
+		this->_brain = og._brain;
 	}
 	return (*this);
 }
