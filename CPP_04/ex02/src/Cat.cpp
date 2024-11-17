@@ -1,12 +1,12 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal(), _brain(new Brain())
+Cat::Cat() : AAnimal(), _brain(new Brain())
 {
 	setType("Cat");
 	std::cout << "[CAT]: Default Constructor called for " << getType() << "\n";
 }
 
-Cat::Cat(const Cat &og) : Animal(og), _brain(new Brain(*(og._brain)))
+Cat::Cat(const Cat &og) : AAnimal(og), _brain(new Brain(*(og._brain)))
 {
 	*this = og;
 	std::cout << "[CAT]: Copy Constructor called for " << getType() << "\n";

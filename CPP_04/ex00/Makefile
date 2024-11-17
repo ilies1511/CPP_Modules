@@ -11,7 +11,7 @@ RM := rm -rf
 OBJ_DIR := _obj
 # INC_DIRS := .
 INC_DIRS := Includes
-SRC_DIRS := .
+SRC_DIRS := src
 
 # Tell the Makefile where headers and source files are
 vpath %.hpp $(INC_DIRS)

@@ -1,5 +1,5 @@
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
@@ -18,23 +18,6 @@
 		3.Close and reopen VS Code after resetting the cache
 		4. .vscode -> c_cpp_properties.json -> Explicit Paths: By specifying ${workspaceFolder}/Includes and ${workspaceFolder}/src
 */
-
-//subj.pdf Example
-void	subj_example(void)
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
-}
 
 namespace printer
 {
@@ -102,7 +85,7 @@ namespace noninteractive
 	{
 		printer::Header("ZOO Array Filler");
 		// size_t	len = 10;
-		Animal*	zoo[10];
+		AAnimal*	zoo[10];
 
 		for (size_t i = 0; i < 10; i++)
 		{
@@ -119,33 +102,10 @@ namespace noninteractive
 		}
 		return (EXIT_SUCCESS);
 	}
-	void	copy_assigment()
-	{
-		printer::Header("copy assigment");
-
-		Animal	og_animal;
-		og_animal.setType("Loewe");
-		Animal	animal2 = og_animal;
-
-		std::cout << og_animal.getType() << "\n";
-		std::cout << animal2.getType() << "\n";
-	}
-
-	void	copy_constructor()
-	{
-		printer::Header("copy constructor");
-
-		Animal	og_animal;
-		og_animal.setType("Loewe");
-		Animal	animal2(og_animal);
-
-		std::cout << og_animal.getType() << "\n";
-		std::cout << animal2.getType() << "\n";
-	}
 
 	void	subj(void)
 	{
-		runner::TestAnimalUniversal<Animal>("Animal");
+		// runner::TestAnimalUniversal<AAnimal>("AAnimal");
 		runner::TestAnimalUniversal<Dog>("Dog");
 		runner::TestAnimalUniversal<Cat>("Cat");
 		runner::TestAnimalUniversal<WrongAnimal>("WrongAnimal");
@@ -165,9 +125,7 @@ namespace interactive
 {
 	void	ExecuteCommand(const std::string& action)
 	{
-		if (action == "animal")
-			runner::TestAnimalUniversal<Animal>("Animal");
-		else if (action == "cat")
+		if (action == "cat")
 			runner::TestAnimalUniversal<Cat>("Cat");
 		else if (action == "dog")
 			runner::TestAnimalUniversal<Dog>("Dog");

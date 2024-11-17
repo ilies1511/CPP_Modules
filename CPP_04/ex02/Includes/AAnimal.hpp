@@ -1,30 +1,30 @@
-#ifndef ANIMAL_CPP
-# define ANIMAL_CPP
+#ifndef AANIMAL_CPP
+# define AANIMAL_CPP
 
 //Includes
 #include <iostream>
 #include <string>
 
 //Class
-class Animal
+class AAnimal
 {
 	protected:
 		std::string _m_type;
 	//OCF
 	public:
 		//Default Constructor
-		Animal();
+		AAnimal();
 		//Default Name Constructor
-		Animal(std::string InputType);
+		AAnimal(std::string InputType);
 		//Copy Constructor
-		Animal(const Animal &og);
+		AAnimal(const AAnimal &og);
 		//Copy Assigment Constructor
-		Animal& operator=(const Animal &og);
+		AAnimal& operator=(const AAnimal &og);
 		//Destructor
-		virtual ~Animal();
+		virtual ~AAnimal();
 	//Methodes:
 	public:
-		virtual void	makeSound(void) const;
+		virtual void	makeSound(void) const = 0; // with '= 0' its now an abstract class --> abstract classes has at least one 'pure virtual function'
 		//Getter
 		std::string		getType(void) const;
 		//Setter
