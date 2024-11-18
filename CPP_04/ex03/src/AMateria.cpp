@@ -28,6 +28,12 @@ AMateria::~AMateria()
 	std::cout << "[AMateria]: Destructor called\n";
 }
 
+//TODO:
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "Gibt Target eine osmanische Schelle";
+}
+
 //Getter
 std::string const & AMateria::getType() const
 {
