@@ -12,15 +12,15 @@ class Character : public ICharacter
 	private:
 		std::string			_characterName;
 		AMateria			*inventory[4];
-		// Floor 				*_SharedFloor;
+		Floor 				*_SharedFloor;
 		// //Floor
 		// static AMateria		**_floor;
 		// static size_t		_floorSize; // Aktuelle Anzahl der Elemente auf dem Boden
 		// static size_t		_floorCapacity; // Aktuelle Kapazität des Arrays
 	//OCF
 	public:
-		Character(void);
-		Character(std::string InputName);
+		Character(Floor* floor);
+		Character(std::string InputName, Floor* floor);
 		Character(const Character &og);
 		Character &operator=(const Character &og);
 		~Character();

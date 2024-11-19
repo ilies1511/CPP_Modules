@@ -7,31 +7,48 @@
 // size_t Character::_floorCapacity = 0;
 
 //OCF
-Character::Character(void) : _characterName("DefaultCharacter")
+Character::Character(Floor* floor) : _characterName("DefaultCharacter"), _SharedFloor(floor)
 {
 	for (size_t i = 0; i < 4; ++i) inventory[i] = nullptr;
 	std::cout << "[CHARACTER]: Default Construcor called\n";
 }
 
-Character::Character(std::string InputName) : _characterName(InputName)
+Character::Character(std::string InputName, Floor* floor)
+	: _characterName(InputName), _SharedFloor(floor)
 {
 	for (size_t i = 0; i < 4; ++i) inventory[i] = nullptr;
 	std::cout << "[CHARACTER]: Default Name Construcor called\n";
 }
 
 Character::Character(const Character &og)
+	: _characterName(og._characterName), _SharedFloor(og._SharedFloor)
 {
+	for (size_t i = 0; i < 4; ++i)
+		inventory[i] = og.inventory[i];
 	std::cout << "[CHARACTER]: Copy Construcor called\n";
 }
 
 Character &Character::operator=(const Character &og)
 {
 	std::cout << "[CHARACTER]: Copy Assignment Construcor called\n";
+	if (this != &og)
+	{
+		this->_characterName = og._characterName;
+		this->_SharedFloor = og._SharedFloor;
+		for (size_t i = 0; i < 4; ++i)
+			inventory[i] = og.inventory[i];
+	}
+	return (*this);
 }
 
 Character::~Character()
 {
 	std::cout << "[CHARACTER]: Destrucor called\n";
+	for (size_t i = 0; i < 4; ++i)
+	{
+		if (inventory[i])
+			delete inventory[i];
+	}
 }
 
 //Methodes
