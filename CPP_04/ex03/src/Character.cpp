@@ -59,30 +59,48 @@ std::string const & Character::getName()
 
 void Character::equip(AMateria* m)
 {
-	;
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (!inventory[i])
+		{
+			inventory[i] = m;
+			return ;
+		}
+	}
+	std::cout << "Inventory FULL, nothing happend\n";
 }
 
 void Character::unequip(int idx)
 {
-	;
+	if ((idx >= 0 && idx < 4) && inventory[idx])
+	{
+		this->_SharedFloor->addMateria(inventory[idx]);
+		this->inventory[idx] = nullptr;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	;
+	if ((idx >= 0 && idx < 4) && inventory[idx])
+	{
+		this->inventory[idx]->use(target);
+		std::cout << "Use " << this->inventory[idx]->getType() << "at " << target.getName() << "\n";
+	}
 }
 
-//Floor
-void Character::resizeFloor(size_t newCapacity)
-{
-	// Speicher für neues Floor-Array reservieren
-	AMateria** newFloor = new AMateria*[newCapacity];
-	// Alte Daten kopieren
-	for (size_t i = 0; i < _floorSize; ++i)
-		newFloor[i] = _floor[i];
-	// Alten Speicher freigeben
-	delete[] _floor;
-	// Neues Array verwenden
-	_floor = newFloor;
-	_floorCapacity = newCapacity;
-}
+
+
+// //Floor
+// void Character::resizeFloor(size_t newCapacity)
+// {
+// 	// Speicher für neues Floor-Array reservieren
+// 	AMateria** newFloor = new AMateria*[newCapacity];
+// 	// Alte Daten kopieren
+// 	for (size_t i = 0; i < _floorSize; ++i)
+// 		newFloor[i] = _floor[i];
+// 	// Alten Speicher freigeben
+// 	delete[] _floor;
+// 	// Neues Array verwenden
+// 	_floor = newFloor;
+// 	_floorCapacity = newCapacity;
+// }

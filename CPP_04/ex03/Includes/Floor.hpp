@@ -21,7 +21,7 @@ class Floor
 		~Floor();
 	//Methodes
 	public:
-		void	adMateria(AMateria *newM);
+		void	addMateria(AMateria *newM);
 		//getter
 		size_t	getFloorSize(void) const;
 		size_t	getFloorCapacity(void) const;

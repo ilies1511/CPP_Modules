@@ -58,7 +58,7 @@ void Floor::resizeFloor(size_t newCapacity)
 	this->_floorCapacity = newCapacity;
 }
 
-void	Floor::adMateria(AMateria *newM)
+void	Floor::addMateria(AMateria *newM)
 {
 	if (!newM)
 		return ;
