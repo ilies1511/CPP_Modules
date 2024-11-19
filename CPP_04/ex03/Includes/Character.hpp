@@ -2,15 +2,37 @@
 # define CHARACTER_HPP
 
 //Includes
-#include <iostream>
+#include "ICharacter.hpp"
+#include "Floor.hpp"
 
-class ICharacter
+//Class
+
+class Character : public ICharacter
 {
+	private:
+		std::string			_characterName;
+		AMateria			*inventory[4];
+		// Floor 				*_SharedFloor;
+		// //Floor
+		// static AMateria		**_floor;
+		// static size_t		_floorSize; // Aktuelle Anzahl der Elemente auf dem Boden
+		// static size_t		_floorCapacity; // Aktuelle Kapazität des Arrays
+	//OCF
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		Character(void);
+		Character(std::string InputName);
+		Character(const Character &og);
+		Character &operator=(const Character &og);
+		~Character();
+	//Methodes
+	public:
+			std::string const & getName() override;
+			void equip(AMateria* m) override;
+			void unequip(int idx) override;
+			void use(int idx, ICharacter& target) override;
+	// //Floor --> Dynamic Array, that can be resized
+	// public:
+	// 	void resizeFloor(size_t newCapacity);
 };
+
 #endif
