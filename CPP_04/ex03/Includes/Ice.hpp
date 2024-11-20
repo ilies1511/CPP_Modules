@@ -18,8 +18,6 @@ class Ice : public AMateria
 	public:
 		AMateria* clone() const override;
 		void use(ICharacter& target) override;
-
-
 };
 
 #endif

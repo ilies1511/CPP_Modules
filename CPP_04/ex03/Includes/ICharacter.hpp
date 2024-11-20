@@ -5,8 +5,9 @@
 #include <iostream>
 #include <limits>
 #include <string>
-#include "AMateria.hpp"
 
+// Forward-Deklaration von AMateria
+class AMateria;
 // konkrete Klasse Character, die dieses Interface implementiert.
 class ICharacter
 {

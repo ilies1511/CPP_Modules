@@ -1,7 +1,12 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
-//Includes
+// //Includes
+// #include "ICharacter.hpp"
+// #include "Floor.hpp"
+// #include "AMateria.hpp"
+
+#include "AMateria.hpp"  // AMateria wird vollständig benötigt
 #include "ICharacter.hpp"
 #include "Floor.hpp"
 
@@ -26,7 +31,7 @@ class Character : public ICharacter
 		~Character();
 	//Methodes
 	public:
-			std::string const & getName() override;
+			std::string const & getName() const override;
 			void equip(AMateria* m) override;
 			void unequip(int idx) override;
 			void use(int idx, ICharacter& target) override;
