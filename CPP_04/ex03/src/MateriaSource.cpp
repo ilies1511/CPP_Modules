@@ -55,7 +55,7 @@ void MateriaSource::learnMateria(AMateria *og)
 	{
 		if ((this->_MateriaSource_inventory[i]) == nullptr)
 		{
-			this->_MateriaSource_inventory[i] = og; //Is this enough or do I have to make a Copy of AMAteria og and use this instead ?
+			this->_MateriaSource_inventory[i] = og; //TODO:Is this enough or do I have to make a Copy of AMAteria og and use this instead ?
 			return ;
 		}
 	}
@@ -69,5 +69,11 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 			&& (this->_MateriaSource_inventory[i]->getType()) == type)
 			return (this->_MateriaSource_inventory[i]->clone());
 	}
-	std::cout << "[CREATEMATERIA]: ERROR, unknown type\n";
+	std::cout << "[CREATEMATERIA]: ERROR, unknown type\nYOURS: " << type << "\t";
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (this->_MateriaSource_inventory[i])
+			std::cout  << "KNOWN: " << this->_MateriaSource_inventory[i]->getType() << "\t";
+	}
+	return (nullptr);
 }
