@@ -38,6 +38,15 @@ namespace printer
 {
 	enum class MessageType { INFO, PROMPT, ERROR, HEADER, SUCCESS, OCF};
 
+	/*
+		DC = Default Constructor
+		DNC = Default Name Constructor
+		CC = Copy Constructor
+		CC = Copy Assigment Constructor
+		D = Destructor
+	*/
+	enum class OCF_TYPE {DC, DNC, CC, CAC, D};
+
 	void PrintMessage(const std::string& message, MessageType type = MessageType::INFO);
 
 	void Header(const std::string& Input);
