@@ -8,18 +8,18 @@ std::string coloring(const std::string& text, const std::string& color)
 
 namespace printer
 {
-	void	ocf_printer(const std::string& class_name, OCF_TYPE type)
+	void ocf_printer(const std::string& class_name, OCF_TYPE type, const std::string& color)
 	{
 		std::string str;
 		switch (type)
 		{
-			case OCF_TYPE::DC:	str = "[" + class_name + "]: " + "Default Constructor called";
-			case OCF_TYPE::DNC:	str = "[" + class_name + "]: " + "Default Name Constructor called";
-			case OCF_TYPE::CC:	str = "[" + class_name + "]: " + "Copy Constructor called";
-			case OCF_TYPE::CAC:	str = "[" + class_name + "]: " + "Copy Assignment Constructor called";
-			case OCF_TYPE::D:	str = "[" + class_name + "]: " + "Destructor called";
+			case OCF_TYPE::DC:	str = "[" + class_name + "]: " + "Default Constructor called"; break;
+			case OCF_TYPE::DNC:	str = "[" + class_name + "]: " + "Default Name Constructor called";	break;
+			case OCF_TYPE::CC:	str = "[" + class_name + "]: " + "Copy Constructor called";	break;
+			case OCF_TYPE::CAC:	str = "[" + class_name + "]: " + "Copy Assignment Constructor called";	break;
+			case OCF_TYPE::D:	str = "[" + class_name + "]: " + "Destructor called";	break;
 		}
-		std::cout << coloring(str, BROWN) << "\n";
+		std::cout << coloring(str, color) << "\n";
 	}
 
 	void PrintMessage(const std::string& message, MessageType type)

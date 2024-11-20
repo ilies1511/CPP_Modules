@@ -47,6 +47,8 @@ namespace printer
 	*/
 	enum class OCF_TYPE {DC, DNC, CC, CAC, D};
 
+	void ocf_printer(const std::string& class_name, OCF_TYPE type, const std::string& color = BROWN);
+
 	void PrintMessage(const std::string& message, MessageType type = MessageType::INFO);
 
 	void Header(const std::string& Input);
