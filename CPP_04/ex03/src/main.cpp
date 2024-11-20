@@ -23,15 +23,17 @@ int	main(void)
 	tmp = src->createMateria("ice");
 	tmp2 = src->createMateria("ice");
 	tmp3 = src->createMateria("ice");
+	printer::PrintMessage("Character Equips Materia:", printer::MessageType::HEADER);
 	me->equip(tmp);
 	me->equip(tmp2);
 	me->equip(tmp3);
 	tmp = src->createMateria("cure");
-	std::cout << coloring("PRE FLOOR: \n", BLUE);
+	me->equip(tmp);
+	printer::PrintMessage("PRE FLOOR:", printer::MessageType::HEADER);
 	//Check Content of Floor PRE (here should be empty)
 	printer::print_floor(&sharedFloor);
 	//Check Content of Floor (here should hold two items)
-	std::cout << coloring("POST FLOOR: \n", BLUE);
+	printer::PrintMessage("POST FLOOR:", printer::MessageType::HEADER);
 	me->unequip(0);
 	// me->unequip(1);
 	printer::print_floor(&sharedFloor);

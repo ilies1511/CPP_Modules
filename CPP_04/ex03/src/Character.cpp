@@ -1,5 +1,5 @@
 #include "Character.hpp"
-#include "extra.hpp"
+#include "printer.hpp"
 // #include "../Includes/Character.hpp"
 
 // // Statische Member initialisierens
@@ -68,7 +68,8 @@ void Character::equip(AMateria* m)
 		if (!inventory[i])
 		{
 			inventory[i] = m;
-			std::cout << GREEN << "Material succefully equiped at slot " << i << "\n" << NC;
+			// std::cout << GREEN << "Material succefully equiped at slot " << i << "\n" << NC;
+			printer::PrintMessage("[equip]: Material succefully equiped at slot " + std::to_string(i) ,printer::MessageType::SUCCESS);
 			return ;
 		}
 	}
@@ -79,7 +80,7 @@ void Character::unequip(int idx)
 {
 	if ((idx >= 0 && idx < 4) && inventory[idx])
 	{
-		std::cout << PURPLE << "Inventory at slot " << idx << " unequiped\n" << NC;
+		std::cout << PURPLE << "Inventory at slot " << idx << " succesfully unequiped\n" << NC;
 		this->_SharedFloor->addMateria(inventory[idx]);
 		this->inventory[idx] = nullptr;
 		return ;
@@ -92,7 +93,8 @@ void Character::use(int idx, ICharacter& target)
 	if ((idx >= 0 && idx < 4) && inventory[idx])
 	{
 		this->inventory[idx]->use(target);
-		std::cout << "Use " << this->inventory[idx]->getType() << "at " << target.getName() << "\n";
+		// std::cout << this->getName() << " use " << this->inventory[idx]->getType() << " at " << target.getName() << "\n";
+		std::cout << this->getName() << " attacks " << target.getName() << " with " << this->inventory[idx]->getType() << "\n";
 	}
 }
 

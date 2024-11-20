@@ -21,7 +21,7 @@ class Floor;
 
 namespace printer
 {
-	enum class MessageType { INFO, PROMPT, ERROR, HEADER };
+	enum class MessageType { INFO, PROMPT, ERROR, HEADER, SUCCESS};
 
 	void PrintMessage(const std::string& message, MessageType type = MessageType::INFO);
 

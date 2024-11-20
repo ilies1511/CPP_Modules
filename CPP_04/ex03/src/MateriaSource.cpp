@@ -1,5 +1,6 @@
 // #include "../Includes/MateriaSource.hpp"
 #include "MateriaSource.hpp"
+#include "printer.hpp"
 
 MateriaSource::MateriaSource(void)
 {
@@ -69,11 +70,13 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 			&& (this->_MateriaSource_inventory[i]->getType()) == type)
 			return (this->_MateriaSource_inventory[i]->clone());
 	}
-	std::cout << "[CREATEMATERIA]: ERROR, unknown type\nYOURS: " << type << "\t";
+	// std::cout << "[CREATEMATERIA]: ERROR, unknown type\nYOURS: " << type << "\t";
+	printer::PrintMessage("[ERROR, createMateria]: unknown type\nYOURS:" + type + "\t", printer::MessageType::ERROR);
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (this->_MateriaSource_inventory[i])
-			std::cout  << "KNOWN: " << this->_MateriaSource_inventory[i]->getType() << "\t";
+			// std::cout  << "KNOWN: " << this->_MateriaSource_inventory[i]->getType() << "\t";
+			printer::PrintMessage("[ERROR, createMateria]: KNOWN: " + this->_MateriaSource_inventory[i]->getType() + "\t", printer::MessageType::ERROR);
 	}
 	return (nullptr);
 }

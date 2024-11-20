@@ -17,6 +17,7 @@ namespace printer
 			case MessageType::PROMPT:	color = BLUE;	break;
 			case MessageType::ERROR:	color = RED;	break;
 			case MessageType::HEADER:	color = ORANGE;	break;
+			case MessageType::SUCCESS:	color = GREEN;	break;
 		}
 		std::cout << coloring(message, color) << "\n";
 	}
