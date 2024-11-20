@@ -15,6 +15,7 @@ Floor::Floor(const Floor &og)
 		for (size_t i = 0; i < _floorSize; i++)
 			this->_floor[i] = og._floor[i];
 	}
+	// *this = og; //TODO: check if needed
 }
 
 Floor &Floor::operator=(const Floor &og)
@@ -40,7 +41,12 @@ Floor &Floor::operator=(const Floor &og)
 Floor::~Floor()
 {
 	std::cout << "[FLOOR]: Destrucor called\n";
-	delete[] _floor;
+	for (size_t i = 0; i < _floorSize; i++)
+	{
+		if (this->_floor[i])
+			delete this->_floor[i];
+	}
+	delete[] _floor; //TODO: REICHT DAS ?
 }
 
 //Floor
