@@ -22,7 +22,8 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRC :=	main.cpp
+SRC :=	main.cpp AMateria.cpp Character.cpp Cure.cpp Floor.cpp Ice.cpp \
+		MateriaSource.cpp
 
 SRCS := $(addprefix src/, $(SRC))
 
