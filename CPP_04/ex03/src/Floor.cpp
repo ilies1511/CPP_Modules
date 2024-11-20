@@ -1,14 +1,17 @@
 #include "Floor.hpp"
+#include "printer.hpp"
 
 Floor::Floor() : _floor(nullptr), _floorSize(0), _floorCapacity(0)
 {
-	std::cout << "[FLOOR]: Default Construcor called\n";
+	// std::cout << "[FLOOR]: Default Construcor called\n";
+	printer::ocf_printer("Floor", printer::OCF_TYPE::DC,YELLOW);
 }
 
 Floor::Floor(const Floor &og)
 	: _floor(nullptr), _floorSize(og._floorSize), _floorCapacity(og._floorCapacity)
 {
-	std::cout << "[FLOOR]: Copy Construcor called\n";
+	printer::ocf_printer("Floor", printer::OCF_TYPE::CC,YELLOW);
+	// std::cout << "[FLOOR]: Copy Construcor called\n";
 	if (this->_floorCapacity > 0)
 	{
 		this->_floor = new AMateria*[_floorCapacity];
@@ -20,7 +23,8 @@ Floor::Floor(const Floor &og)
 
 Floor &Floor::operator=(const Floor &og)
 {
-	std::cout << "[FLOOR]: Copy Assigment Construcor called\n";
+	printer::ocf_printer("Floor", printer::OCF_TYPE::CAC,YELLOW);
+	// std::cout << "[FLOOR]: Copy Assigment Construcor called\n";
 	if (this != &og)
 	{
 		delete[] _floor;
@@ -40,7 +44,8 @@ Floor &Floor::operator=(const Floor &og)
 
 Floor::~Floor()
 {
-	std::cout << "[FLOOR]: Destrucor called\n";
+	printer::ocf_printer("Floor", printer::OCF_TYPE::D,YELLOW);
+	// std::cout << "[FLOOR]: Destrucor called\n";
 	for (size_t i = 0; i < _floorSize; i++)
 	{
 		if (this->_floor[i])

@@ -1,27 +1,32 @@
 #include "Ice.hpp"
+#include "printer.hpp"
 
 //OCF - Begin
 Ice::Ice(void) : AMateria("ice") //TODO: check if correct
 {
-	std::cout << "[ICE]: Default Constructor called\n";
+	// std::cout << "[ICE]: Default Constructor called\n";
+	printer::ocf_printer("Ice", printer::OCF_TYPE::DC, LIGHT_CYAN);
 }
 
 Ice::Ice(const Ice &og) : AMateria(og)
 {
-	std::cout << "[ICE]: Copy Constructor called\n";
+	printer::ocf_printer("Ice", printer::OCF_TYPE::CC, LIGHT_CYAN);
+	// std::cout << "[ICE]: Copy Constructor called\n";
 	this->_type = og._type;
 }
 
 Ice& Ice::operator=(const Ice &og)
 {
-	std::cout << "[ICE]: Copy Assigment Constructor called\n";
+	printer::ocf_printer("Ice", printer::OCF_TYPE::CAC, LIGHT_CYAN);
+	// std::cout << "[ICE]: Copy Assigment Constructor called\n";
 	(void)og;
 	return (*this);
 }
 
 Ice::~Ice()
 {
-	std::cout << "[ICE]: Destructor called\n";
+	printer::ocf_printer("Ice", printer::OCF_TYPE::D, LIGHT_CYAN);
+	// std::cout << "[ICE]: Destructor called\n";
 }
 //OCF - END
 
