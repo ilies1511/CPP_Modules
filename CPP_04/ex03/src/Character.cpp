@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include "extra.hpp"
 // #include "../Includes/Character.hpp"
 
 // // Statische Member initialisierens
@@ -67,6 +68,7 @@ void Character::equip(AMateria* m)
 		if (!inventory[i])
 		{
 			inventory[i] = m;
+			std::cout << GREEN << "Material succefully equiped at slot " << i << "\n" << NC;
 			return ;
 		}
 	}
@@ -77,9 +79,12 @@ void Character::unequip(int idx)
 {
 	if ((idx >= 0 && idx < 4) && inventory[idx])
 	{
+		std::cout << PURPLE << "Inventory at slot " << idx << " unequiped\n" << NC;
 		this->_SharedFloor->addMateria(inventory[idx]);
 		this->inventory[idx] = nullptr;
+		return ;
 	}
+	std::cout << RED << "No Inventory at slot " << idx << "\n" << NC;
 }
 
 void Character::use(int idx, ICharacter& target)
