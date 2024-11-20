@@ -1,12 +1,12 @@
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria()
+Cure::Cure() : AMateria("cure") //TODO: check if correct
 {
 	this->_type = "cure";
 	std::cout << "[CURE]: Default Constructor called\n";
 }
 
-Cure::Cure(const Cure &og)
+Cure::Cure(const Cure &og) : AMateria(og)
 {
 	std::cout << "[CURE]: Copy Constructor called\n";
 	this->_type = og._type;

@@ -31,7 +31,7 @@ AMateria::~AMateria()
 //TODO:
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "Gibt Target eine osmanische Schelle";
+	std::cout << target.getName() << " kassiert eine osmanische Schelle\n";
 }
 
 //Getter

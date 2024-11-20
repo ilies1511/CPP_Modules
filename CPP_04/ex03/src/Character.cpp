@@ -21,11 +21,14 @@ Character::Character(std::string InputName, Floor* floor)
 }
 
 Character::Character(const Character &og)
-	: _characterName(og._characterName), _SharedFloor(og._SharedFloor)
+	: _characterName(og._characterName), _SharedFloor(og._SharedFloor) //TODO: check if flor is correct
 {
+	std::cout << "[CHARACTER]: Copy Construcor called\n";
+	// for (size_t i = 0; i < 4; ++i)
+	// 	inventory[i] = nullptr; //Muss man die vorherigen Inventory loeschen ?
 	for (size_t i = 0; i < 4; ++i)
 		inventory[i] = og.inventory[i];
-	std::cout << "[CHARACTER]: Copy Construcor called\n";
+	*this = og; //TODO: check if needed
 }
 
 Character &Character::operator=(const Character &og)
@@ -52,7 +55,7 @@ Character::~Character()
 }
 
 //Methodes
-std::string const & Character::getName()
+std::string const & Character::getName() const
 {
 	return (this->_characterName);
 }

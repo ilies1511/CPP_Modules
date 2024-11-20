@@ -1,7 +1,7 @@
 #include "Ice.hpp"
 
 //OCF - Begin
-Ice::Ice(void) : AMateria()
+Ice::Ice(void) : AMateria("ice") //TODO: check if correct
 {
 	std::cout << "[ICE]: Default Constructor called\n";
 }
