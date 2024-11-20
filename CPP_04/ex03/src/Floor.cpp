@@ -79,6 +79,7 @@ void	Floor::addMateria(AMateria *newM)
 		resizeFloor(newCapacity);
 	}
 	_floor[_floorSize++] = newM;
+	printer::PrintMessage("[STATUS]: " + newM->getType() + " dropped to the floor", printer::MessageType::SUCCESS);
 }
 
 

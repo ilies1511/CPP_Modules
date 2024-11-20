@@ -79,7 +79,7 @@ void Character::equip(AMateria* m)
 			return ;
 		}
 	}
-	std::cout << "Inventory FULL, nothing happend\n";
+	printer::PrintMessage("[equip]: Material cannot be equipped: Inventory is FULL ", printer::MessageType::ERROR);
 }
 
 void Character::unequip(int idx)
@@ -91,7 +91,7 @@ void Character::unequip(int idx)
 		this->inventory[idx] = nullptr;
 		return ;
 	}
-	std::cout << RED << "No Inventory at slot " << idx << "\n" << NC;
+	printer::PrintMessage("[unequip]: No Inventory at slot " + std::to_string(idx) ,printer::MessageType::ERROR);
 }
 
 void Character::use(int idx, ICharacter& target)

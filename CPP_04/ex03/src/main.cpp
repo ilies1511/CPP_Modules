@@ -6,6 +6,7 @@
 #include "Cure.hpp"
 #include "printer.hpp"
 
+/// @brief TEST from subj.pdf
 void	subj()
 {
 	Floor	sharedFloor;
@@ -27,10 +28,7 @@ void	subj()
 	delete src;
 }
 
-/// @brief
-/// @param
-/// @return
-
+/// @brief TEST aims to check functionallity of floor --> dynamic array
 void	cwazy(void)
 {
 	Floor	sharedFloor;
@@ -69,7 +67,11 @@ void	cwazy(void)
 
 int	main(void)
 {
-	subj();
-	// cwazy();
+	/*
+		Leaks Check:
+			dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex03.out
+	*/
+	// subj();
+	cwazy();
 	return (0);
 }
