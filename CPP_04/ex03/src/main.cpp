@@ -6,10 +6,32 @@
 #include "Cure.hpp"
 #include "printer.hpp"
 
+void	subj()
+{
+	Floor	sharedFloor;
+
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me", &sharedFloor);
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob", &sharedFloor);
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+}
+
 /// @brief
 /// @param
 /// @return
-int	main(void)
+
+void	cwazy(void)
 {
 	Floor	sharedFloor;
 
@@ -43,5 +65,11 @@ int	main(void)
 	delete bob;
 	delete me;
 	delete src;
-	return 0;
+}
+
+int	main(void)
+{
+	subj();
+	// cwazy();
+	return (0);
 }
