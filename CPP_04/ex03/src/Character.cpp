@@ -32,23 +32,51 @@ Character::Character(const Character &og)
 	// for (size_t i = 0; i < 4; ++i)
 	// 	inventory[i] = nullptr; //Muss man die vorherigen Inventory loeschen ?
 	for (size_t i = 0; i < 4; ++i)
-		inventory[i] = og.inventory[i];
-	*this = og; //TODO: check if needed
+		inventory[i] = og.inventory[i] ? og.inventory[i]->clone() : nullptr;
+	// inventory[i] = og.inventory[i];
+	// *this = og; //TODO: check if needed
 }
 
 Character &Character::operator=(const Character &og)
 {
-	// std::cout << "[CHARACTER]: Copy Assignment Construcor called\n";
 	printer::ocf_printer("Character", printer::OCF_TYPE::CAC);
 	if (this != &og)
 	{
+		for (size_t i = 0; i < 4; ++i)
+		{
+			if (inventory[i] && inventory[i] != og.inventory[i])
+			{
+				delete inventory[i];
+				inventory[i] = nullptr;
+			}
+		}
 		this->_characterName = og._characterName;
 		this->_SharedFloor = og._SharedFloor;
 		for (size_t i = 0; i < 4; ++i)
-			inventory[i] = og.inventory[i];
+		{
+			if (og.inventory[i])
+				inventory[i] = og.inventory[i]->clone();
+			else
+				inventory[i] = nullptr;
+		}
 	}
 	return (*this);
 }
+
+// Character &Character::operator=(const Character &og)
+// {
+// 	// std::cout << "[CHARACTER]: Copy Assignment Construcor called\n";
+// 	printer::ocf_printer("Character", printer::OCF_TYPE::CAC);
+// 	if (this != &og)
+// 	{
+// 		this->_characterName = og._characterName;
+// 		this->_SharedFloor = og._SharedFloor;
+// 		for (size_t i = 0; i < 4; ++i)
+// 			inventory[i] = og.inventory[i] ? og.inventory[i]->clone() : nullptr; //DeepKopie
+// 		// inventory[i] = og.inventory[i]; --> kein DeepKopie
+// 	}
+// 	return (*this);
+// }
 
 Character::~Character()
 {
