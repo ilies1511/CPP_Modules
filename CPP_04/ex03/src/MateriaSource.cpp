@@ -56,8 +56,8 @@ void MateriaSource::learnMateria(AMateria *og)
 	{
 		if ((this->_MateriaSource_inventory[i]) == nullptr)
 		{
-			// this->_MateriaSource_inventory[i] = og; //TODO:Is this enough or do I have to make a Copy of AMAteria og and use this instead ?
-			this->_MateriaSource_inventory[i] = og->clone();
+			this->_MateriaSource_inventory[i] = og; //TODO:Is this enough or do I have to make a Copy of AMAteria og and use this instead ?
+			// this->_MateriaSource_inventory[i] = og->clone();
 			return ;
 		}
 	}
