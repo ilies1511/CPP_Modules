@@ -14,10 +14,12 @@ MateriaSource::MateriaSource(const MateriaSource &og)
 	std::cout << "[MATERIASOURCE]: Copy Construcor called\n";
 	for (size_t i = 0; i < 4; i++)
 	{
-		this->_MateriaSource_inventory[i] = nullptr;
-		this->_MateriaSource_inventory[i] = og._MateriaSource_inventory[i];
+		// this->_MateriaSource_inventory[i] = nullptr;
+		// this->_MateriaSource_inventory[i] = og._MateriaSource_inventory[i]->clone();
+		this->_MateriaSource_inventory[i] = og._MateriaSource_inventory[i] \
+			? og._MateriaSource_inventory[i]->clone() \
+			: nullptr;
 	}
-	*this = og;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &og)
@@ -27,10 +29,13 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &og)
 	{
 		for (size_t i = 0; i < 4; ++i)
 		{
-			if (this->_MateriaSource_inventory[i])
+			if (this->_MateriaSource_inventory[i] && this->_MateriaSource_inventory[i] != og._MateriaSource_inventory[i])
+			{
 				delete (this->_MateriaSource_inventory[i]);
+				this->_MateriaSource_inventory[i] = nullptr;
+			}
 			if (og._MateriaSource_inventory[i])
-				this->_MateriaSource_inventory[i] = og._MateriaSource_inventory[i];
+				this->_MateriaSource_inventory[i] = og._MateriaSource_inventory[i]->clone();
 			else
 				this->_MateriaSource_inventory[i] = nullptr;
 		}
