@@ -19,7 +19,7 @@ class WrongAnimal
 		virtual ~WrongAnimal();
 	//Methodes:
 	public:
-		virtual void	makeSound() const ;
+		void	makeSound() const ;
 		//Getter
 		std::string		getType(void) const;
 		//Setter
