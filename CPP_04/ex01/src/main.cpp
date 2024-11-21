@@ -107,17 +107,17 @@ namespace noninteractive
 		Cat	megaMiau;
 		Cat	MINIMiau;
 		Dog	confusedDog;
-		Dog	normalDog;
 
 		megaMiau.getBrain()->setIdeas(0, "alooooooo");
 		MINIMiau = megaMiau;
-		MINIMiau.getBrain()->setIdeas(0, "ALOOOOO");
+		MINIMiau.getBrain()->setIdeas(1, "ALOOOOO");
 
 		confusedDog.getBrain()->setIdeas(0, "MiauMiau");
-		normalDog = confusedDog; //Normal Dog has own brain and overwrites idea
-		normalDog.getBrain()->setIdeas(0, "WufWuf");
-		for (size_t i = 0; i < 1; i++)
+		Dog	normalDog(confusedDog);//Normal Dog has own brain and overwrites idea
+		normalDog.getBrain()->setIdeas(1, "WufWuf");
+		for (size_t i = 0; i < 2; i++)
 		{
+			std::cout << coloring("EX01_BRAIN TEST inside LOOP Interation: " + std::to_string(i), ORANGE) << "\n";
 			std::cout << "megaMiau: " << megaMiau.getBrain()->getIdeas(i) << "\n";
 			std::cout << "MINIMiau: " << MINIMiau.getBrain()->getIdeas(i) << "\n";
 			std::cout << "confudesDog: " << confusedDog.getBrain()->getIdeas(i) << "\n";
