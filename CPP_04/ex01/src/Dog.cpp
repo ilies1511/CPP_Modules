@@ -18,8 +18,10 @@ Dog &Dog::operator=(const Dog &og)
 	std::cout << "[DOG]: Copy Assignment operator called for " << getType() << "\n";
 	if (this != &og)
 	{
-		this->_m_type = og._m_type;
-		this->_brain = og._brain;
+		Animal::operator=(og);
+		if (_brain)
+			delete (_brain);
+		_brain = new Brain(*og._brain);
 	}
 	return (*this);
 }
@@ -28,6 +30,11 @@ Dog::~Dog()
 {
 	std::cout << "[DOG]: Destructor called for " << getType() << "\n";
 	delete _brain;
+}
+
+Brain* Dog::getBrain() const
+{
+	return _brain;
 }
 
 void	Dog::makeSound() const
