@@ -126,8 +126,35 @@ namespace noninteractive
 		runner::TestAnimalUniversal<WrongCat>("WrongCat");
 	}
 
+	void	subj_real()
+	{
+		printer::Header("TEST: subj_real");
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+		std::cout << j->getType() << " " << std::endl;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //will output the cat sound!
+		j->makeSound();
+		meta->makeSound();
+		return ;
+	}
+
+	void	subj_real_wrongAnimal()
+	{
+		printer::Header("TEST: subj_real_wrongAnimal");
+		const WrongAnimal* meta = new WrongAnimal();
+		const WrongAnimal* i = new WrongCat();
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //Should output the WrongAnimal sound!
+		meta->makeSound();
+		return ;
+	}
+
 	void	test_runner()
 	{
+		subj_real();
+		subj_real_wrongAnimal();
 		subj();
 		copy_constructor();
 		copy_assigment();

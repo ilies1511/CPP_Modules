@@ -16,7 +16,7 @@ class WrongCat : public WrongAnimal
 		~WrongCat();
 	//Methodes
 	public:
-		void	makeSound() const override;
+		void	makeSound() const;
 };
 
 #endif
