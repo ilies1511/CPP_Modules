@@ -108,6 +108,8 @@ void Character::equip(AMateria* m)
 		}
 	}
 	printer::PrintMessage("[equip]: Material cannot be equipped: Inventory is FULL ", printer::MessageType::ERROR);
+	if (m)
+		this->_SharedFloor->addMateria(m);
 }
 
 void Character::unequip(int idx)
