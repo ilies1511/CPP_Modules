@@ -182,11 +182,11 @@ namespace noninteractive
 
 	void	test_runner()
 	{
-		// subj();
-		// copy_constructor();
-		// copy_assigment();
+		subj();
+		copy_constructor();
+		copy_assigment();
 		ex01_brain();
-		// ex01();
+		ex01();
 	}
 }
 
