@@ -137,7 +137,10 @@ namespace noninteractive
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
-		return ;
+
+		delete (meta);
+		delete (i);
+		delete (j);
 	}
 
 	void	subj_real_wrongAnimal()
@@ -148,6 +151,9 @@ namespace noninteractive
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //Should output the WrongAnimal sound!
 		meta->makeSound();
+
+		delete (meta);
+		delete (i);
 		return ;
 	}
 
