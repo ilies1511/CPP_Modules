@@ -23,6 +23,8 @@ class Cat : public AAnimal
 	//Methodes
 	public:
 		void	makeSound() const override;
+		Brain*	getBrain() const;
+
 };
 
 #endif

@@ -18,8 +18,10 @@ Cat &Cat::operator=(const Cat &og)
 	std::cout << "[CAT]: Copy Assignment operator called for " << getType() << "\n";
 	if (this != &og)
 	{
-		this->_m_type = og._m_type;
-		this->_brain = og._brain;
+		AAnimal::operator=(og);
+		if(_brain)
+			delete _brain;
+		_brain = new Brain(*og._brain);
 	}
 	return (*this);
 }
@@ -33,4 +35,9 @@ Cat::~Cat()
 void	Cat::makeSound() const
 {
 	std::cout << "[CAT]: " << getType() << " makes MIAU MIAU\n";
+}
+
+Brain* Cat::getBrain() const
+{
+	return (_brain);
 }
