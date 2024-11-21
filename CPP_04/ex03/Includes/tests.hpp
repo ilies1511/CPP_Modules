@@ -16,6 +16,8 @@ namespace testrunner
 	void	unequipEdgeCases(void);
 	void	floorOverflowTest(void);
 	void	useMultipleTargets(void);
+	void	integratedMateriaSourceTest(void);
+
 }
 
 #endif

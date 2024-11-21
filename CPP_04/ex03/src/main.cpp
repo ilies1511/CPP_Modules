@@ -19,5 +19,7 @@ int	main(void)
 	testrunner::unequipEdgeCases();
 	testrunner::floorOverflowTest();
 	testrunner::useMultipleTargets();
+	testrunner::integratedMateriaSourceTest();
+
 	return (0);
 }

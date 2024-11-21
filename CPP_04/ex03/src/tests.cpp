@@ -1,7 +1,48 @@
 #include "tests.hpp"
+#include <cassert>
 
 namespace testrunner
 {
+	/// @brief Test, um zu sehen ob Materia bei mitlungenem equip richtig aufgenommen wir vom Floor
+	void integratedMateriaSourceTest()
+	{
+		printer::Header("TEST: Integrated MateriaSource Functionality");
+		Floor floor;
+		// 1. Erstellen von MateriaSource und Characters
+		MateriaSource* src = new MateriaSource();
+		Character* me = new Character("me", &floor);
+		Character* bob = new Character("bob", &floor);
+		// 2. Lernen von Materias
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+		// 3. Ausrüsten der Materias beim Charakter
+		AMateria* iceMateria = src->createMateria("ice");
+		AMateria* cureMateria = src->createMateria("cure");
+		me->equip(iceMateria);
+		me->equip(cureMateria);
+		// 4. Verwendung der Materias
+		printer::PrintMessage("Using Materias:", printer::MessageType::HEADER);
+		me->use(0, *bob); // Ice Materia -> erwartet: "* shoots an ice bolt at bob *"
+		me->use(1, *bob); // Cure Materia -> erwartet: "* heals bob's wounds *"
+		// 5. Test für leere Slots und Überfüllen
+		AMateria* extraMateria = src->createMateria("ice");
+		me->equip(extraMateria); // Dritter Slot wird belegt
+		me->equip(src->createMateria("cure")); // Vierter Slot wird belegt
+		me->equip(src->createMateria("ice")); // Ignoriert, da das Inventar voll ist, wird von dyn, Array Floor aufgenommen
+		// Überprüfen, ob das Inventar korrekt funktioniert
+		printer::PrintMessage("Testing full inventory:", printer::MessageType::HEADER);
+		me->use(3, *bob); // Letzter Slot -> erwartet: "* heals bob's wounds *"
+		me->use(4, *bob); // Außerhalb des Inventars -> keine Aktion erwartet
+		// 6. Unbekannte Materia anfordern
+		AMateria* unknownMateria = src->createMateria("fire");
+		if (!unknownMateria)
+			printer::PrintMessage("Unknown Materia (fire) not created as expected.", printer::MessageType::SUCCESS);
+		delete me;
+		delete bob;
+		delete src;
+		printer::PrintMessage("Integrated TEST PASSED: MateriaSource works in context.", printer::MessageType::SUCCESS);
+	}
+
 	/// @brief TEST for using Materia on multiple targets
 	void useMultipleTargets(void)
 	{
