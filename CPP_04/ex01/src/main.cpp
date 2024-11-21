@@ -1,9 +1,12 @@
 
-#include "Animal.hpp"
+// #include "Animal.hpp"
 #include "WrongAnimal.hpp"
-#include "Cat.hpp"
+// #include "Cat.hpp"
 #include "WrongCat.hpp"
-#include "Dog.hpp"
+// #include "Dog.hpp"
+#include "../Includes/Dog.hpp"
+#include "../Includes/Cat.hpp"
+#include "../Includes/Animal.hpp"
 #include "extra.hpp"
 #include <new>
 #include <string>
@@ -98,6 +101,31 @@ namespace runner
 
 namespace noninteractive
 {
+	int	ex01_brain()
+	{
+		printer::Header("EX01_BRAIN TEST");
+		Cat	megaMiau;
+		Cat	MINIMiau;
+		Dog	confusedDog;
+		Dog	normalDog;
+
+		megaMiau.getBrain()->setIdeas(0, "alooooooo");
+		MINIMiau = megaMiau;
+		MINIMiau.getBrain()->setIdeas(0, "ALOOOOO");
+
+		confusedDog.getBrain()->setIdeas(0, "MiauMiau");
+		normalDog = confusedDog; //Normal Dog has own brain and overwrites idea
+		normalDog.getBrain()->setIdeas(0, "WufWuf");
+		for (size_t i = 0; i < 1; i++)
+		{
+			std::cout << "megaMiau: " << megaMiau.getBrain()->getIdeas(i) << "\n";
+			std::cout << "MINIMiau: " << MINIMiau.getBrain()->getIdeas(i) << "\n";
+			std::cout << "confudesDog: " << confusedDog.getBrain()->getIdeas(i) << "\n";
+			std::cout << "normalDog: " << normalDog.getBrain()->getIdeas(i) << "\n";
+		}
+		return (EXIT_SUCCESS);
+	}
+
 	int	ex01()
 	{
 		printer::Header("ZOO Array Filler");
@@ -157,7 +185,8 @@ namespace noninteractive
 		// subj();
 		// copy_constructor();
 		// copy_assigment();
-		ex01();
+		ex01_brain();
+		// ex01();
 	}
 }
 
