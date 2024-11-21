@@ -14,11 +14,10 @@ int	main(void)
 		Leaks Check:
 			dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex03.out
 	*/
-	// subj();
-	// testrunner::subj;
-	// testrunner::cwazy();
-	// testrunner::unequipEdgeCases();
-	// testrunner::floorOverflowTest();
-	// testrunner::useMultipleTargets();
+	testrunner::subj();
+	testrunner::cwazy();
+	testrunner::unequipEdgeCases();
+	testrunner::floorOverflowTest();
+	testrunner::useMultipleTargets();
 	return (0);
 }
