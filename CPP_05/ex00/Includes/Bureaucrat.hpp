@@ -5,8 +5,10 @@
 #include "printer.hpp"
 
 //Macros
-constexpr size_t MAX_GRADE = 1;
-constexpr size_t MIN_GRADE = 150;
+constexpr	size_t MAX_GRADE = 1;
+constexpr	size_t MIN_GRADE = 150;
+const		size_t DEFAULT_GRADE = MIN_GRADE;
+const		std::string DEFAULT_NAME = "DefaultName";
 
 //Class
 class Bureaucrat
