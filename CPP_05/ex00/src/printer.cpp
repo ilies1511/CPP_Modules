@@ -5,6 +5,7 @@ std::string coloring(const std::string& text, const std::string& color)
 	return color + text + NC;
 }
 
+// Usage: printer::ocf_printer("Character", printer::OCF_TYPE::DC);
 namespace printer
 {
 	void ocf_printer(const std::string& class_name, OCF_TYPE type, const std::string& color)
