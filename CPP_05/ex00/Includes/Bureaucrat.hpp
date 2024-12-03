@@ -30,12 +30,12 @@ class Bureaucrat
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char *what() throw();
+				virtual const char *what() const throw();
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char *what() throw();
+				virtual const char *what() const throw();
 		};
 	//Overloadin Operator
 	public:
@@ -45,10 +45,10 @@ class Bureaucrat
 	public:
 		const std::string&	getName(void) const;
 		size_t				getGrade(void) const;
-		void				incrementGrade(void);
-		void				decrementGrade(void);
+		void				incrementGrade(void); //incrementing a grade 3 should give a grade 2
+		void				decrementGrade(void); //decrementing a grade 3 should give a grade 4
 };
 
-std::ostream& operator<<(std::ostream& ostream, const Bureaucrat& og);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& og);
 
 #endif
