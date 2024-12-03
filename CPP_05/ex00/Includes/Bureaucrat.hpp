@@ -25,6 +25,18 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &og);
 		Bureaucrat &operator=(const Bureaucrat &og);
 		~Bureaucrat(void);
+	//Exception
+	public:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() throw();
+		};
 	//Overloadin Operator
 	public:
 		Bureaucrat &operator++();
@@ -35,7 +47,6 @@ class Bureaucrat
 		size_t				getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
-
 };
 
 std::ostream& operator<<(std::ostream& ostream, const Bureaucrat& og);
