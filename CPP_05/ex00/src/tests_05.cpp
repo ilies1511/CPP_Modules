@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 19:45:51 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/04 19:55:59 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,23 @@ namespace testrunner05
 		{
 			std::cerr << e.what() << '\n';
 		}
+	}
+	void	ocf_copyConstructor(void)
+	{
+		Bureaucrat bira(5, "Zizou");
+
+		std::cout << bira;
+		Bureaucrat biraHP(bira);
+		biraHP.incrementGrade();
+		std::cout << biraHP;
+	}
+	void	ocf_copyAssignment(void)
+	{
+		Bureaucrat bira(55, "Zizou");
+
+		std::cout << bira;
+		Bureaucrat biraHP = bira;
+		biraHP.incrementGrade();
+		std::cout << biraHP;
 	}
 } // namespace testrunnner

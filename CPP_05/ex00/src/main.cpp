@@ -12,5 +12,7 @@ int	main(void)
 	testrunner05::decrementGrade();
 	printer::Header("INCREMENT TEST");
 	testrunner05::incrementGrade();
+	testrunner05::ocf_copyConstructor();
+	testrunner05::ocf_copyAssignment();
 	return (0);
 }
