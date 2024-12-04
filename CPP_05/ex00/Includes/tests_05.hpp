@@ -10,6 +10,7 @@ namespace testrunner05
 	// void	subj();
 	void	basic_test(void);
 	void	basic_plus_test(void);
+	void	decrementGrade(void);
 	void	incrementGrade(void);
 }
 

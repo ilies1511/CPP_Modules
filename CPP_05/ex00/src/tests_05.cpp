@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 19:25:41 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/04 19:38:14 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,41 @@ namespace testrunner05
 		}
 		catch (const Bureaucrat::GradeTooHighException &e)
 		{
-			std::cout << "Caught GradeTooHighException: " << e.what() << std::endl;
+			std::cerr << "Caught GradeTooHighException: " << e.what() << std::endl;
 		}
 		catch (const Bureaucrat::GradeTooLowException &e)
 		{
-			std::cout << "Caught GradeTooLowException: " << e.what() << std::endl;
+			std::cerr << "Caught GradeTooLowException: " << e.what() << std::endl;
 		}
 		catch (std::exception &e)
 		{
-			std::cout << "Exception caught: " << e.what() << std::endl;
+			std::cerr << "Exception caught: " << e.what() << std::endl;
 		}
 	}
-	void	incrementGrade(void)
+	void	decrementGrade(void)
 	{
 		try
 		{
 			Bureaucrat	bebsi(150, "Seh'ween");
 			std::cout << bebsi;
 			bebsi.decrementGrade();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
+	void	incrementGrade(void)
+	{
+		try
+		{
+			Bureaucrat	bebsi(3);
+
+			for (size_t i = bebsi.getGrade(); i >= MAX_GRADE; i--)
+			{
+				std::cout << bebsi;
+				bebsi.incrementGrade();
+			}
 		}
 		catch(const std::exception& e)
 		{
