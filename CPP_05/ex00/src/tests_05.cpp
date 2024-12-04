@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 19:38:14 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/04 19:45:51 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ namespace testrunner05
 		try
 		{
 			Bureaucrat bebsi(0);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << "Exception caught: " << e.what() << std::endl;
+		}
+	}
+	void	basic2_test(void)
+	{
+		try
+		{
+			Bureaucrat bebsi(151);
 		}
 		catch (std::exception &e)
 		{

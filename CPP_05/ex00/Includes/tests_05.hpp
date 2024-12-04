@@ -9,6 +9,7 @@ namespace testrunner05
 	//FUNC CALLS
 	// void	subj();
 	void	basic_test(void);
+	void	basic2_test(void);
 	void	basic_plus_test(void);
 	void	decrementGrade(void);
 	void	incrementGrade(void);
