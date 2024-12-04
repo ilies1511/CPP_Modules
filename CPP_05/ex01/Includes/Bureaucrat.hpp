@@ -4,6 +4,7 @@
 //Includes
 #include "printer.hpp"
 
+
 //Macros
 constexpr	size_t MAX_GRADE = 1;
 constexpr	size_t MIN_GRADE = 150;
@@ -11,6 +12,8 @@ const		size_t DEFAULT_GRADE = MIN_GRADE;
 const		std::string DEFAULT_NAME = "DefaultName";
 
 //Class
+class Form;
+
 class Bureaucrat
 {
 	private:
@@ -47,6 +50,7 @@ class Bureaucrat
 		size_t				getGrade(void) const;
 		void				incrementGrade(void); //incrementing a grade 3 should give a grade 2
 		void				decrementGrade(void); //decrementing a grade 3 should give a grade 4
+		void				signForm(Form &form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& og);

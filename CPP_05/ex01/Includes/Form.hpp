@@ -12,8 +12,8 @@ class Form
 	private:
 		const std::string	_name;
 		bool				_signed;
-		const int			_signGrade;
-		const int			_executeGrade;
+		const size_t		_signGrade;
+		const size_t		_executeGrade;
 	//OCF
 	public:
 		Form(void);
@@ -35,10 +35,14 @@ class Form
 		};
 	//Members
 	public:
-		void beSigned(const Bureaucrat &og);
+		void				beSigned(const Bureaucrat &og);
+		//getters
+		const std::string&	getName(void) const;
+		const bool			getSignedStatus(void) const;
+		size_t				getSignGrade(void) const;
+		size_t				getExecGrade(void) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& og);
-
 
 #endif
