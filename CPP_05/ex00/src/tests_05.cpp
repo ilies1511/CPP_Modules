@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 19:04:02 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/04 19:25:41 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ namespace testrunner05
 		catch (std::exception &e)
 		{
 			std::cout << "Exception caught: " << e.what() << std::endl;
+		}
+	}
+	void	incrementGrade(void)
+	{
+		try
+		{
+			Bureaucrat	bebsi(150, "Seh'ween");
+			std::cout << bebsi;
+			bebsi.decrementGrade();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
 		}
 	}
 } // namespace testrunnner

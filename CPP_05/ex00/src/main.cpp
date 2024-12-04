@@ -2,8 +2,10 @@
 
 int	main(void)
 {
-	printer::Header("test");
-
+	printer::Header("BASIC TESTS");
 	testrunner05::basic_test();
+	testrunner05::basic_plus_test();
+	printer::Header("INCREMENT TEST");
+	testrunner05::incrementGrade();
 	return (0);
 }
