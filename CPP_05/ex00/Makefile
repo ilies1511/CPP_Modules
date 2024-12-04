@@ -22,7 +22,7 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRC :=	main.cpp Bureaucrat.cpp tests.cpp printer.cpp
+SRC :=	main.cpp Bureaucrat.cpp tests_05.cpp printer.cpp
 
 SRCS := $(addprefix src/, $(SRC))
 

@@ -21,7 +21,7 @@ class Bureaucrat
 		Bureaucrat(void);
 		Bureaucrat(size_t InputGrade);
 		Bureaucrat(const std::string& InputName);
-		Bureaucrat(size_t InputGrade = MIN_GRADE, const std::string& InputName = "DefaultName");
+		Bureaucrat(size_t InputGrade, const std::string& InputName);
 		Bureaucrat(const Bureaucrat &og);
 		Bureaucrat &operator=(const Bureaucrat &og);
 		~Bureaucrat(void);

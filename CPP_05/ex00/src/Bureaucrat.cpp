@@ -50,7 +50,8 @@ Bureaucrat::Bureaucrat(size_t InputGrade)
 		throw Bureaucrat::GradeTooLowException();
 		// throw Bureaucrat::GradeTooLowException::exception(); --> TODO: welche Version
 	}
-	printer::ocf_printer("Bureaucrat", printer::OCF_TYPE::DNC);
+	// printer::ocf_printer("Bureaucrat", printer::OCF_TYPE::DNC);
+	std::cout << coloring("[Bureaucrat]: InputGrade Constructor called", BROWN);
 }
 
 // Default Name Constructor
@@ -69,7 +70,8 @@ Bureaucrat::Bureaucrat(size_t InputGrade, const std::string& InputName)
 	if (InputGrade > MIN_GRADE)
 		throw Bureaucrat::GradeTooLowException();
 		// throw Bureaucrat::GradeTooLowException::exception(); --> TODO: welche Version
-	printer::ocf_printer("Bureaucrat", printer::OCF_TYPE::DNC);
+	// printer::ocf_printer("Bureaucrat", printer::OCF_TYPE::DNC);
+	std::cout << coloring("[Bureaucrat]: *Input Constructor called", BROWN);
 }
 
 //Copy Constructor
@@ -97,12 +99,12 @@ Bureaucrat::~Bureaucrat(void)
 // Exceptions
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("[Exception]: Grade too High !\n");
+	return ("Grade too High !");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("[Exception]: Grade too Low !\n");
+	return ("Grade too Low !\n");
 }
 
 //Getter
