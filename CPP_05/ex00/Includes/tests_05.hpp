@@ -2,6 +2,7 @@
 # define TESTS_05_HPP
 
 //Includes
+#include "printer.hpp"
 #include "Bureaucrat.hpp"
 
 namespace testrunner05

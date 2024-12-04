@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 21:20:02 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/04 21:36:10 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ namespace testrunner05
 {
 	void	basic_test(void)
 	{
+		printer::Header("BASIC TESTS");
 		try
 		{
 			Bureaucrat bebsi(0);
@@ -28,6 +29,7 @@ namespace testrunner05
 	}
 	void	basic2_test(void)
 	{
+		printer::Header("BASIC2 TESTS");
 		try
 		{
 			Bureaucrat bebsi(151);
@@ -39,6 +41,7 @@ namespace testrunner05
 	}
 	void	basic_plus_test(void)
 	{
+		printer::Header("BASIC_PLUS TESTS");
 		try
 		{
 			Bureaucrat bebsi(0);
@@ -58,6 +61,7 @@ namespace testrunner05
 	}
 	void	decrementGrade(void)
 	{
+		printer::Header("DECREMENT TEST");
 		try
 		{
 			Bureaucrat	bebsi(150, "Seh'ween");
@@ -71,6 +75,7 @@ namespace testrunner05
 	}
 	void	incrementGrade(void)
 	{
+		printer::Header("INCREMENT TEST");
 		try
 		{
 			Bureaucrat	bebsi(3);
@@ -88,6 +93,7 @@ namespace testrunner05
 	}
 	void	ocf_copyConstructor(void)
 	{
+		printer::Header("CopyConstructor TEST");
 		Bureaucrat bira(5, "Zizou");
 
 		std::cout << bira;
@@ -97,6 +103,7 @@ namespace testrunner05
 	}
 	void	ocf_copyAssignment(void)
 	{
+		printer::Header("Copy Assignment TEST");
 		Bureaucrat bira(55, "Zizou");
 
 		std::cout << bira;
