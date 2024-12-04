@@ -38,9 +38,9 @@ class Bureaucrat
 				virtual const char *what() const throw();
 		};
 	//Overloadin Operator
-	public:
-		Bureaucrat &operator++();
-		Bureaucrat &operator--();
+	// public:
+	// 	Bureaucrat &operator++();
+	// 	Bureaucrat &operator--();
 	//Methodes
 	public:
 		const std::string&	getName(void) const;
