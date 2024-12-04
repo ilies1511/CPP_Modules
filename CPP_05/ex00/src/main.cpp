@@ -12,7 +12,9 @@ int	main(void)
 	testrunner05::decrementGrade();
 	printer::Header("INCREMENT TEST");
 	testrunner05::incrementGrade();
+	printer::Header("CopyConstructor TEST");
 	testrunner05::ocf_copyConstructor();
+	printer::Header("Copy Assignment TEST");
 	testrunner05::ocf_copyAssignment();
 	return (0);
 }
