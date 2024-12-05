@@ -6,10 +6,10 @@
 #include "Bureaucrat.hpp"
 
 //Consts
-constexpr	size_t MAX_GRADE = 1;
-constexpr	size_t MIN_GRADE = 150;
-const		size_t DEFAULT_GRADE = MIN_GRADE;
-const		std::string DEFAULT_NAME = "DefaultForm";
+constexpr	size_t MAX_GRADE_F = 1;
+constexpr	size_t MIN_GRADE_F = 150;
+const		size_t DEFAULT_GRADE_F = MIN_GRADE_F;
+const		std::string DEFAULT_NAME_F = "DefaultForm";
 
 //Class
 
@@ -23,7 +23,7 @@ class Form
 	//OCF
 	public:
 		Form(void);
-		Form(const std::string& InputName, int InputSignGrade, int InputExecGrade);
+		Form(const std::string& InputName, size_t InputSignGrade, size_t InputExecGrade);
 		Form(const Form &og);
 		Form &operator=(const Form &og);
 		~Form(void);

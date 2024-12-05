@@ -3,17 +3,17 @@
 
 //OCF--BEGIN
 Form::Form(void)
-	: _name(DEFAULT_NAME), _signed(false), _signGrade(DEFAULT_GRADE), _executeGrade(DEFAULT_GRADE)
+	: _name(DEFAULT_NAME_F), _signed(false), _signGrade(DEFAULT_GRADE_F), _executeGrade(DEFAULT_GRADE_F)
 {
 	printer::ocf_printer("Form", printer::OCF_TYPE::DC);
 }
 
-Form::Form(const std::string& InputName, int InputSignGrade, int InputExecGrade)
+Form::Form(const std::string& InputName, size_t InputSignGrade, size_t InputExecGrade)
 	: _name(InputName), _signed(false), _signGrade(InputSignGrade), _executeGrade(InputExecGrade)
 {
-	if (InputSignGrade < MAX_GRADE || InputExecGrade < MAX_GRADE)
+	if (InputSignGrade < MAX_GRADE_F || InputExecGrade < MAX_GRADE_F)
 		throw (Form::GradeTooHighException());
-	if (InputSignGrade > MIN_GRADE || InputExecGrade > MIN_GRADE)
+	if (InputSignGrade > MIN_GRADE_F || InputExecGrade > MIN_GRADE_F)
 		throw (Form::GradeTooLowException());
 	printer::ocf_printer("Form", printer::OCF_TYPE::DNC);
 }
@@ -81,8 +81,8 @@ void	Form::beSigned(const Bureaucrat &og)
 	}
 	else
 	{
-		// std::cout << og.getName() << " couldn't sign < " << this->getName() \
-			<< " because " << "his grade is too low" << "\n";
+		// std::cout << og.getName() << " couldn't sign < " << this->getName()
+			// << " because " << "his grade is too low" << "\n";
 		throw (Form::GradeTooLowException());
 	}
 }
