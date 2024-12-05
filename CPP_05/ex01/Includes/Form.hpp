@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include "Bureaucrat.hpp"
 
+//Consts
+constexpr	size_t MAX_GRADE = 1;
+constexpr	size_t MIN_GRADE = 150;
+const		size_t DEFAULT_GRADE = MIN_GRADE;
+const		std::string DEFAULT_NAME = "DefaultForm";
+
 //Class
 
 class Form
@@ -38,7 +44,7 @@ class Form
 		void				beSigned(const Bureaucrat &og);
 		//getters
 		const std::string&	getName(void) const;
-		const bool			getSignedStatus(void) const;
+		bool				getSignedStatus(void) const;
 		size_t				getSignGrade(void) const;
 		size_t				getExecGrade(void) const;
 };
