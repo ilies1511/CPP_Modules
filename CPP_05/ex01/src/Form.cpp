@@ -52,7 +52,66 @@ const char *Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too Low !");
 }
+
+const char *Form::AlreadySignedException::what() const throw()
+{
+	return ("Form has already been signed !");
+}
+
 //Exceptions--END
 
+//Members--BEGIN
 
+/*
+	1. chages form status to signed (bool signed) if ...
+	2. Bureaucrates grade is higher or equal to required one --> if grade too low = Form::GradeTooLowExeception
+*/
+void	Form::beSigned(const Bureaucrat &og)
+{
+	if (this->getSignedStatus() == true)
+	{
+		std::cout << this;
+		throw (Form::AlreadySignedException());
+	}
+	if (og.getGrade() <= this->_signGrade)
+	{
+		this->_signed = true;
+		std::cout << og.getName() << " signed " << this->getName() << "\n";
+	}
+	else
+	{
+		std::cout << og.getName() << " couldn't sign < " << this->getName() \
+			<< " because " << "his grade is too low" << "\n";
+		throw (Form::GradeTooLowException());
+	}
 
+}
+
+//Getters--BEGIN
+const std::string&	Form::getName(void) const
+{
+	return (this->_name);
+}
+
+bool	Form::getSignedStatus(void) const
+{
+	return (this->_signed);
+}
+
+size_t	Form::getSignGrade(void) const
+{
+	return (this->_signGrade);
+}
+
+size_t	Form::getExecGrade(void) const
+{
+	return (this->_executeGrade);
+}
+//Getters--END
+
+std::ostream& operator<<(std::ostream& os, const Form& og)
+{
+	os << og.getName() << ", Sign Grade " << og.getSignGrade() \
+		<< ", Execution Grade " << og.getExecGrade() << ".\n";
+	return (os);
+}
