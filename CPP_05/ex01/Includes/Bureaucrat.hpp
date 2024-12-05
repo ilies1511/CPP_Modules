@@ -2,7 +2,7 @@
 # define BUREAUCRAT_HPP
 
 //Includes
-#include "printer.hpp"
+#include "../Includes/printer.hpp"
 
 
 //Macros

@@ -24,7 +24,10 @@
  * to collapse but instead allow for safe and controlled recovery.
  */
 
-#include "Bureaucrat.hpp"
+// #include "Bureaucrat.hpp"
+#include "../Includes/Bureaucrat.hpp"
+// #include "Form.hpp"
+#include "../Includes/Form.hpp"
 
 //TODO: ADD ocf printer for interactive type --> Input Grade Constructor
 
@@ -138,3 +141,18 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& og)
 	os << og.getName() << ", bureaucrat grade " << og.getGrade() << ".\n";
 	return (os);
 }
+
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << "\n";
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << this << " couldn't sign " << form.getName() \
+		<<  " because " << e.what() << "\n";
+	}
+}
+

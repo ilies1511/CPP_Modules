@@ -76,15 +76,14 @@ void	Form::beSigned(const Bureaucrat &og)
 	if (og.getGrade() <= this->_signGrade)
 	{
 		this->_signed = true;
-		std::cout << og.getName() << " signed " << this->getName() << "\n";
+		// std::cout << og.getName() << " signed " << this->getName() << "\n";
 	}
 	else
 	{
-		std::cout << og.getName() << " couldn't sign < " << this->getName() \
+		// std::cout << og.getName() << " couldn't sign < " << this->getName() \
 			<< " because " << "his grade is too low" << "\n";
 		throw (Form::GradeTooLowException());
 	}
-
 }
 
 //Getters--BEGIN
