@@ -1,5 +1,6 @@
 #include "Form.hpp"
 
+//OCF--BEGIN
 Form::Form(void)
 	: _name(DEFAULT_NAME), _signed(false), _signGrade(DEFAULT_GRADE), _executeGrade(DEFAULT_GRADE)
 {
@@ -39,6 +40,19 @@ Form::~Form(void)
 {
 	printer::ocf_printer("Form", printer::OCF_TYPE::D);
 }
+//OCF--END
+
+//Exceptions--BEGIN
+const char *Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too High !");
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too Low !");
+}
+//Exceptions--END
 
 
 
