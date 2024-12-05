@@ -1,4 +1,5 @@
-#include "Form.hpp"
+// #include "Form.hpp"
+#include "../Includes/Form.hpp"
 
 //OCF--BEGIN
 Form::Form(void)
@@ -110,7 +111,12 @@ size_t	Form::getExecGrade(void) const
 
 std::ostream& operator<<(std::ostream& os, const Form& og)
 {
-	os << og.getName() << ", Sign Grade " << og.getSignGrade() \
+	os << "Form " << og.getName() << "(";
+	if (og.getSignedStatus() == true)
+		os << "signed) ";
+	else
+		os << "not signed) ";
+	os << ", Sign Grade " << og.getSignGrade() \
 		<< ", Execution Grade " << og.getExecGrade() << ".\n";
 	return (os);
 }
