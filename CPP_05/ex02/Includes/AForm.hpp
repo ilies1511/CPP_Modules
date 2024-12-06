@@ -42,6 +42,11 @@ class AForm
 			public:
 				virtual const char *what() const throw();
 		};
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 	//Members
 	public:
 		void				beSigned(const Bureaucrat &og);
@@ -51,6 +56,8 @@ class AForm
 		size_t				getSignGrade(void) const;
 		size_t				getExecGrade(void) const;
 		virtual void		execute(Bureaucrat const & executor) const = 0;
+	protected:
+		void				checkBureaucrat(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& og);

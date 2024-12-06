@@ -59,6 +59,11 @@ const char *AForm::AlreadySignedException::what() const throw()
 	return ("AForm has already been signed !");
 }
 
+const char *AForm::NotSignedException::what() const throw()
+{
+	return ("AForm cannot be executed, it has not been signed yet!");
+}
+
 //Exceptions--END
 
 //Members--BEGIN
@@ -120,3 +125,12 @@ std::ostream& operator<<(std::ostream& os, const AForm& og)
 		<< ", Execution Grade " << og.getExecGrade() << ".\n";
 	return (os);
 }
+
+void AForm::checkBureaucrat(Bureaucrat const & executor) const
+{
+	if (!(this->_signed))
+		throw (AForm::NotSignedException());
+	if (executor.getGrade() > this->getExecGrade())
+		throw(AForm::GradeTooLowException());
+}
+
