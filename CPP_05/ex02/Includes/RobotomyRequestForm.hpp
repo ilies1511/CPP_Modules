@@ -2,6 +2,8 @@
 
 //Includes
 #include "../Includes/AForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 //Class
 class RobotomyRequestForm : public AForm

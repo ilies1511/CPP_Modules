@@ -66,6 +66,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 			"                    ,####.                   \n"
 			"            /\\/\\/\\/\\/\\.######.\\/\\/\\/\\/\\ \n";
 		file.close();
+		std::cout << coloring("File has been successfully created !\n", GREEN);
 	}
 }
 //Members--END

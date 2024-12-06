@@ -2,10 +2,16 @@
 
 int	main(void)
 {
-	// testrunner05::ex00();
-	// testrunner05::basic_ex01();
-	// testrunner05::complex_ex01();
+	printer::Header("TESTS EX02");
 
-	testrunner05::ex01();
+	srand(static_cast<unsigned>(time(nullptr)));
+
+	//ALL
+	// testrunner05::ex02();
+
+	//Individual
+	testrunner05::basicTest_ShrubberyCreationForm();
+	// testrunner05::basicTest_RobotomyRequestForm();
+	// testrunner05::basicTest_PresidentialPardonForm();
 	return (0);
 }

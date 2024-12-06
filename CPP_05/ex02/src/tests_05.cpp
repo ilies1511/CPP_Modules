@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/06 11:24:14 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/06 21:50:34 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,159 +15,83 @@
 //IMPLEMENTATION
 namespace testrunner05
 {
-	void	ex01(void)
+	void	ex02(void)
 	{
-		basic_ex01();
-		complex_ex01();
+		basicTest_ShrubberyCreationForm();
+		basicTest_RobotomyRequestForm();
+		basicTest_PresidentialPardonForm();
 	}
-
-	void	complex_ex01(void)
+	void	basicTest_ShrubberyCreationForm(void)
 	{
+		printer::Header("\nTEST ShrubberyCreationForm");
+		Bureaucrat				zaepfchen(146, "Zaepfchen"); //Cannot sign Form since grade too low
+		Bureaucrat				zizou(1, "Zizou"); //Can sign Form since grade is 'greater' than sign=25 & exex=5 (greater in this context means lower)
+		ShrubberyCreationForm	shrubberyForm;
 		try
 		{
-			printer::Header("COMPLEX TESTS");
-			Bureaucrat	zaepfchen;
-			Bureaucrat	bebsi(1, "Zizou"); // If grade 2, he could not sign
-			AForm		form("NotDefault", 1, 100);
-
-			std::cout << zaepfchen;
-			std::cout << form;
-
-			zaepfchen.signForm(form);
-			bebsi.signForm(form);
-			zaepfchen.decrementGrade(); //Should trigger exception
+			printer::Header("ZAEPFCHEN attempts to sign Form");
+			zaepfchen.signForm(shrubberyForm);
+			printer::Header("ZIOU attempts to sign Form");
+			zizou.signForm(shrubberyForm);
+			printer::Header("ZIOU attempts to sign Form AGAIN !");
+			//Double Signings should be prevented
+			zizou.signForm(shrubberyForm);
+			printer::Header("ZIOU attempts to execute Form");
+			shrubberyForm.execute(zizou);
+			printer::Header("ZAEPFCHEN attempts to execute Form");
+			shrubberyForm.execute(zaepfchen);
 		}
 		catch(const std::exception& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
 	}
-	void	basic_ex01(void)
+	void	basicTest_RobotomyRequestForm(void)
 	{
+		printer::Header("\nTEST RobotomyRequestForm");		Bureaucrat				zaepfchen(73, "Zaepfchen"); //Cannot sign Form since grade too low
+		Bureaucrat				zizou(45, "Zizou"); //Can sign Form since grade is greater than sign=72 & exex=45 for robotForm
+		RobotomyRequestForm		robotForm;
 		try
 		{
-			printer::Header("BASIC TESTS");
-			AForm		paper;
-			Bureaucrat	bebsi;
-
-			AForm	paper2(paper);
-			paper.beSigned(bebsi);
-			std::cout << paper;
-			std::cout << paper2;
-
-			bebsi.signForm(paper);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	}
-
-	void	ex00(void)
-	{
-		basic_test();
-		basic2_test();
-		basic_plus_test();
-		decrementGrade();
-		incrementGrade();
-		ocf_copyConstructor();
-		ocf_copyAssignment();
-	}
-
-	void	basic_test(void)
-	{
-		printer::Header("BASIC TESTS");
-		try
-		{
-			Bureaucrat bebsi(0);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << "Exception caught: " << e.what() << std::endl;
-		}
-	}
-	void	basic2_test(void)
-	{
-		printer::Header("BASIC2 TESTS");
-		try
-		{
-			Bureaucrat bebsi(151);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << "Exception caught: " << e.what() << std::endl;
-		}
-	}
-	void	basic_plus_test(void)
-	{
-		printer::Header("BASIC_PLUS TESTS");
-		try
-		{
-			Bureaucrat bebsi(0);
-		}
-		catch (const Bureaucrat::GradeTooHighException &e)
-		{
-			std::cerr << "Caught GradeTooHighException: " << e.what() << std::endl;
-		}
-		catch (const Bureaucrat::GradeTooLowException &e)
-		{
-			std::cerr << "Caught GradeTooLowException: " << e.what() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << "Exception caught: " << e.what() << std::endl;
-		}
-	}
-	void	decrementGrade(void)
-	{
-		printer::Header("DECREMENT TEST");
-		try
-		{
-			Bureaucrat	bebsi(150, "Seh'ween");
-			std::cout << bebsi;
-			bebsi.decrementGrade();
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	}
-	void	incrementGrade(void)
-	{
-		printer::Header("INCREMENT TEST");
-		try
-		{
-			Bureaucrat	bebsi(3);
-
-			for (size_t i = bebsi.getGrade(); i >= MAX_GRADE; i--)
+			printer::Header("ZAEPFCHEN attempts to sign Form");
+			zaepfchen.signForm(robotForm);
+			printer::Header("ZIOU attempts to sign Form");
+			zizou.signForm(robotForm);
+			printer::Header("ZIOU attempts to execute Form");
+			robotForm.execute(zizou);
+			printer::Header("ZAEPFCHEN attempts to execute Form after 1/2 probable Booster");
+			if (rand() % 2)
 			{
-				std::cout << bebsi;
-				bebsi.incrementGrade();
+				while (zaepfchen.getGrade() >= robotForm.getExecGrade())
+					zaepfchen.incrementGrade();
 			}
+			robotForm.execute(zaepfchen);
 		}
 		catch(const std::exception& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
 	}
-	void	ocf_copyConstructor(void)
+	void	basicTest_PresidentialPardonForm(void)
 	{
-		printer::Header("CopyConstructor TEST");
-		Bureaucrat bira(5, "Zizou");
-
-		std::cout << bira;
-		Bureaucrat biraHP(bira);
-		biraHP.incrementGrade();
-		std::cout << biraHP;
-	}
-	void	ocf_copyAssignment(void)
-	{
-		printer::Header("Copy Assignment TEST");
-		Bureaucrat bira(55, "Zizou");
-
-		std::cout << bira;
-		Bureaucrat biraHP = bira;
-		biraHP.incrementGrade();
-		std::cout << biraHP;
+		printer::Header("\nTEST PresidentialPardonForm");
+		Bureaucrat				zaepfchen(26, "Zaepfchen"); //Cannot sign Form since grade too low
+		Bureaucrat				zizou(5, "Zizou"); //Can sign Form since grade is greater than sign=25 & exex=5
+		PresidentialPardonForm	presidentForm;
+		try
+		{
+			printer::Header("ZAEPFCHEN attempts to sign Form");
+			zaepfchen.signForm(presidentForm);
+			printer::Header("ZIOU attempts to sign Form");
+			zizou.signForm(presidentForm);
+			printer::Header("ZIOU attempts to execute Form");
+			presidentForm.execute(zizou);
+			printer::Header("ZAEPFCHEN attempts to execute Form");
+			presidentForm.execute(zaepfchen);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 } // namespace testrunnner
