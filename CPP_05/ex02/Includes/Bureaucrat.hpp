@@ -51,6 +51,7 @@ class Bureaucrat
 		void				incrementGrade(void); //incrementing a grade 3 should give a grade 2
 		void				decrementGrade(void); //decrementing a grade 3 should give a grade 4
 		void				signForm(AForm &form);
+		void				executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& og);
