@@ -24,7 +24,7 @@ class AForm
 		AForm(const std::string& InputName, size_t InputSignGrade, size_t InputExecGrade);
 		AForm(const AForm &og);
 		AForm &operator=(const AForm &og);
-		~AForm(void);
+		virtual ~AForm(void);
 	//Exception
 	public:
 		class GradeTooHighException : public std::exception
@@ -50,6 +50,7 @@ class AForm
 		bool				getSignedStatus(void) const;
 		size_t				getSignGrade(void) const;
 		size_t				getExecGrade(void) const;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& og);
