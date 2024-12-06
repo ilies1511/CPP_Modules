@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/06 21:50:34 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/06 22:24:05 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ namespace testrunner05
 			//Double Signings should be prevented
 			zizou.signForm(shrubberyForm);
 			printer::Header("ZIOU attempts to execute Form");
-			shrubberyForm.execute(zizou);
+			// shrubberyForm.execute(zizou);
+			zizou.executeForm(shrubberyForm);
 			printer::Header("ZAEPFCHEN attempts to execute Form");
-			shrubberyForm.execute(zaepfchen);
+			// shrubberyForm.execute(zaepfchen);
+			zaepfchen.executeForm(shrubberyForm);
 		}
 		catch(const std::exception& e)
 		{
@@ -58,14 +60,16 @@ namespace testrunner05
 			printer::Header("ZIOU attempts to sign Form");
 			zizou.signForm(robotForm);
 			printer::Header("ZIOU attempts to execute Form");
-			robotForm.execute(zizou);
+			// robotForm.execute(zizou);
+			zizou.executeForm(robotForm);
 			printer::Header("ZAEPFCHEN attempts to execute Form after 1/2 probable Booster");
 			if (rand() % 2)
 			{
 				while (zaepfchen.getGrade() >= robotForm.getExecGrade())
 					zaepfchen.incrementGrade();
 			}
-			robotForm.execute(zaepfchen);
+			// robotForm.execute(zaepfchen);
+			zaepfchen.executeForm(robotForm);
 		}
 		catch(const std::exception& e)
 		{
@@ -85,9 +89,11 @@ namespace testrunner05
 			printer::Header("ZIOU attempts to sign Form");
 			zizou.signForm(presidentForm);
 			printer::Header("ZIOU attempts to execute Form");
-			presidentForm.execute(zizou);
+			// presidentForm.execute(zizou);
+			zizou.executeForm(presidentForm);
 			printer::Header("ZAEPFCHEN attempts to execute Form");
-			presidentForm.execute(zaepfchen);
+			// presidentForm.execute(zaepfchen);
+			zaepfchen.executeForm(presidentForm);
 		}
 		catch(const std::exception& e)
 		{
