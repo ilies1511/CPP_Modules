@@ -22,8 +22,9 @@ namespace testrunner05
 	//ex00--END
 
 	//ex01--BEGIN
+	void	ex01(void);
 	void	basic_ex01(void);
-
+	void	complex_ex01(void);
 	//ex01--END
 }
 
