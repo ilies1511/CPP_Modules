@@ -6,15 +6,39 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/04 21:36:10 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/06 09:40:47 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests_05.hpp"
+#include "../Includes/tests_05.hpp"
 
 //IMPLEMENTATION
 namespace testrunner05
 {
+	void	basic_ex01(void)
+	{
+		Form		paper;
+		Bureaucrat	bebsi;
+
+		Form	paper2(paper);
+		paper.beSigned(bebsi);
+		std::cout << paper;
+		std::cout << paper2;
+
+		bebsi.signForm(paper);
+	}
+
+	void	ex00(void)
+	{
+		basic_test();
+		basic2_test();
+		basic_plus_test();
+		decrementGrade();
+		incrementGrade();
+		ocf_copyConstructor();
+		ocf_copyAssignment();
+	}
+
 	void	basic_test(void)
 	{
 		printer::Header("BASIC TESTS");

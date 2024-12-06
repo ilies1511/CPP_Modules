@@ -71,7 +71,7 @@ void	Form::beSigned(const Bureaucrat &og)
 {
 	if (this->getSignedStatus() == true)
 	{
-		std::cout << this;
+		// std::cout << *this;
 		throw (Form::AlreadySignedException());
 	}
 	if (og.getGrade() <= this->_signGrade)
@@ -111,11 +111,11 @@ size_t	Form::getExecGrade(void) const
 
 std::ostream& operator<<(std::ostream& os, const Form& og)
 {
-	os << "Form " << og.getName() << "(";
+	os << "Form " << og.getName() << " (";
 	if (og.getSignedStatus() == true)
-		os << "signed) ";
+		os << "signed)";
 	else
-		os << "not signed) ";
+		os << "not signed)";
 	os << ", Sign Grade " << og.getSignGrade() \
 		<< ", Execution Grade " << og.getExecGrade() << ".\n";
 	return (os);
