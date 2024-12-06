@@ -1,5 +1,7 @@
+#include <fstream>
 #include "ShrubberyCreationForm.hpp"
 
+//OFC--BEGIN
 ShrubberyCreationForm::ShrubberyCreationForm(void)
 	: AForm("ShrubberyCreationForm", 145, 137), _target("root")
 {
@@ -32,3 +34,46 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	printer::ocf_printer("ShrubberyCreationForm", printer::OCF_TYPE::D);
 }
+//OFC--END
+
+//Members--BEGIN
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+	checkBureaucrat(executor);
+	std::string filename;
+	filename = this->_target + "_shrubbery";
+	std::ofstream file(filename.c_str(), std::ios::out | std::ios::trunc);
+	if (!file.is_open())
+		std::cerr << "Failed opening/creating file " << filename;
+	else
+	{
+		file << "\n"
+			"                      * *                    \n"
+			"                   *    *  *                \n"
+			"              *  *    *     *  *            \n"
+			"             *     *    *  *    *           \n"
+			"         * *   *    *    *    *   *         \n"
+			"         *     *  *    * * .#  *   *        \n"
+			"         *   *     * #.  .# *   *           \n"
+			"          *     \"#.  #: #\" * *    *       \n"
+			"         *   * * \"#. ##\"       *          \n"
+			"           *       \"###                       \n"
+			"                     \"##                    \n"
+			"                      ##.                    \n"
+			"                      .##:                   \n"
+			"                      :###                   \n"
+			"                      ;###                   \n"
+			"                    ,####.                   \n"
+			"            /\\/\\/\\/\\/\\.######.\\/\\/\\/\\/\\ \n";
+		file.close();
+	}
+}
+//Members--END
+
+//Getters--BEGIN
+std::string	ShrubberyCreationForm::getTarget(void) const
+{
+	return(this->_target);
+}
+//Getters--END
+

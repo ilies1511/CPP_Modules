@@ -2,6 +2,9 @@
 
 //Includes
 #include "../Includes/AForm.hpp"
+#include <fstream>
+#include <iostream>
+
 
 //Class
 
