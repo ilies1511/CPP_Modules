@@ -12,7 +12,7 @@ const		size_t DEFAULT_GRADE = MIN_GRADE;
 const		std::string DEFAULT_NAME = "DefaultName";
 
 //Class
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -50,7 +50,7 @@ class Bureaucrat
 		size_t				getGrade(void) const;
 		void				incrementGrade(void); //incrementing a grade 3 should give a grade 2
 		void				decrementGrade(void); //decrementing a grade 3 should give a grade 4
-		void				signForm(Form &form);
+		void				signForm(AForm &form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& og);

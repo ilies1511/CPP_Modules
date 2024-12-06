@@ -11,7 +11,7 @@ const		std::string DEFAULT_NAME_F = "DefaultForm";
 
 //Class
 
-class Form
+class AForm
 {
 	private:
 		const std::string	_name;
@@ -20,11 +20,11 @@ class Form
 		const size_t		_executeGrade;
 	//OCF
 	public:
-		Form(void);
-		Form(const std::string& InputName, size_t InputSignGrade, size_t InputExecGrade);
-		Form(const Form &og);
-		Form &operator=(const Form &og);
-		~Form(void);
+		AForm(void);
+		AForm(const std::string& InputName, size_t InputSignGrade, size_t InputExecGrade);
+		AForm(const AForm &og);
+		AForm &operator=(const AForm &og);
+		~AForm(void);
 	//Exception
 	public:
 		class GradeTooHighException : public std::exception
@@ -52,4 +52,4 @@ class Form
 		size_t				getExecGrade(void) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& og);
+std::ostream& operator<<(std::ostream& os, const AForm& og);

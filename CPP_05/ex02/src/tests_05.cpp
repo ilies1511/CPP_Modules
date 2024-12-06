@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/06 10:13:04 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/06 11:24:14 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace testrunner05
 			printer::Header("COMPLEX TESTS");
 			Bureaucrat	zaepfchen;
 			Bureaucrat	bebsi(1, "Zizou"); // If grade 2, he could not sign
-			Form		form("NotDefault", 1, 100);
+			AForm		form("NotDefault", 1, 100);
 
 			std::cout << zaepfchen;
 			std::cout << form;
@@ -47,10 +47,10 @@ namespace testrunner05
 		try
 		{
 			printer::Header("BASIC TESTS");
-			Form		paper;
+			AForm		paper;
 			Bureaucrat	bebsi;
 
-			Form	paper2(paper);
+			AForm	paper2(paper);
 			paper.beSigned(bebsi);
 			std::cout << paper;
 			std::cout << paper2;
