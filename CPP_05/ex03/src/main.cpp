@@ -2,16 +2,12 @@
 
 int	main(void)
 {
-	printer::Header("TESTS EX02");
+	printer::Header("TESTS EX03");
 
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	//ALL
-	testrunner05::ex02();
-
-	//Individual
-	// testrunner05::basicTest_ShrubberyCreationForm();
-	// testrunner05::basicTest_RobotomyRequestForm();
-	// testrunner05::basicTest_PresidentialPardonForm();
+	// testrunner05::ex02();
+	testrunner05::ex03();
 	return (0);
 }

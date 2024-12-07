@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/06 22:54:48 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/07 21:13:41 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,38 @@
 //IMPLEMENTATION
 namespace testrunner05
 {
+	void	ex03(void)
+	{
+		Intern		Zaepfchen;
+		Bureaucrat	Zizou(MAX_GRADE, "Zizou");
+		Bureaucrat	ZaefchenB(MIN_GRADE, "Zaepfchen");
+
+		AForm *SF;
+		AForm *RF;
+		AForm *PF;
+
+		try
+		{
+			SF = Zaepfchen.makeForm("ShrubberyForm", "Wesh");
+			RF = Zaepfchen.makeForm("RobotomyForm", "Wesh");
+			PF = Zaepfchen.makeForm("PresidentialPardonForm", "Wesh");
+			Zizou.signForm(*SF);
+			Zizou.signForm(*RF);
+			Zizou.signForm(*PF);
+			printer::Header("ZaefchenB attemps to sign SF");
+			ZaefchenB.executeForm(*SF);
+			Zizou.executeForm(*SF);
+			Zizou.executeForm(*RF);
+			Zizou.executeForm(*PF);
+			delete (SF);
+			delete (RF);
+			delete (PF);
+		}
+		catch (std::exception &e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
+	}
 	void	ex02(void)
 	{
 		basicTest_ShrubberyCreationForm();

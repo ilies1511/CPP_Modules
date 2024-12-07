@@ -2,12 +2,13 @@
 # define TESTS_05_HPP
 
 //Includes
-#include "printer.hpp"
+#include "Extra/printer.hpp"
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 #include <cstdlib>
 #include <ctime>
 
@@ -15,6 +16,7 @@ namespace testrunner05
 {
 	//FUNC CALLS
 	//ex02--BEGIN
+	void	ex03(void);
 	void	ex02(void);
 	void	basicTest_ShrubberyCreationForm(void);
 	void	basicTest_RobotomyRequestForm(void);

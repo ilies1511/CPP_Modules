@@ -167,8 +167,10 @@ void	Bureaucrat::executeForm(AForm const & form)
 	}
 	catch (std::exception &e)
 	{
+		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
 		std::cerr << "[Exception in Bureaucrat]: " << this->getName() << " couldn't execute " << form.getName() \
 		<< " because " << e.what() << "\n";
+
 	}
 }
 
