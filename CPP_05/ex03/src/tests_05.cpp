@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/07 21:13:41 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/07 21:28:01 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ namespace testrunner05
 {
 	void	ex03(void)
 	{
-		Intern		Zaepfchen;
-		Bureaucrat	Zizou(MAX_GRADE, "Zizou");
-		Bureaucrat	ZaefchenB(MIN_GRADE, "Zaepfchen");
-
-		AForm *SF;
-		AForm *RF;
-		AForm *PF;
-
 		try
 		{
+			Intern		Zaepfchen;
+			Bureaucrat	Zizou(MAX_GRADE, "Zizou");
+			Bureaucrat	ZaefchenB(MIN_GRADE, "Zaepfchen");
+
+			AForm *SF;
+			AForm *RF;
+			AForm *PF;
 			SF = Zaepfchen.makeForm("ShrubberyForm", "Wesh");
 			RF = Zaepfchen.makeForm("RobotomyForm", "Wesh");
 			PF = Zaepfchen.makeForm("PresidentialPardonForm", "Wesh");
@@ -55,12 +54,13 @@ namespace testrunner05
 	}
 	void	basicTest_ShrubberyCreationForm(void)
 	{
-		printer::Header("\nTEST ShrubberyCreationForm");
-		Bureaucrat				zaepfchen(146, "Zaepfchen"); //Cannot sign Form since grade too low
-		Bureaucrat				zizou(1, "Zizou"); //Can sign Form since grade is 'greater' than sign=25 & exex=5 (greater in this context means lower)
-		ShrubberyCreationForm	shrubberyForm;
 		try
 		{
+			printer::Header("\nTEST ShrubberyCreationForm");
+			Bureaucrat				zaepfchen(146, "Zaepfchen"); //Cannot sign Form since grade too low
+			Bureaucrat				zizou(1, "Zizou"); //Can sign Form since grade is 'greater' than sign=25 & exex=5 (greater in this context means lower)
+			ShrubberyCreationForm	shrubberyForm;
+
 			printer::Header("ZAEPFCHEN attempts to sign Form");
 			zaepfchen.signForm(shrubberyForm);
 			printer::Header("ZIOU attempts to sign Form");
@@ -82,11 +82,12 @@ namespace testrunner05
 	}
 	void	basicTest_RobotomyRequestForm(void)
 	{
-		printer::Header("\nTEST RobotomyRequestForm");		Bureaucrat				zaepfchen(73, "Zaepfchen"); //Cannot sign Form since grade too low
-		Bureaucrat				zizou(45, "Zizou"); //Can sign Form since grade is greater than sign=72 & exex=45 for robotForm
-		RobotomyRequestForm		robotForm;
 		try
 		{
+			printer::Header("\nTEST RobotomyRequestForm");		Bureaucrat				zaepfchen(73, "Zaepfchen"); //Cannot sign Form since grade too low
+			Bureaucrat				zizou(45, "Zizou"); //Can sign Form since grade is greater than sign=72 & exex=45 for robotForm
+			RobotomyRequestForm		robotForm;
+
 			printer::Header("ZAEPFCHEN attempts to sign Form");
 			zaepfchen.signForm(robotForm);
 			printer::Header("ZIOU attempts to sign Form");
@@ -110,12 +111,13 @@ namespace testrunner05
 	}
 	void	basicTest_PresidentialPardonForm(void)
 	{
-		printer::Header("\nTEST PresidentialPardonForm");
-		Bureaucrat				zaepfchen(26, "Zaepfchen"); //Cannot sign Form since grade too low
-		Bureaucrat				zizou(5, "Zizou"); //Can sign Form since grade is greater than sign=25 & exex=5
-		PresidentialPardonForm	presidentForm;
 		try
 		{
+			printer::Header("\nTEST PresidentialPardonForm");
+			Bureaucrat				zaepfchen(26, "Zaepfchen"); //Cannot sign Form since grade too low
+			Bureaucrat				zizou(5, "Zizou"); //Can sign Form since grade is greater than sign=25 & exex=5
+			PresidentialPardonForm	presidentForm;
+
 			printer::Header("ZAEPFCHEN attempts to sign Form");
 			zaepfchen.signForm(presidentForm);
 			printer::Header("ZIOU attempts to sign Form");
