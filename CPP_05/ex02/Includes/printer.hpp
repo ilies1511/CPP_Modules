@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:49:30 by iziane            #+#    #+#             */
-/*   Updated: 2024/11/26 07:47:41 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/07 17:01:09 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include "Log.hpp"
 
 // ANSI Escape Codes
 const std::string GREEN = "\033[0;32m";
@@ -68,6 +69,8 @@ namespace printer
 
 	void print_invalidInput();
 
+	//Exception Printer (try catch)
+	void LogException(const std::exception& e, const char* file, const char* function, int line);
 }
 
 #endif // PRINTER_HPP

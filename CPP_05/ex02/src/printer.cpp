@@ -54,4 +54,14 @@ namespace printer
 			RED
 		) << "\n";
 	}
+
+	void LogException(const std::exception& e, const char* file, const char* function, int line)
+	{
+		std::cerr << coloring("[Exception Caught]", YELLOW) << "\n";
+		std::cerr << coloring("File: ", YELLOW) << file << "\n";
+		std::cerr << coloring("Function: ", YELLOW) << function << "\n";
+		std::cerr << coloring("Line: ", YELLOW) << line << "\n";
+		std::cerr << coloring("Reason: ", YELLOW) << e.what() << "\n";
+	}
 }
+
