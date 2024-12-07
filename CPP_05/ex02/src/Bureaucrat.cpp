@@ -151,6 +151,7 @@ void Bureaucrat::signForm(AForm &form)
 	}
 	catch (std::exception &e)
 	{
+		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
 		std::cerr << "[Exception in Bureaucrat]: " << this->getName() << " couldn't sign " << form.getName() \
 		<<  " because " << e.what() << "\n";
 	}
