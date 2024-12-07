@@ -38,7 +38,7 @@ AForm	*Intern::makeForm(const std::string &NameForm, const std::string &TargetOf
 			&Intern::createRobotomyRequestForm,
 			&Intern::createPresidentialPardonForm
 		};
-	std::string Forms[] {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	std::string Forms[] {"ShrubberyForm", "RobotomyForm", "PresidentialPardonForm"};
 	len = sizeof(Forms) / sizeof(Forms[0]);
 	int i = 0;
 	for (; static_cast<unsigned long>(i) < len; i++)
@@ -49,22 +49,26 @@ AForm	*Intern::makeForm(const std::string &NameForm, const std::string &TargetOf
 			return (this->*funcs[i])(TargetOfForm);
 		}
 	}
-	std::cout << coloring("Form" + NameForm + " does not exist\n", RED);
+	std::cout << coloring("Form " + NameForm + " does not exist\n", RED);
+	std::cout << coloring("[INFO]: Available Forms: ShrubberyForm, RobotomyForm, PresidentialPardonForm\n", BLUE);
 	return (nullptr);
 }
 
 AForm *Intern::createShrubberyForm(const std::string &target)
 {
+	std::cout << "In ShrubberyForm\n";
 	return (new ShrubberyCreationForm(target));
 }
 
 AForm *Intern::createRobotomyRequestForm(const std::string &target)
 {
+	std::cout << "In RobotomyRequestForm\n";
 	return (new RobotomyRequestForm(target));
 }
 
 AForm *Intern::createPresidentialPardonForm(const std::string &target)
 {
+	std::cout << "In PresidentialPardonForm\n";
 	return (new PresidentialPardonForm(target));
 }
 
