@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/06 22:24:05 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/06 22:54:48 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ namespace testrunner05
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << "[Exception]: " << e.what() << '\n';
 		}
 	}
 	void	basicTest_RobotomyRequestForm(void)
@@ -73,7 +73,7 @@ namespace testrunner05
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << "[Exception]: " << e.what() << '\n';
 		}
 	}
 	void	basicTest_PresidentialPardonForm(void)
@@ -97,7 +97,7 @@ namespace testrunner05
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << "[Exception]: " << e.what() << '\n';
 		}
 	}
 } // namespace testrunnner

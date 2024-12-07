@@ -7,10 +7,10 @@ int	main(void)
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	//ALL
-	// testrunner05::ex02();
+	testrunner05::ex02();
 
 	//Individual
-	testrunner05::basicTest_ShrubberyCreationForm();
+	// testrunner05::basicTest_ShrubberyCreationForm();
 	// testrunner05::basicTest_RobotomyRequestForm();
 	// testrunner05::basicTest_PresidentialPardonForm();
 	return (0);
