@@ -10,9 +10,9 @@ RM := rm -rf
 
 OBJ_DIR := _obj
 # INC_DIRS := .
-INC_DIRS := Includes
+INC_DIRS := Includes Includes/Extra
 # SRC_DIRS := .
-SRC_DIRS := src
+SRC_DIRS := src src/Extra
 
 # Tell the Makefile where headers and source files are
 vpath %.hpp $(INC_DIRS)
@@ -22,8 +22,9 @@ vpath %.cpp $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRC :=	main.cpp Bureaucrat.cpp tests_05.cpp printer.cpp AForm.cpp \
-		ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC :=	main.cpp Bureaucrat.cpp tests_05.cpp AForm.cpp \
+		ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp \
+		Extra/Log.cpp Extra/printer.cpp
 
 SRCS := $(addprefix src/, $(SRC))
 

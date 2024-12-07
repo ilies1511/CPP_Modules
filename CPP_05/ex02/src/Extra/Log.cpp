@@ -1,6 +1,6 @@
-#include "../Includes/Log.hpp"
+#include "../Includes/Extra/Log.hpp"
 
-std::string coloring(const std::string& text, const std::string& color)
+std::string coloring2(const std::string& text, const std::string& color)
 {
 	return color + text + NC;
 }
@@ -13,6 +13,7 @@ Log::Log(const Log& og) : _programm(og._programm){}
 
 Log& Log::operator=(const Log& og)
 {
+	(void)og;
 	return *this;
 }
 
@@ -21,7 +22,7 @@ Log::~Log(void){}
 void Log::logMessage(const std::string& level, const std::string& color,
 			const char* file, const char* function, int line, const std::string& msg)
 {
-	std::cout << coloring("[" + level + "]: ", color)
+	std::cout << coloring2("[" + level + "]: ", color)
 			<< "Program: " << _programm
 			<< ", File: " << file
 			<< ", Function: " << function
