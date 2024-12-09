@@ -69,7 +69,13 @@ namespace testTypeDetection
 		printer::Header("\nTEST CHAR");
 		checkWhat("char", "a" ,isChar);
 		checkWhat("char", "aa" ,isChar);
-		checkWhat("char", "9" ,isChar);
+		checkWhat("char", "47" ,isChar);
 		checkWhat("char", "~" ,isChar);
+	}
+
+	void	checkMo(void)
+	{
+		printer::Header("\nTEST MO");
+		checkWhat("char", "a" ,isChar);
 	}
 }

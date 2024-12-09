@@ -14,6 +14,7 @@ namespace testTypeDetection
 	void	checkFloat(void);
 	void	checkInt(void);
 	void	checkChar(void);
+	void	checkMo(void);
 }
 
 

@@ -25,8 +25,8 @@ vpath %.cpp $(SRC_DIRS)
 EXTRA_FILES := Log.cpp printer.cpp
 EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 
-TEST_FILE :=  tests_06.cpp test_TypeDetection.cpp
-TEST := $(addprefix Tests/, $(TEST_FILE))
+TEST_FILES :=  tests_06.cpp test_TypeDetection.cpp
+TEST := $(addprefix Tests/, $(TEST_FILES))
 
 SRC :=	main.cpp TypeDetection.cpp ScalarConverte.cpp
 SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
