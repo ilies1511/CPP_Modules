@@ -15,6 +15,18 @@ namespace testTypeDetection
 			std::cout << "not " << Type << "\n";
 	}
 
+	// isPseudoLiteral: "nan", "+inf", "-inff", ungültige Fälle : "123", "inf"
+	static void	checkPseudoLiteral(void)
+	{
+		printer::Header("\nTEST PseudoLiteral");
+		checkWhat("PseudoLiteral", "inf" ,isPseudoLiteral);
+		checkWhat("PseudoLiteral", "nan" ,isPseudoLiteral);
+		checkWhat("PseudoLiteral", "+infa" ,isPseudoLiteral);
+		checkWhat("PseudoLiteral", "-inf" ,isPseudoLiteral);
+		checkWhat("PseudoLiteral", "-inff" ,isPseudoLiteral);
+		checkWhat("PseudoLiteral", "132" ,isPseudoLiteral);
+	}
+
 	static void	checkDouble(void)
 	{
 		printer::Header("\nTEST DOUBLE");
