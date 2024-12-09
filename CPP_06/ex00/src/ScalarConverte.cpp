@@ -14,7 +14,7 @@ const char *ScalarConverte::ImpossibleConversionException::what() const throw()
 
 void	ScalarConverte::convert(const std::string& literal)
 {
-	;
+	(void)literal;
 }
 
 
