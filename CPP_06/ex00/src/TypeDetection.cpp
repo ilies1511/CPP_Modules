@@ -9,9 +9,7 @@ bool	isPseudoLiteral(const std::string& literal)
 	if (!literal.compare("-inff") || !literal.compare("+inff") \
 		|| !literal.compare("-inf") || !literal.compare("+inf") \
 		|| !literal.compare("nan"))
-	{
 		return (true);
-	}
 	return (false);
 }
 
@@ -19,9 +17,7 @@ bool	isChar(const std::string& literal)
 {
 	if (literal.length() == 1 && std::isprint(literal[0]) \
 			&& !std::isdigit(literal[0]) && !isPseudoLiteral(literal))
-	{
 		return (true);
-	}
 	return (false);
 }
 
@@ -37,17 +33,17 @@ bool	isInt(const std::string& literal)
 bool	isFloat(const std::string& literal)
 {
 	static const std::regex floatRegex("^[+-]?\\d*\\.\\d+f$");
-	if (std::regex_match(literal, floatRegex))
-		return (true);
-	return (false);
+	// if (std::regex_match(literal, floatRegex))
+	// 	return (true);
+	// return (false);
+	return (std::regex_match(literal, floatRegex));
 }
 
 bool	isDouble(const std::string& literal)
 {
 	static const std::regex doubleRegex("^[+-]?\\d*\\.\\d+$");
-	if (std::regex_match(literal, doubleRegex))
-		return (true);
-	return (false);
+
+	return (std::regex_match(literal, doubleRegex));
 }
 
 
