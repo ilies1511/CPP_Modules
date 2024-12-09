@@ -6,13 +6,12 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/09 19:50:17 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/09 20:17:49 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/tests_06.hpp"
-#include "../Includes/tests_06.hpp"
-#include "test_TypeDetection.cpp"
+#include "tests_06.hpp"
+#include "test_TypeDetection.hpp"
 
 //IMPLEMENTATION
 namespace testrunner
@@ -24,6 +23,5 @@ namespace testrunner
 		testTypeDetection::checkFloat();
 		testTypeDetection::checkDouble();
 		testTypeDetection::checkPseudoLiteral();
-		// //TODO:
 	}
 } // namespace testrunnner

@@ -1,12 +1,8 @@
-#include <iostream>
-#include <string>
-#include "../Includes/Extra/printer.hpp"
-#include "../Includes/TypeDetection.hpp"
+#include "test_TypeDetection.hpp"
 
 namespace testTypeDetection
 {
-
-	static void checkWhat(const std::string& Type, const std::string& testInput, bool (*checkFunction)(const std::string&))
+	void checkWhat(const std::string& Type, const std::string& testInput, bool (*checkFunction)(const std::string&))
 	{
 		std::cout << testInput << ": ";
 		if (checkFunction(testInput))
@@ -16,7 +12,7 @@ namespace testTypeDetection
 	}
 
 	// isPseudoLiteral: "nan", "+inf", "-inff", ungültige Fälle : "123", "inf"
-	static void	checkPseudoLiteral(void)
+	void	checkPseudoLiteral(void)
 	{
 		printer::Header("\nTEST PseudoLiteral");
 		checkWhat("PseudoLiteral", "inf" ,isPseudoLiteral);
@@ -27,7 +23,7 @@ namespace testTypeDetection
 		checkWhat("PseudoLiteral", "132" ,isPseudoLiteral);
 	}
 
-	static void	checkDouble(void)
+	void	checkDouble(void)
 	{
 		printer::Header("\nTEST DOUBLE");
 		checkWhat("double", "a" ,isDouble);
@@ -41,7 +37,7 @@ namespace testTypeDetection
 		checkWhat("double", "" ,isDouble);
 	}
 
-	static void	checkFloat(void)
+	void	checkFloat(void)
 	{
 		printer::Header("\nTEST FLOAT");
 		checkWhat("float", "a" ,isFloat);
@@ -57,7 +53,7 @@ namespace testTypeDetection
 	}
 
 	// isInt: "42", "-123", "0", ungültige Fälle: "42.0", "42f".
-	static void	checkInt(void)
+	void	checkInt(void)
 	{
 		printer::Header("\nTEST INT");
 		checkWhat("int", "a" ,isInt);
@@ -68,7 +64,7 @@ namespace testTypeDetection
 	}
 
 	// isChar: 'a', '~', ' ', ungültige Fälle: "ab", "9".
-	static void	checkChar(void)
+	void	checkChar(void)
 	{
 		printer::Header("\nTEST CHAR");
 		checkWhat("char", "a" ,isChar);

@@ -10,9 +10,9 @@ RM := rm -rf
 
 OBJ_DIR := _obj
 # INC_DIRS := .
-INC_DIRS := Includes Includes/Extra
+INC_DIRS := Includes Includes/Extra Includes/Tests
 # SRC_DIRS := .
-SRC_DIRS := src src/Extra
+SRC_DIRS := src src/Extra src/Tests
 
 # Tell the Makefile where headers and source files are
 vpath %.hpp $(INC_DIRS)
@@ -25,8 +25,11 @@ vpath %.cpp $(SRC_DIRS)
 EXTRA_FILES := Log.cpp printer.cpp
 EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 
-SRC :=	main.cpp tests_06.cpp TypeDetection.cpp ScalarConverte.cpp
-SRCS := $(addprefix src/, $(SRC) $(EXTRA))
+TEST_FILE :=  tests_06.cpp test_TypeDetection.cpp
+TEST := $(addprefix Tests/, $(TEST_FILE))
+
+SRC :=	main.cpp TypeDetection.cpp ScalarConverte.cpp
+SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 # SRCS += $(EXTRA_SRC)

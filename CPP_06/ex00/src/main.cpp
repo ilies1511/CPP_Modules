@@ -6,11 +6,11 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:50:56 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/09 19:43:34 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/09 20:17:41 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/tests_06.hpp"
+#include "tests_06.hpp"
 #include "../Includes/Extra/printer.hpp"
 
 /*
@@ -19,7 +19,7 @@
 */
 int	main(void)
 {
-	printer::Header("alo");
+	printer::Header("TESTRUNNER");
 	testrunner::TypeDetectionTest();
 	return (0);
 }
