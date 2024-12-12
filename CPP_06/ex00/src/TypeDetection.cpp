@@ -47,30 +47,22 @@ bool isValidAsciiValue(const std::string& literal)
 
 bool isValidQuotedAlphabeticalChar(const std::string& literal)
 {
-	std::regex charRegex(R"(^'[a-zA-Z]'$)");
+	// std::regex charRegex(R"(^'[a-zA-Z]'$)");
+	 std::regex charsOrStringRegex(R"(^('\0'|"\0"|\'[a-zA-Z]\')$)");
 
-	return (std::regex_match(literal, charRegex));
+	if (literal == "\0")
+		return (true);
+	// return (std::regex_match(literal, charRegex));
+	return (std::regex_match(literal, charsOrStringRegex));
 }
 
 bool isChar(const std::string& literal)
 {
-	if (isValidAsciiValue(literal))
+	if (isValidAsciiValue(literal) || isValidQuotedAlphabeticalChar(literal))
 		return (true);
-	if (isValidQuotedAlphabeticalChar(literal))
-		return (true);
-	// double	res;
-	// char *endptr = nullptr;
-	// res = std::strtod(literal.c_str(), &endptr);
-	// if (literal.c_str() == endptr)
-	// {
 	if (literal.length() == 1
 		&& !std::isdigit(literal[0]) && !isPseudoLiteral(literal))
 		return (true);
-	// }
-	// else if (res >= 0 && res <=0)
-	// {
-	// 	return (true);
-	// }
 	return (false);
 }
 
