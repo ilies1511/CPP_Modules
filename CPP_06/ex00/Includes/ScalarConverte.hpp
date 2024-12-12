@@ -41,5 +41,6 @@ class ScalarConverte
 double convertToDouble(const std::string& literal);
 int convertToInt(double value);
 char convertToChar(double value);
+void	handlePseudoLiteral(const std::string& literal);
 
 

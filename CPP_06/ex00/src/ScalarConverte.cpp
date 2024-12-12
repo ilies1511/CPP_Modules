@@ -51,11 +51,8 @@ void ScalarConverte::convert(const std::string& literal)
 			// Pseudo-Literal-Behandlung
 			if (isPseudoLiteral(literal))
 			{
-				std::cout << "char: impossible\n";
-				std::cout << "int: impossible\n";
-				std::cout << "float: " << (literal == "nan" ? "nanf" : literal + "f") << "\n";
-				std::cout << "double: " << literal << "\n";
-				return;
+				handlePseudoLiteral(literal);
+				return ;
 			}
 			std::cout << "char: ";
 			try
