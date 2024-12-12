@@ -36,3 +36,10 @@ class ScalarConverte
 	public:
 		static void	convert(const std::string& literal);
 };
+
+//Loose Fnc
+double convertToDouble(const std::string& literal);
+int convertToInt(double value);
+char convertToChar(double value);
+
+

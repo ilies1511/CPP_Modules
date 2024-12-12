@@ -28,7 +28,7 @@ EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 TEST_FILES :=  tests_06.cpp test_TypeDetection.cpp
 TEST := $(addprefix Tests/, $(TEST_FILES))
 
-SRC :=	main.cpp TypeDetection.cpp ScalarConverte.cpp
+SRC :=	main.cpp TypeDetection.cpp ScalarConverte.cpp typeConverter.cpp
 SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)

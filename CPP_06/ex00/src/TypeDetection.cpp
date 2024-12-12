@@ -1,4 +1,4 @@
-#include "../Includes/TypeDetection.hpp"
+#include "TypeDetection.hpp"
 
 /*
 	The order of fnc Call for TypeDetection matters
@@ -49,17 +49,26 @@ bool isValidQuotedAlphabeticalChar(const std::string& literal)
 {
 	// std::regex charRegex(R"(^'[a-zA-Z]'$)");
 	 std::regex charsOrStringRegex(R"(^('\0'|"\0"|\'[a-zA-Z]\')$)");
-
 	if (literal == "\0")
 		return (true);
 	// return (std::regex_match(literal, charRegex));
 	return (std::regex_match(literal, charsOrStringRegex));
 }
 
-bool isChar(const std::string& literal)
+bool isChar_OLD(const std::string& literal)
 {
+	if (literal.empty())// && literal != "\0")
+		return (false);
 	if (isValidAsciiValue(literal) || isValidQuotedAlphabeticalChar(literal))
 		return (true);
+	if (literal.length() == 1
+		&& !std::isdigit(literal[0]) && !isPseudoLiteral(literal))
+		return (true);
+	return (false);
+}
+
+bool isChar(const std::string& literal)
+{
 	if (literal.length() == 1
 		&& !std::isdigit(literal[0]) && !isPseudoLiteral(literal))
 		return (true);
@@ -88,7 +97,7 @@ bool	isDouble(const std::string& literal)
 {
 	static const std::regex doubleRegex("^[+-]?\\d*\\.\\d+$");
 
-	return (std::regex_match(literal, doubleRegex));
+	return (std::regex_match(literal, doubleRegex) || isPseudoLiteral(literal));
 }
 
 

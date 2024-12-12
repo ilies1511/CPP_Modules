@@ -6,7 +6,7 @@ char convertToChar(double value)
 	if (value < 0 || value > 127 || !std::isprint(static_cast<int>(value)))
 		throw (ScalarConverte::NonDisplayableCharException());
 	return (static_cast<char>(value));
-}s
+}
 
 int convertToInt(double value)
 {
