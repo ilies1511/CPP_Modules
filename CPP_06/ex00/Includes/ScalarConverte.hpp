@@ -38,9 +38,11 @@ class ScalarConverte
 };
 
 //Loose Fnc
-double convertToDouble(const std::string& literal);
-int convertToInt(double value);
-char convertToChar(double value);
+double	convertToDouble(const std::string& literal);
+int		convertToInt(double value);
+char	convertToChar(double value);
+
 void	handlePseudoLiteral(const std::string& literal);
-
-
+void	handleChar(const std::string& literal);
+void	handleInt(const std::string& literal);
+void	handleFloat_Double(const std::string& literal);
