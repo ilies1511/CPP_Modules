@@ -76,6 +76,6 @@ namespace testTypeDetection
 	void	checkMo(void)
 	{
 		printer::Header("\nTEST MO");
-		checkWhat("char", "a" ,isChar);
+		checkWhat("char", "\0" ,isChar);
 	}
 }

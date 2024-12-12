@@ -10,6 +10,7 @@
 #include "Extra/printer.hpp"
 #include "Extra/Log.hpp"
 #include "TypeDetection.hpp"
+#include <sstream>
 
 //Class
 class ScalarConverte

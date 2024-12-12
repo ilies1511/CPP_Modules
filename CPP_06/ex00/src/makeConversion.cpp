@@ -32,7 +32,7 @@ void handleFloat_Double(const std::string& literal)
 		std::cout << e.what();
 	}
 	/*
-		'std::fixed << std::setprecision(1) ' forces to display display
+		'std::fixed << std::setprecision(1) ' forces to display
 		one decimal place although 3 and 3.0 mathematically equivalent
 	*/
 	std::cout << "\nfloat: " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f\n";

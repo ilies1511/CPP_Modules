@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:50:56 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/10 20:54:54 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/12 19:15:23 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	main(int argc, char **argv)
 {
 	if (argc <= 1 || argc > 2)
 	{
-		std::cerr << "Enter literal to be converted\n";
+		testrunner::interactive();
+		// std::cerr << "Enter literal to be converted\n";
 		return (1);
 	}
 	printer::Header("TESTRUNNER");
-	// testrunner::TypeDetectionTest();
 	ScalarConverte::convert(argv[1]);
 	return (0);
 }
