@@ -2,8 +2,9 @@
 
 void handleFloat_Double(const std::string& literal)
 {
-	// std::cout << "In float or double handling \n";
+	// std::cout << "In handleFloat_Double() \n";
 	double value = convertToDouble(literal);
+	// std::cout << value << "\n";
 	// Pseudo-Literal-Behandlung
 	if (isPseudoLiteral(literal))
 	{
@@ -30,8 +31,12 @@ void handleFloat_Double(const std::string& literal)
 	{
 		std::cout << e.what();
 	}
-	std::cout << "\nfloat: " << static_cast<float>(value) << "f\n";
-	std::cout << "double: " << value << "\n";
+	/*
+		'std::fixed << std::setprecision(1) ' forces to display display
+		one decimal place although 3 and 3.0 mathematically equivalent
+	*/
+	std::cout << "\nfloat: " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f\n";
+	std::cout << "double: " << std::fixed << std::setprecision(1) << value << "\n";
 	return ;
 }
 

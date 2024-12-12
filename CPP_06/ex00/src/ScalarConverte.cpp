@@ -24,7 +24,6 @@ void ScalarConverte::convert(const std::string& literal)
 			handleInt(literal);
 			return;
 		}
-
 		if (isFloat(literal) || isDouble(literal))
 		{
 			handleFloat_Double(literal);
