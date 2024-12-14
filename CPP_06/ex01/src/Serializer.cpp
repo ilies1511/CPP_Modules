@@ -13,5 +13,12 @@ Data* Serializer::deserialize(uintptr_t raw)
 {
 	return (reinterpret_cast<Data*>(raw));
 }
+
+// std::ostream& operator<<(std::ostream &os, const Data *og)
+// {
+// 	os << "Integer Value: " << og->i << "\nString Value: " << og->str;
+// 	return (os);
+// }
+
 //Methodes--END
 

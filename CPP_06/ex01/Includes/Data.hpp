@@ -7,6 +7,6 @@
 
 struct Data
 {
-	int			i;
+	int32_t		i; // 4-bytes
 	std::string	str;
 };

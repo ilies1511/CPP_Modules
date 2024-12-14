@@ -27,3 +27,5 @@ class Serializer
 		*/
 		static Data* deserialize(uintptr_t raw);
 };
+
+// std::ostream& operator<<(std::ostream &os, const Data *og);
