@@ -1,4 +1,4 @@
-#include "test.hpp"
+#include "../Includes/Tests/test.hpp"
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -6,14 +6,17 @@
 
 int	main(void)
 {
+	/*
+		Leaks Check:
+			dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex03.out
+	*/
 	printer::Header("TESTS");
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-	// testrunner::randomGenerator();
-	Base *res = new Base;
+	testrunner::randomGenerator();
+	testrunner::ex02();
+	testrunner::ex02_unregistered_subclass();
 
-	res = generate();
-	identifyBy_ptr(res);
-	identifyBy_ref(*res);
+	testrunner::ex02_Childs();
 	return (0);
 }

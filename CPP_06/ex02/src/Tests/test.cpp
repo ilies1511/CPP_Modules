@@ -6,11 +6,11 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/14 22:33:16 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/15 00:30:32 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.hpp"
+#include "../Includes/Tests/test.hpp"
 
 //IMPLEMENTATION
 namespace testrunner
@@ -35,4 +35,49 @@ namespace testrunner
 		std::cout << "Amoun of 2: " << c2 << "\n";
 		std::cout << "Amoun of 3: " << c3 << "\n";
 	}
+
+	void	ex02(void)
+	{
+		printer::Header("TEST EX02");
+		Base *res;
+
+		res = generate();
+		identifyBy_ptr(res);
+		identifyBy_ref(*res);
+
+		delete (res);
+	}
+
+	void	ex02_unregistered_subclass(void)
+	{
+		printer::Header("TEST unregistered_subclass");
+		Base* normal = new Base;
+
+		identifyBy_ptr(normal);
+		identifyBy_ref(*normal);
+
+		delete (normal);
+	}
+
+	void	ex02_Childs(void)
+	{
+		printer::Header("TEST EX03");
+		Base *child_A = new A;
+		Base *child_B = new B;
+		Base *child_C = new C;
+
+		printer::Header("Child A");
+		identifyBy_ptr(child_A);
+		identifyBy_ref(*child_A);
+		printer::Header("Child B");
+		identifyBy_ptr(child_B);
+		identifyBy_ref(*child_B);
+		printer::Header("Child C");
+		identifyBy_ptr(child_C);
+		identifyBy_ref(*child_C);
+		delete (child_A);
+		delete (child_B);
+		delete (child_C);
+	}
+
 } // namespace testrunnner
