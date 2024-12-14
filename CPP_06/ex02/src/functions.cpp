@@ -2,16 +2,25 @@
 #include "B.hpp"
 #include "C.hpp"
 #include "../Extra/printer.hpp"
+#include <random>
 
 
 //Members--BEGIN
 Base * generate(void)
 {
-	size_t	x;
+	static std::random_device rd;
+	static std::mt19937 generator(rd());
+	static std::uniform_int_distribution<int> distrib(1, 3);
 
-	x = 1 + static_cast<unsigned int>(std::rand()) / ((RAND_MAX + 1u) / 3);
+	int x = distrib(generator);
 
-	switch (1 + static_cast<unsigned int>(std::rand()) / ((RAND_MAX + 1u) / 3))
+	/*
+		Alte Version:
+			size_t	x;
+			x = 1 + static_cast<unsigned int>(std::rand()) / ((RAND_MAX + 1u) / 3);
+	*/
+
+	switch (x)
 	{
 	case 1:
 		std::cout << "Retured A\n";
