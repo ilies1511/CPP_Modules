@@ -13,6 +13,8 @@ int	main(void)
 	Base *res;
 
 	res = generate();
+	// identify(*res);
+	identify(res);
 
 	delete (res);
 	return (0);

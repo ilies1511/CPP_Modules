@@ -9,13 +9,16 @@ Base * generate(void)
 
 	x = 1 + static_cast<unsigned int>(std::rand()) / ((RAND_MAX + 1u) / 3);
 
-	switch (x)
+	switch (1 + static_cast<unsigned int>(std::rand()) / ((RAND_MAX + 1u) / 3))
 	{
 	case 1:
+		std::cout << "Retured A\n";
 		return (new A());
 	case 2:
+		std::cout << "Retured B\n";
 		return (new B());
 	case 3:
+		std::cout << "Retured C\n";
 		return (new C());
 	default:
 		return (nullptr);
@@ -28,10 +31,15 @@ Base * generate(void)
 	// 	return (new (C));
 }
 
-void identify(Base* p)
+void identifyBy_ptr(Base* p)
 {
-	(void)p;
-	std::cout << "In identify 1\n";
+	std::cout << coloring("In Identify (by Pointer): ", PURPLE);
+	if (dynamic_cast<A*>(p))
+		std::cout << "A\n";
+	else if (dynamic_cast<B*>(p))
+		std::cout << "B\n";
+	else if (dynamic_cast<C*>(p))
+		std::cout << "C\n";
 }
 
 void identify(Base& p)
