@@ -1,6 +1,8 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include "../Extra/printer.hpp"
+
 
 //Members--BEGIN
 Base * generate(void)
@@ -34,6 +36,8 @@ Base * generate(void)
 void identifyBy_ptr(Base* p)
 {
 	std::cout << coloring("In Identify (by Pointer): ", PURPLE);
+	if (!p)
+		std::cout << "Pointer points to NULL\n";
 	if (dynamic_cast<A*>(p))
 		std::cout << "A\n";
 	else if (dynamic_cast<B*>(p))
@@ -42,10 +46,34 @@ void identifyBy_ptr(Base* p)
 		std::cout << "C\n";
 }
 
-void identify(Base& p)
+void identifyBy_ref(Base& p)
 {
-	(void)p;
-	std::cout << "In identify 2\n";
+	std::cout << coloring("In Identify (by Reference): ", PURPLE);
+	try
+	{
+		static_cast<void>(dynamic_cast<A&>(p));// Same but is C Way of typeCasting (size_t)x: (void)dynamic_cast<B&>(p);
+		std::cout << "A\n";
+		return ;
+	}
+	catch (const std::bad_cast& e) {}
+	try
+	{
+		static_cast<void>(dynamic_cast<B&>(p));
+		std::cout << "B\n";
+		return ;
+	}
+	catch (const std::bad_cast& e) {}
+	try
+	{
+		static_cast<void>(dynamic_cast<C&>(p));
+		std::cout << "C\n";
+		return ;
+	}
+	catch (const std::bad_cast& e)
+	{
+		std::cout << "Un-registered subclass of Base class\n";
+		printer::LogException(e, __FILE__ , __FUNCTION__, __LINE__);
+	}
 }
 //Members--END
 

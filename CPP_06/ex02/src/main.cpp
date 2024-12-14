@@ -10,12 +10,10 @@ int	main(void)
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
 	// testrunner::randomGenerator();
-	Base *res;
+	Base *res = new Base;
 
 	res = generate();
-	// identify(*res);
-	identify(res);
-
-	delete (res);
+	identifyBy_ptr(res);
+	identifyBy_ref(*res);
 	return (0);
 }

@@ -26,5 +26,6 @@ class Base
 };
 
 Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+void identifyBy_ptr(Base* p);
+void identifyBy_ref(Base& p);
+
