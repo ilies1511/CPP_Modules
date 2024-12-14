@@ -28,7 +28,7 @@ EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 TEST_FILES := test.cpp
 TEST := $(addprefix Tests/, $(TEST_FILES))
 
-SRC :=	main.cpp
+SRC :=	main.cpp functions.cpp Base.cpp
 SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
