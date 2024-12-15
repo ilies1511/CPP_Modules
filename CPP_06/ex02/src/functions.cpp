@@ -46,13 +46,19 @@ void identifyBy_ptr(Base* p)
 {
 	std::cout << coloring("In Identify (by Pointer): ", PURPLE);
 	if (!p)
-		std::cout << "Pointer points to NULL\n";
+	{
+		std::cerr << "Pointer points to NULL\n";
+		return ;
+	}
 	if (dynamic_cast<A*>(p))
-		std::cout << "A\n";
+		std::cout << "A";
 	else if (dynamic_cast<B*>(p))
-		std::cout << "B\n";
+		std::cout << "B";
 	else if (dynamic_cast<C*>(p))
-		std::cout << "C\n";
+		std::cout << "C";
+	if (!dynamic_cast<A*>(p) && !dynamic_cast<B*>(p) && !dynamic_cast<C*>(p))
+		std::cout << "Unknown type";
+	std::cout << "\n";
 }
 
 void identifyBy_ref(Base& p)
