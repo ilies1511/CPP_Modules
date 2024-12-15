@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/15 00:30:32 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/15 14:55:55 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ namespace testrunner
 			std::cout << "x: " << x << "\n";
 			// Note: 1 + rand() % sides is biased
 		}
-		std::cout << "Amoun of 1: " << c1 << "\n";
-		std::cout << "Amoun of 2: " << c2 << "\n";
-		std::cout << "Amoun of 3: " << c3 << "\n";
+		std::cout << "Amount of 1: " << c1 << " --> " << (static_cast<long double>(c1)/90000) * 100 << "%\n";
+		std::cout << "Amount of 2: " << c2 << " --> " << (static_cast<long double>(c2)/90000) * 100 << "%\n";
+		std::cout << "Amount of 3: " << c3 << " --> " << (static_cast<long double>(c3)/90000) * 100 << "%\n";
 	}
 
 	void	ex02(void)
