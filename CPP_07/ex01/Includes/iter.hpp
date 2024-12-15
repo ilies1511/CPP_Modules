@@ -18,3 +18,9 @@ void printElement(const T& element)
 {
 	std::cout << element << std::endl;
 }
+
+template<typename T>
+void	addOne(T &x)
+{
+	x += 1;
+}

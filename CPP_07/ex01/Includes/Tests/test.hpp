@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:14 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/15 20:24:55 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/15 21:53:22 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@
 //Project
 #include "iter.hpp"
 
+typedef	struct s_data
+{
+	int32_t		i;
+	std::string	name;
+}				t_data;
+
 namespace testrunner
 {
 	void	arrayXtemplate(void);
+	void	ownDataType(void);
+	void	adder(void);
 }
 
