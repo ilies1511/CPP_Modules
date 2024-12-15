@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:45:38 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/15 14:45:39 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/15 15:36:08 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@
 //Class
 class ScalarConverte
 {
-	private:
 	// OCF - Deaktiviert, da Instanzierung nicht erlaubt
-	public:
+	private:
 		ScalarConverte(void) = delete;
 		ScalarConverte(const ScalarConverte &og) = delete;
 		ScalarConverte operator=(const ScalarConverte &og) = delete;
