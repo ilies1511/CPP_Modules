@@ -7,9 +7,8 @@
 //Class
 class Serializer
 {
-	private:
 	// OCF - Deaktiviert, da Instanzierung nicht erlaubt
-	public:
+	private:
 		Serializer(void) = delete;
 		Serializer(const Serializer &og) = delete;
 		Serializer operator=(const Serializer &og) = delete;
