@@ -7,9 +7,10 @@
 template<typename T, typename FNC>
 void iter(T *array, std::size_t length, FNC func)
 {
+	if (array == nullptr)
+		return ;
 	for (size_t i = 0; i < length; i++)
 		func(array[i]);
-	return ;
 }
 
 //TestTemplates
