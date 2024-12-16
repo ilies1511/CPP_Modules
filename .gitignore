@@ -20,4 +20,3 @@ infile.replace
 *.out
 *.md
 root_shrubbery
-main.cpp
