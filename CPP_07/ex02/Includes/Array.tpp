@@ -93,10 +93,10 @@ const char* Array<T>::OutOfBoundsException::what() const throw()
 template <typename T>
 void	Array<T>::printArray(void)
 {
-	if (this->_size == 0 || _array == NULL)
+	if (this->_size == 0 || _array == nullptr)
 	{
-		std::cout << "[INFO]: Array is empty !\n" << __FILE__ << "\n" \
-			<< __FUNCTION__ << "\n" << __LINE__ << "\n";
+		std::cout << "[INFO]: Array is empty !\n" << "File Name: " << __FILE__ << "\n" \
+			<< "Function: " << __FUNCTION__ << "\n" << "Line: "<< __LINE__ << "\n";
 		return ;
 	}
 	size_t i = 0;
