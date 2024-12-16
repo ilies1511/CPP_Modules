@@ -14,6 +14,10 @@
 
 namespace testrunner
 {
-	int subj_TEST(void);
+	int		subj_TEST(void);
+	void	stringArray(void);
+	void	ownDataType(void);
+	void	emptyArray(void);
+	void	allocation(void);
 }
 
