@@ -10,9 +10,10 @@
 #include "Log.hpp"
 
 //Project
+#include <Array.hpp>
 
 namespace testrunner
 {
-	;
+	int subj_TEST(void);
 }
 
