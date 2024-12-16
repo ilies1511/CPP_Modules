@@ -88,4 +88,24 @@ const char* Array<T>::OutOfBoundsException::what() const throw()
 {
 	return ("Index is out of bound !");
 }
+
+//printArray
+template <typename T>
+void	Array<T>::printArray(void)
+{
+	if (this->_size == 0 || _array == NULL)
+	{
+		std::cout << "[INFO]: Array is empty !\n" << __FILE__ << "\n" \
+			<< __FUNCTION__ << "\n" << __LINE__ << "\n";
+		return ;
+	}
+	size_t i = 0;
+	for (; i < _size; i++)
+	{
+		std::cout << this->_array[i];
+		if (i < _size - 1)
+			std::cout << ", ";
+	}
+	std::cout << std::endl;
+}
 //Methodes--END

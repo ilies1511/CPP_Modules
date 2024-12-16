@@ -37,6 +37,8 @@ class Array
 			public:
 				virtual const char* what() const throw();
 		};
+	//Array-Printer:
+		void	printArray(void);
 };
 	/*
 		Bedeutung der Const: const T& operator[](size_t index) const
