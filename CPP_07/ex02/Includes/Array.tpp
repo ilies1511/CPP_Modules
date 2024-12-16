@@ -13,7 +13,7 @@ Array<T>::Array(void) : _array(nullptr), _size(0)
 
 //Input Constructor
 template<typename T>
-Array<T>::Array(size_t n) : _array(new T[n]), _size(n)
+Array<T>::Array(size_t n) : _array(n > 0 ? new T[n] : nullptr), _size(n)
 {
 	printer::ocf_printer("Array", printer::OCF_TYPE::DNC);
 }
@@ -33,16 +33,14 @@ Array<T> &Array<T>::operator=(const Array &og)
 	if (this != &og)
 	{
 		printer::ocf_printer("Array", printer::OCF_TYPE::CAC);
-		//1. Assign _size Attribute
-		this->_size = og._size;
-
-		//2. (free prev memory, allocate new one, do deep copy)
-		delete[] _array;
-		this->_array = new T[_size];
-		for (size_t i = 0; i < og._size; i++) //2
+		T *newArray = new T[og._size]; // temp
+		for (size_t i = 0; i < og._size; ++i)
 		{
-			this->_array[i] = og._array[i];
+			newArray[i] = og._array[i];
 		}
+		delete[] _array;
+		_array = newArray;
+		_size = og._size;
 	}
 	return (*this);
 }
@@ -68,7 +66,7 @@ size_t	Array<T>::size(void) const
 template<typename T>
 T& Array<T>::operator[](size_t index)
 {
-	if (index >= this->_size || index < 0)
+	if (index >= this->_size)
 		throw (OutOfBoundsException()); //TODO: Write own Exception
 	return (this->_array[index]);
 }
@@ -77,7 +75,7 @@ T& Array<T>::operator[](size_t index)
 template<typename T>
 const T& Array<T>::operator[](size_t index) const
 {
-	if (index >= this->_size || index < 0)
+	if (index >= this->_size)
 		throw (OutOfBoundsException());
 	return (this->_array[index]);
 }
