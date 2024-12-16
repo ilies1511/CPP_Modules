@@ -30,6 +30,13 @@ class Array
 		*/
 		T& operator[](size_t index); //1
 		const T& operator[](size_t index) const; //2
+	//Exceptions
+	public:
+		class OutOfBoundsException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 	/*
 		Bedeutung der Const: const T& operator[](size_t index) const
