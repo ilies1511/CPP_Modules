@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:14 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/19 23:25:43 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/19 23:31:11 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #include "Log.hpp"
 
 //Project
-#include "easyfind.hpp"
+#include "Span.hpp"
 
 namespace testrunner
 {
