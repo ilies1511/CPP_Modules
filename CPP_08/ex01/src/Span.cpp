@@ -48,14 +48,14 @@ int	Span::shortestSpan(void)
 	{
 		throw std::logic_error("Not enough numbers to calculate span !");
 	}
-	auto sorted = _numbers;
+	std::vector<int> sorted = _numbers;
 	std::sort(sorted.begin(), sorted.end());
-	auto min_span = std::numeric_limits<int>::max(); // Highest dataTyp for ints
-	for (auto i = 1; i < sorted.size(); i++)
+	int min_span = std::numeric_limits<int>::max(); // Highest dataTyp for ints
+	for (size_t i = 1; i < sorted.size(); i++)
 	{
 		// if (sorted[i] - sorted[i - 1] < min_span)
 		// 	min_span = sorted[i] - sorted[i - 1];
-		auto span = sorted[i] - sorted[i - 1];
+		int span = sorted[i] - sorted[i - 1];
 		min_span = std::min(min_span, span); // Keep the smallest span
 	}
 	return (min_span);
@@ -67,8 +67,25 @@ int	Span::longestSpan(void)
 	{
 		throw std::logic_error("Not enough numbers to calculate span !");
 	}
-	auto minmax = std::minmax_element(_numbers.begin(), _numbers.end());
+	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> minmax = \
+		std::minmax_element(_numbers.begin(), _numbers.end());
 	return (*minmax.second - *minmax.first);
 }
 
+/*
+	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> minmax = \
+		std::minmax_element(_numbers.begin(), _numbers.end());
 
+	This function takes a range (defined by two iterators) and returns a
+	std::pair of iterators:
+		first: An iterator pointing to the smallest element in the range
+		second: An iterator pointing to the largest element in the range.
+
+	_numbers is a std::vector<int>, so its iterator type is std::vector<int>::iterator
+
+	Result Type:
+
+	Since std::minmax_element returns a pair of iterators for the range of
+	_numbers, the type of minmax is:
+		std::pair<std::vector<int>::iterator, std::vector<int>::iterator>
+*/
