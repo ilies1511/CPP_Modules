@@ -34,7 +34,7 @@ class Span
 		void	addRange(Iterator begin, Iterator end)
 		{
 			//Check for capacity
-			if (std::distance(begin, end) + _numbers.size() > _maxSize)
+			if (static_cast<unsigned long>(std::distance(begin, end)) + _numbers.size() > _maxSize)
 			{
 				throw (std::runtime_error("Container size is too small to add the range!"));
 			}
