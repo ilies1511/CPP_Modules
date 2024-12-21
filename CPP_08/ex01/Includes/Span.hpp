@@ -26,16 +26,16 @@ class Span
 		Span &operator=(const Span &og);
 		~Span(void);
 	//Members
-		void	addNumber(size_t Input);
-		size_t	shortestSpan(void);
-		size_t	longestSpan(void);
+		void	addNumber(int Input);
+		int		shortestSpan(void);
+		int		longestSpan(void);
 		//Template fnc
 		template <typename Iterator>
 		void	addRange(Iterator begin, Iterator end)
 		{
-			if (std::distance(begin, last) + _numbers.size() > _maxSize)
+			if (std::distance(begin, end) + _numbers.size() > _maxSize)
 			{
-				throw (std::runtime_error("Containe Size is to small !"));
+				throw (std::runtime_error("Container size is too small to add the range!"));
 			}
 			_numbers.insert(_numbers.end(), begin, end);
 		}
