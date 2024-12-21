@@ -40,8 +40,34 @@ class Span
 			}
 			_numbers.insert(_numbers.end(), begin, end);
 		}
+		//Getters
+		unsigned int	getCapaciy(void) const;
+		size_t			getSize(void) const;
+	//Overload
+	public:
+		/*
+			Overloeds '[]' operator in two ways:
+				1. Returns reference from element --> enables its modification (write)
+				2. Returns reference from element but CONST protect from modification --> enables its modification (only read)
+		*/
+		int& operator[](size_t index); //1
+		const int& operator[](size_t index) const; //2
+	//Exceptions:
+	public:
+		class OutOfBoundException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Index is out of bound !");
+				}
+		};
 };
-
+/*
+	TODO:
+		int& 	operator[](unsigned int index); Access --> both write & read
+		getter fnc for size
+*/
 
 /*
 	iterator insert(iterator pos, InputIterator first, InputIterator last):

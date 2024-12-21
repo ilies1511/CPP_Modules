@@ -2,12 +2,12 @@
 #include "printer.hpp"
 
 //OCF--BEGIN
-Span::Span(void) : _maxSize(0)
+Span::Span(void) : _numbers(), _maxSize(0)
 {
 	printer::ocf_printer("Span", printer::OCF_TYPE::DC);
 }
 
-Span::Span(unsigned int N) : _maxSize(N)
+Span::Span(unsigned int N) : _numbers(), _maxSize(N)
 {
 	printer::ocf_printer("Span", printer::OCF_TYPE::DNC);
 }
@@ -71,6 +71,35 @@ int	Span::longestSpan(void)
 		std::minmax_element(_numbers.begin(), _numbers.end());
 	return (*minmax.second - *minmax.first);
 }
+
+//Getters--BEGIN
+unsigned int	Span::getCapaciy(void) const
+{
+	return (this->_maxSize);
+}
+
+size_t	Span::getSize(void) const
+{
+	return (this->_numbers.size());
+}
+//Getters--END
+
+//Overloeds '[]'-- BEGIN
+int& Span::operator[](size_t index)
+{
+	if (index >= this->getSize())
+		throw (OutOfBoundException());
+	return _numbers[index];
+}
+
+const int& Span::operator[](size_t index) const
+{
+	if (index >= this->getSize())
+		throw (OutOfBoundException());
+	return _numbers[index];
+}
+//Overloeds '[]'-- END
+
 
 /*
 	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> minmax = \
