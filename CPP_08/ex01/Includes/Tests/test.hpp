@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:14 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/21 22:43:50 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/21 23:14:02 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ namespace testrunner
 {
 	int		ex01_subj(void);
 	void	test_addRange(void);
+	void	edgeTests(void);
 }
 

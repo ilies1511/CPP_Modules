@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/21 22:53:34 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/21 23:15:16 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	*/
 	printer::Header("TESTS CPP08 EX01");
 	// testrunner::ex01_subj();
-	testrunner::test_addRange();
+	// testrunner::test_addRange();
+	testrunner::edgeTests();
 	return (0);
 }

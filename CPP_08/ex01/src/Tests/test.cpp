@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/21 23:03:07 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/21 23:17:38 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,32 @@ namespace testrunner
 					std::cout << ", ";
 			}
 			std::cout << "\n";
+		}
+		catch(const std::exception& e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
+	}
+
+	void	edgeTests(void)
+	{
+		printer::Header("\nShould throw Exception: Container full");
+		try
+		{
+			Span sp(1);
+			sp.addNumber(6);
+			sp.addNumber(-12);
+		}
+		catch(const std::exception& e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
+
+		printer::Header("\nShould throw Exception: Out of Bound");
+		try
+		{
+			Span sp(10);
+			std::cout << sp[100] << "\n";
 		}
 		catch(const std::exception& e)
 		{
