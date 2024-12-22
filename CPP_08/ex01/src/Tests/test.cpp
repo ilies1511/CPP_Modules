@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 01:30:57 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 01:37:27 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // #include "test.hpp"
 
 //Helper --BEGIN
-static void	dataGenerator(std::vector<int> &vecFiller)
+static inline void	dataGenerator(std::vector<int> &vecFiller)
 {
 	srand(static_cast<unsigned int>(time(NULL)));
 	for (size_t i = 0; i < vecFiller.capacity(); i++)
@@ -28,7 +28,7 @@ static void	dataGenerator(std::vector<int> &vecFiller)
 	}
 }
 
-static void	printSpan(const Span &sp)
+static inline void	printSpan(const Span &sp)
 {
 	for (size_t i = 0; i < sp.getSize(); i++)
 	{
