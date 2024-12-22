@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/21 23:15:16 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 01:27:40 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(void)
 			dorker valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ex03.out
 	*/
 	printer::Header("TESTS CPP08 EX01");
-	// testrunner::ex01_subj();
-	// testrunner::test_addRange();
+	testrunner::ex01_subj();
+	testrunner::test_addRange();
 	testrunner::edgeTests();
 	return (0);
 }
