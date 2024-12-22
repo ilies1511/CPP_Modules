@@ -19,7 +19,7 @@ MutantStack<T, Container>::MutantStack(const MutantStack &og)
 template <typename T, typename Container>
 MutantStack<T, Container>& MutantStack<T, Container>::operator=(const MutantStack& og)
 {
-	if (this != og)
+	if (this != &og)
 	{
 		printer::ocf_printer("MutantStack", printer::OCF_TYPE::CAC);
 		std::stack<T, Container>::operator=(og);
