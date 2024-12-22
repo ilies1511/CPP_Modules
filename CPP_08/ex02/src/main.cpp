@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 04:26:19 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 04:49:05 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../Includes/Extra/printer.hpp"
 #include "MutantStack.hpp"
 #include <list>
+#include <forward_list>
 
 // cp -r ex00 ex01
 int	main(void)
@@ -28,6 +29,8 @@ int	main(void)
 	testrunner::list();
 	printer::Header("Container List");
 	testrunner::test_subj_deque();
+	printer::Header("Container Vector");
+	testrunner::test_subj_vector();
 	return (0);
 }
 

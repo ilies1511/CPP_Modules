@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:14 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 04:25:03 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 04:48:34 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ namespace testrunner
 {
 	void	test_subj_deque(void);
 	void	list(void);
+	void	test_subj_vector(void);
 }
 

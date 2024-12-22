@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 04:24:56 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 04:48:06 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "MutantStack.hpp"
 #include <random>
 #include <ctime>
+#include <forward_list>
 #include <string>
 
 // #include "test.hpp"
@@ -45,6 +46,31 @@ namespace testrunner
 			++it;
 		}
 		std::stack<int> s(mstack);
+	}
+
+	void	test_subj_vector(void)
+	{
+		MutantStack<int, std::vector<int>> mstack;
+
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		//[...]
+		mstack.push(0);
+		MutantStack<int, std::vector<int> >::iterator it = mstack.begin();
+		MutantStack<int, std::vector<int> >::iterator ite = mstack.end();
+		++it;
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+		std::stack<int, std::vector<int>> s(mstack);
 	}
 
 	void	list(void)
