@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 04:49:05 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 16:32:52 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	main(void)
 	testrunner::test_subj_deque();
 	printer::Header("Container Vector");
 	testrunner::test_subj_vector();
+	testrunner::test_subj_vector();
+	printer::Header("FULL Vector No MutantStack");
+	testrunner::test_fullVec();
 	return (0);
 }
 
