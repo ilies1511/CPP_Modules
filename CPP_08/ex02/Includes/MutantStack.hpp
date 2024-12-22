@@ -40,5 +40,27 @@ class MutantStack : public std::stack<T, Container>
 };
 //Class--END
 
-
+	// // Universal Push Method
+	// public:
+	// 	template <typename U = Container>
+	// 	typename std::enable_if<std::is_same<U, std::list<T>>::value>::type push(const T& value)
+	// 	{
+	// 		this->c.push_back(value);
+	// 	}
+	// 	template <typename U = Container>
+	// 	typename std::enable_if<!std::is_same<U, std::list<T>>::value>::type push(const T& value)
+	// 	{
+	// 		std::stack<T, Container>::push(value);
+	// 	}
+	// 	// Universal Pop Method
+	// 	template <typename U = Container>
+	// 	typename std::enable_if<std::is_same<U, std::list<T>>::value>::type pop()
+	// 	{
+	// 		this->c.pop_back();
+	// 	}
+	// 	template <typename U = Container>
+	// 	typename std::enable_if<!std::is_same<U, std::list<T>>::value>::type pop()
+	// 	{
+	// 		std::stack<T, Container>::pop();
+	// 	}
 #include "MutantStack.tpp" //LAST LINE: END
