@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 16:42:51 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 16:46:26 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ namespace testrunner
 {
 	void	test_fullVec(void)
 	{
-		std::vector<int> vec;
-
 		try
 		{
+			std::vector<int> vec;
+
 			vec.push_back(5);
 			vec.push_back(17);
 			std::cout << vec.at((vec.size() - 1)) << std::endl;
@@ -89,9 +89,10 @@ namespace testrunner
 
 	void	test_subj_vector(void)
 	{
-		MutantStack<int, std::vector<int>> mstack;
 		try
 		{
+			MutantStack<int, std::vector<int>> mstack;
+
 			mstack.push(5);
 			mstack.push(17);
 			std::cout << mstack.top() << std::endl;
@@ -120,9 +121,10 @@ namespace testrunner
 
 	void	list(void)
 	{
-		MutantStack<int, std::list<int>> mstack;
 		try
 		{
+			MutantStack<int, std::list<int>> mstack;
+
 			mstack.push(5);
 			mstack.push(17);
 			std::cout << mstack.top() << std::endl;
