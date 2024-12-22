@@ -6,126 +6,71 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/22 01:37:27 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/22 04:24:56 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Tests/test.hpp"
-#include "Span.hpp"
+#include "MutantStack.hpp"
 #include <random>
 #include <ctime>
 #include <string>
 
 // #include "test.hpp"
 
-//Helper --BEGIN
-static inline void	dataGenerator(std::vector<int> &vecFiller)
-{
-	srand(static_cast<unsigned int>(time(NULL)));
-	for (size_t i = 0; i < vecFiller.capacity(); i++)
-	{
-		vecFiller[i] = rand() % std::numeric_limits<int>::max() - 1;
-	}
-}
-
-static inline void	printSpan(const Span &sp)
-{
-	for (size_t i = 0; i < sp.getSize(); i++)
-	{
-		std::cout << sp[i];
-		if (i < sp.getSize() - 1)
-			std::cout << ", ";
-	}
-	std::cout << "\n";
-}
-//Helper --END
-
 //IMPLEMENTATION
 namespace testrunner
 {
-	int	ex01_subj(void)
+	void	test_subj_deque(void)
 	{
-		Span	sp = Span(5);
+		MutantStack<int> mstack;
 
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-		if (sp.shortestSpan() != 2)
-			return (EXIT_FAILURE);
-		if (sp.longestSpan() != 14)
-			return (EXIT_FAILURE);
-		std::cout << coloring(std::string("Function '") + __FUNCTION__ + "()' passed all the tests", GREEN) << "\n";
-		// std::cout << coloring(std::string("Function: ") + __FUNCTION__, GREEN) << std::endl;
-		return (EXIT_SUCCESS);
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		//[...]
+		mstack.push(0);
+		MutantStack<int>::iterator it = mstack.begin();
+		MutantStack<int>::iterator ite = mstack.end();
+		++it;
+		--it;
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+		std::stack<int> s(mstack);
 	}
 
-	void	test_addRange(void)
+	void	list(void)
 	{
-		try
-		{
-			Span sp(100);
-			//Vector, being filled with random data
-			std::vector<int> vecFiller(100);
-			dataGenerator(vecFiller);
-			sp.addRange(vecFiller.begin(), vecFiller.end());
-			printSpan(sp);
-		}
-		catch(const std::exception& e)
-		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-		}
-	}
+		MutantStack<int, std::list<int>> mstack;
 
-	void	edgeTests(void)
-	{
-		printer::Header("\nShould throw Exception: Container full");
-		try
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		//[...]
+		mstack.push(0);
+		MutantStack<int,std::list<int>>::iterator it = mstack.begin();
+		MutantStack<int, std::list<int>>::iterator ite = mstack.end();
+		++it;
+		--it;
+		std::cout << "Loop\n";
+		while (it != ite)
 		{
-			Span sp(1);
-			sp.addNumber(6);
-			sp.addNumber(-12);
+			std::cout << *it << std::endl;
+			++it;
 		}
-		catch(const std::exception& e)
-		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-		}
-		printer::Header("\nShould throw Exception: Out of Bound");
-		try
-		{
-			Span sp(10);
-			std::cout << sp[1] << "\n"; // this->_numbers.size() still 0
-			// std::cout << sp[100] << "\n";
-		}
-		catch(const std::exception& e)
-		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-		}
-		printer::Header("\nShould throw Exception: Out of Bound");
-		try
-		{
-			Span sp(10);
-			std::cout << sp[100] << "\n";
-		}
-		catch(const std::exception& e)
-		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-		}
-		printer::Header("\nShould throw Exception: Container size is too small to add the range");
-		try
-		{
-			Span sp(10);
-			std::vector<int> vecFiller(100);
-			dataGenerator(vecFiller);
-			sp.addRange(vecFiller.begin(), vecFiller.end());
-			printSpan(sp);
-		}
-		catch(const std::exception& e)
-		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-		}
+		std::stack<int, std::list<int>> s(mstack);
 	}
-} // namespace testrunnner
+} //	 namespace testrunnner
