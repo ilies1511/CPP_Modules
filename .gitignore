@@ -20,3 +20,6 @@ infile.replace
 *.out
 *.md
 root_shrubbery
+*.tgz
+*.csv
+CPP_09/ex00/btc

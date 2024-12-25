@@ -1,4 +1,4 @@
-NAME := ex00.out
+NAME := btc
 .DEFAULT_GOAL := all
 CPP := c++
 AR := ar
@@ -28,7 +28,7 @@ EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 TEST_FILES := test.cpp
 TEST := $(addprefix Tests/, $(TEST_FILES))
 
-SRC :=	main.cpp
+SRC :=	main.cpp BitcoinExchange.cpp
 SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
 
 # SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
