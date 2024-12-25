@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:05 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/12 20:59:51 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/25 20:17:29 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,64 @@ Log& Log::operator=(const Log& og)
 Log::~Log(void){}
 
 void Log::logMessage(const std::string& level, const std::string& color,
-			const char* file, const char* function, int line, const std::string& msg)
+			const char* file = nullptr, const char* function = nullptr, int line = 0, const std::string& msg = nullptr)
 {
-	std::cout << coloring2("[" + level + "]: ", color)
-			<< "Program: " << _programm
-			<< ", File: " << file
-			<< ", Function: " << function
-			<< ", Line: " << line << "\n"
-			<< "Message: " << msg << std::endl;
+	std::string	str;
+	bool		newline = false;
+
+	str = "[" + level + "]: " + msg;
+	if (_programm != "DefaultProgram")
+	{
+		std::string	seperator = (newline == true) ? "," : " ";
+		str += "\nProgram: " + static_cast<std::string>(_programm);
+		newline = true;
+	}
+	if (file)
+	{
+		std::string	seperator = (newline == true) ? ", " : " ";
+		if (!newline)
+		{
+			str+= "\n";
+			newline = true;
+		}
+		else
+			str+= seperator;
+		str+= "File: " + static_cast<std::string>(file);
+	}
+	if (function)
+	{
+		std::string	seperator = (newline == true) ? ", " : " ";
+		if (!newline)
+		{
+			str+= "\n";
+			newline = true;
+		}
+		else
+			str+= seperator;
+		str+= "Function: " + static_cast<std::string>(function) + seperator;
+	}
+	if (line != 0)
+	{
+		if (!newline)
+		{
+			str+= "\n";
+			newline = true;
+		}
+		str+= "Line: " + std::to_string(line);
+	}
+	str += "\n";
+	std::cout << coloring2(str, color);
 }
+// void Log::logMessage(const std::string& level, const std::string& color,
+// 			const char* file, const char* function, int line, const std::string& msg)
+// {
+// 	std::cout << coloring2("[" + level + "]: ", color)
+// 			<< "Program: " << _programm
+// 			<< ", File: " << file
+// 			<< ", Function: " << function
+// 			<< ", Line: " << line << "\n"
+// 			<< "Message: " << msg << std::endl;
+// }
 
 void Log::debug(const char* file, const char* function, int line, const std::string& msg)
 {
@@ -62,7 +111,7 @@ void Log::error(const char* file, const char* function, int line, const std::str
 	logMessage("ERROR", RED, file, function, line, msg);
 }
 
-void Log::complain( std::string level , const std::string msg, const char* file, const char* function, int line)
+void Log::complain( std::string level, const std::string msg, const char* file, const char* function, int line)
 {
 	size_t	len;
 	//Array which holds pointers to functions (=Array of Functionpointers)

@@ -51,5 +51,5 @@ class Log
 		~Log(void);
 		//Members
 	public:
-		void complain( std::string level , const std::string msg,const char* file, const char* function, int line);
+		void complain( std::string level, const std::string msg = NULL, const char* file = NULL, const char* function = NULL, int line = 0);
 };
