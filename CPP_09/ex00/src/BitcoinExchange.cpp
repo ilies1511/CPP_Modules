@@ -39,8 +39,11 @@ void	BitcoinExchange::fileToMap(void)
 		throw (std::runtime_error("Failed to open Database File"));
 
 	std::string			line;
+	int	iter = 0;
 	while (getline(database, line))
 	{
+		// if (line.compare("date,exchange_rate\n"))
+		// 	continue ;
 		std::istringstream iss(line);
 		std::string			date;
 		std::string			rateStr;
@@ -48,13 +51,15 @@ void	BitcoinExchange::fileToMap(void)
 		{
 			try
 			{
-				double rate = std::stod(rateStr);
+				long double rate = std::stod(rateStr);
 				this->_dataBase[date] = rate; //OG-Syntax: this->_dataBase.insert({date, rate});
 			}
 			catch (const std::exception &e)
 			{
 				printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-				return ;
+				std::cout << "Iteration: " << iter << "\n";
+				std::cout << "Line: " << line << "\n";
+				// return ;
 			}
 		}
 		else
@@ -62,8 +67,24 @@ void	BitcoinExchange::fileToMap(void)
 			std::string error_msg= "Content of " + this->_DataBaseFile + " wrong !";
 			throw (std::runtime_error(error_msg));
 		}
+		iter++;
 	}
 	database.close();
+
+}
+
+void	BitcoinExchange::printMap(void) const
+{
+	if (this->_dataBase.empty())
+		return ;
+	std::map<std::string, long double>::const_iterator it = this->_dataBase.begin();
+	while (it != this->_dataBase.end())
+	{
+		std::cout << "Date: " << it->first;
+		std::cout << "\tRate: " << it->second;
+		std::cout << "\n";
+		++it;
+	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/26 21:17:38 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/26 22:04:37 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	main(int argc, char **argv)
 	// initData(argv[1]);
 	BitcoinExchange bitcoin(argv[1]);
 	bitcoin.fileToMap();
+	bitcoin.printMap();
 	return (0);
 }

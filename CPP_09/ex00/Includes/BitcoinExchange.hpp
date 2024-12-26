@@ -46,7 +46,8 @@ class BitcoinExchange
 	//Members-HelperFNCs
 	public:
 		//getters
-		void								fileToMap(void);
+		void				fileToMap(void);
+		void				printMap(void) const;
 		size_t				getSize(void) const;
 		const	long double	&getValue(std::string key) const; //only read access
 		long double			&getValue(std::string key); //read & write access
