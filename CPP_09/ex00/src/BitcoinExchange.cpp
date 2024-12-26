@@ -31,22 +31,39 @@ BitcoinExchange::~BitcoinExchange(void)
 }
 //OCF -- END
 
-// //Private Helpers
-// void	BitcoinExchange::fileToMap(void)
-// {
-// 	std::stringstream ss;
-// 	std::ifstream database(_DataBaseFile);
+//Private Helpers
+void	BitcoinExchange::fileToMap(void)
+{
+	std::ifstream database(this->_DataBaseFile);
+	if (!database.is_open())
+		throw (std::runtime_error("Failed to open Database File"));
 
-// 	if (database.is_open())
-// 	{
-// 		while (true)
-// 		{
-// 			if (std::cin.eof())
-// 				break ;
-// 			std::stringstream ss()
-// 		}
-// 		database.close();
-// 	}
-// }
+	std::string			line;
+	while (getline(database, line))
+	{
+		std::istringstream iss(line);
+		std::string			date;
+		std::string			rateStr;
+		if (std::getline(iss, date, ',') && std::getline(iss, rateStr))
+		{
+			try
+			{
+				double rate = std::stod(rateStr);
+				this->_dataBase[date] = rate; //OG-Syntax: this->_dataBase.insert({date, rate});
+			}
+			catch (const std::exception &e)
+			{
+				printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+				return ;
+			}
+		}
+		else
+		{
+			std::string error_msg= "Content of " + this->_DataBaseFile + " wrong !";
+			throw (std::runtime_error(error_msg));
+		}
+	}
+	database.close();
+}
 
 

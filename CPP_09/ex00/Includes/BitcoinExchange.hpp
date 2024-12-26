@@ -37,7 +37,6 @@ class BitcoinExchange
 		const std::string					_InputFile;
 	//Helpers
 	private:
-		void								fileToMap(void);
 	//OCF
 	public:
 		BitcoinExchange(const std::string& filename);
@@ -47,6 +46,7 @@ class BitcoinExchange
 	//Members-HelperFNCs
 	public:
 		//getters
+		void								fileToMap(void);
 		size_t				getSize(void) const;
 		const	long double	&getValue(std::string key) const; //only read access
 		long double			&getValue(std::string key); //read & write access
