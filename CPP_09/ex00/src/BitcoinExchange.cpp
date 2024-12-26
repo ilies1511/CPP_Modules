@@ -42,8 +42,6 @@ void	BitcoinExchange::fileToMap(void)
 	int	iter = 0;
 	while (getline(database, line))
 	{
-		// if (line.compare("date,exchange_rate\n"))
-		// 	continue ;
 		std::istringstream iss(line);
 		std::string			date;
 		std::string			rateStr;
@@ -57,9 +55,7 @@ void	BitcoinExchange::fileToMap(void)
 			catch (const std::exception &e)
 			{
 				printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-				std::cout << "Iteration: " << iter << "\n";
-				std::cout << "Line: " << line << "\n";
-				// return ;
+				std::cout << coloring("Iteration: " + std::to_string(iter) + ", Line: " + line + "\n", YELLOW);
 			}
 		}
 		else
@@ -70,7 +66,6 @@ void	BitcoinExchange::fileToMap(void)
 		iter++;
 	}
 	database.close();
-
 }
 
 void	BitcoinExchange::printMap(void) const
@@ -81,7 +76,7 @@ void	BitcoinExchange::printMap(void) const
 	while (it != this->_dataBase.end())
 	{
 		std::cout << "Date: " << it->first;
-		std::cout << "\tRate: " << it->second;
+		std::cout << ", Rate: " << it->second;
 		std::cout << "\n";
 		++it;
 	}

@@ -21,5 +21,5 @@ infile.replace
 *.md
 root_shrubbery
 *.tgz
-*.csv
+# *.csv
 CPP_09/ex00/btc
