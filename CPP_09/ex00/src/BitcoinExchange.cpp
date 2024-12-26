@@ -82,4 +82,10 @@ void	BitcoinExchange::printMap(void) const
 	}
 }
 
-
+long double	BitcoinExchange::getExchangeRat(const std::string& key)
+{
+	std::map<std::string, long double>::const_iterator it = this->_dataBase.lower_bound(key);
+	if (it == this->_dataBase.begin())
+		throw std::out_of_range("Error: bad input => " + key);
+	return (it == this->_dataBase.end() || it->first != key) ? std::prev(it)->second : it->second;
+}

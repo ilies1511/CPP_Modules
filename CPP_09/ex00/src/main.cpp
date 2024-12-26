@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/26 22:04:37 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/27 00:08:23 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int	main(int argc, char **argv)
 	BitcoinExchange bitcoin(argv[1]);
 	bitcoin.fileToMap();
 	bitcoin.printMap();
+
+	std::cout << "Exchange Rate: " << bitcoin.getExchangeRat("2022-03-29") << "\n";
 	return (0);
 }

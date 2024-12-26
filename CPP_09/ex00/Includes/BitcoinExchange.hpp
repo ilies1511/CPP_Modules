@@ -45,8 +45,10 @@ class BitcoinExchange
 		~BitcoinExchange(void);
 	//Members-HelperFNCs
 	public:
-		//getters
+		//Helpers
 		void				fileToMap(void);
+		long double			getExchangeRat(const std::string& key);
+		//getters
 		void				printMap(void) const;
 		size_t				getSize(void) const;
 		const	long double	&getValue(std::string key) const; //only read access
