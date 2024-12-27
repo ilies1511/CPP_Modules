@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/27 00:08:23 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/28 00:42:42 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,24 @@ int	main(int argc, char **argv)
 		__FILE__, __FUNCTION__, __LINE__);
 		log.complain("INFO", "Usage: ./btc <*.csv>");
 		return (1);
-
 	}
-	// initData(argv[1]);
-	BitcoinExchange bitcoin(argv[1]);
-	bitcoin.fileToMap();
-	bitcoin.printMap();
-
-	std::cout << "Exchange Rate: " << bitcoin.getExchangeRat("2022-03-29") << "\n";
+	try
+	{
+		BitcoinExchange bitcoin(argv[1]);
+		bitcoin.fileToMap();
+		bitcoin.printMap();
+		std::cout << "Size: " << bitcoin.getSize() << "\n";
+		std::cout << "Exchange Rate: " << bitcoin.getExchangeRat("2022-03-29") << "\n";
+		if (bitcoin.checkInputFile())
+		{
+			std::cout << "TRUE\n";
+		}
+		else
+			std::cout << "FALSE\n";
+	}
+	catch(const std::exception& e)
+	{
+		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+	}
 	return (0);
 }

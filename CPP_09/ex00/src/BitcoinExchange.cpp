@@ -94,3 +94,113 @@ size_t	BitcoinExchange::getSize(void) const
 {
 	return (this->_dataBase.size());
 }
+
+
+const std::string&		BitcoinExchange::getInputFile(void) const
+{
+	return (this->_InputFile);
+}
+
+// PARSER -- Begin
+
+/*
+	Checks, wether file ends with .txt
+	or is in .txt format
+*/
+bool	BitcoinExchange::checkFileFormat(const std::string& filename) const
+{
+	if (filename.substr(filename.find_last_of(".") + 1) == "txt")
+		return (true);
+	std::cerr << "Error: file format is not .txt" << std::endl;
+	return (false);
+}
+
+/*
+	checks wether header is "date | value"
+*/
+bool	BitcoinExchange::checkHeader(std::ifstream& file) const
+{
+	std::string	line;
+	std::getline(file, line);
+	std::istringstream ss(line);
+	std::string	header_data, header_pipe, header_value;
+
+	if (!(ss >> header_data >> header_pipe >> header_value))
+		return (false);
+	if (header_data != "date" || header_pipe != "|" || header_value != "value")
+		return (false);
+	return (true);
+}
+
+bool	BitcoinExchange::checkDate(const long double& year, const long double& month, const long double& day) const
+{
+	(void)year;
+	(void)month;
+	(void)day;
+
+	//Check if Number is in Bound
+	if (year < 2009 || year > std::numeric_limits<double>::max()
+		|| month < 0 || month > 31 || day < 0 || day > 31)
+		return (false);
+	return (true);
+}
+
+bool	BitcoinExchange::checkValue(const long double &value) const
+{
+	if (value < 0 || value > 1000)
+		return (false);
+	return (true);
+}
+
+/*
+	Parser for the Input-File:
+		Loop through input file, line by line and call appropriate functs to
+		check variables
+*/
+bool BitcoinExchange::checkInputFile(void) const
+{
+	Log	log;
+	std::ifstream file(this->_InputFile);
+
+	if (!checkFileFormat(this->_InputFile)) // Datei endet mit .txt
+		return (false);
+	if (!file.is_open())
+		return (false);
+	if (!checkHeader(file))
+		return (false);
+	std::string line;
+	while (std::getline(file, line))
+	{
+		std::istringstream sstream(line);
+		char dash1, dash2, pipe;
+		int	year;
+		int	month;
+		int	day;
+		long double	value;
+
+		if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
+		{
+			log.complain("ERROR", "Bad Input\n", __FILE__, __FUNCTION__, __LINE__);
+			return (false);
+		}
+		if (dash1 != '-' || dash2 != '-' || pipe != '|')
+		{
+			log.complain("ERROR", "Bad Input\n", __FILE__, __FUNCTION__, __LINE__);
+			return (false);
+		}
+		if (!checkDate(year, month, day))
+		{
+			log.complain("ERROR", "Bad Input\n" + line, __FILE__, __FUNCTION__, __LINE__);
+			return (false);
+		}
+		if (!checkValue(value))
+		{
+			log.complain("ERROR", "Wrong Value\n" + line, __FILE__, __FUNCTION__, __LINE__);
+			return (false);
+		}
+	}
+	return (true);
+}
+// PARSER -- END
+
+

@@ -2,6 +2,8 @@
 
 //Includes
 #include <iomanip> //Precision
+#include <stdbool.h> //Bool
+#include <limits>
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -49,9 +51,18 @@ class BitcoinExchange
 		//Helpers
 		void				fileToMap(void);
 		long double			getExchangeRat(const std::string& key) const;
+		bool				checkInputFile(void) const;
+		bool				checkHeader(std::ifstream& file) const;
+		bool				checkFileFormat(const std::string& filename) const;
+		bool				checkDate(const long double& year, const long double& month, const long double& day) const;
+		bool				checkValue(const long double &value) const;
+
 		//gettersl
 		void				printMap(void) const;
 		size_t				getSize(void) const;
-		const	long double	&getValue(std::string key) const; //only read access
-		long double			&getValue(std::string key); //read & write access
+		const std::string&	getInputFile(void) const;
 };
+
+
+	// const	long double	&getValue(std::string key) const; //only read access
+	// long double			&getValue(std::string key); //read & write access
