@@ -1,6 +1,7 @@
 #pragma once
 
 //Includes
+#include <iomanip> //Precision
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -47,8 +48,8 @@ class BitcoinExchange
 	public:
 		//Helpers
 		void				fileToMap(void);
-		long double			getExchangeRat(const std::string& key);
-		//getters
+		long double			getExchangeRat(const std::string& key) const;
+		//gettersl
 		void				printMap(void) const;
 		size_t				getSize(void) const;
 		const	long double	&getValue(std::string key) const; //only read access
