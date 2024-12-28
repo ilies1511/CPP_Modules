@@ -195,24 +195,19 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 	std::istringstream sstream(line);
 	char dash1, dash2, pipe;
 	int	year, month, day;
-	std::string year_str, month_str, day_str;
 	long double	value;
 
 	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format)\n" + line + "\n"));
-		year_str = std::to_string(year);
-		month_str = std::to_string(month);
-		day_str = std::to_string(day);
 	}
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|')\n" + line + "\n"));
 	}
-	if (year_str.size() != 4 || month_str.size() != 2 || day_str.size() != 2
-			|| !checkDate(year, month, day))
+	if (!checkDate(year, month, day))
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Impossible Date\n" + line + "\n"));
