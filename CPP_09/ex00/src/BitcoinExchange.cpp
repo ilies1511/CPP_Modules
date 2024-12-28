@@ -117,7 +117,7 @@ bool	BitcoinExchange::checkFileFormat(const std::string& filename) const
 }
 
 /*
-	checks wether header is "date | value"
+	Valid Header: "date | value"
 */
 bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 {
@@ -133,15 +133,50 @@ bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 	return (true);
 }
 
-bool	BitcoinExchange::checkDate(const long double& year, const long double& month, const long double& day) const
+/*
+	Valid Date: YYYY-MM-DD (Format)
+				Year:	present and before
+				Moth:	01-12
+				Day:	01-31, + Leap Year Check + February (28/29)
+*/
+bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
 {
-	//Check if Number is in Bound
+	std::cout << "ALO YEAR: " << year << "\n";
 	if (year < 2009 || year > std::numeric_limits<double>::max()
-		|| month < 0 || month > 31 || day < 0 || day > 31)
+		|| month < 1 || month > 12 || day < 1 | day > 31)
+		return (false);
+
+	//Init tm-Struct (ctime lib)
+	struct tm t = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	t.tm_year = year - 1900;
+	t.tm_mon = month - 1; //(0 - 11)
+	t.tm_mday = day;
+
+	//Appling t on function mktime()
+	if (mktime(&t) == -1)
+		return (false);
+
+	//Check if Date is in Future
+	time_t now = time(nullptr);
+	struct tm *now_tm = localtime(&now);
+	if (now_tm->tm_year < t.tm_year
+		|| (now_tm->tm_year == t.tm_year && now_tm->tm_mon < t.tm_mon) ||
+			(now_tm->tm_year == t.tm_year && now_tm->tm_mon == t.tm_mon
+				&& now_tm->tm_mday < t.tm_mday))
+		return (false);
+
+	//Leap Year Check
+	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (month == 2 && (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)))
+		daysInMonth[1] = 29; // Schaltjahr
+	if (day > daysInMonth[month - 1])
 		return (false);
 	return (true);
 }
 
+/*
+	Valid Value: either a float or positive integer, between 0 and 1000
+*/
 bool	BitcoinExchange::checkValue(const long double &value) const
 {
 	if (value < 0 || value > 1000)
@@ -149,27 +184,38 @@ bool	BitcoinExchange::checkValue(const long double &value) const
 	return (true);
 }
 
+/*
+	Central - checkLine checks:
+		- Format
+		- Date
+		- Value
+*/
 bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile) const
 {
 	std::istringstream sstream(line);
 	char dash1, dash2, pipe;
 	int	year, month, day;
+	std::string year_str, month_str, day_str;
 	long double	value;
 
 	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format)\n" + line + "\n"));
+		year_str = std::to_string(year);
+		month_str = std::to_string(month);
+		day_str = std::to_string(day);
 	}
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|')\n" + line + "\n"));
 	}
-	if (!checkDate(year, month, day))
+	if (year_str.size() != 4 || month_str.size() != 2 || day_str.size() != 2
+			|| !checkDate(year, month, day))
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input\n" + line + "\n"));
+		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Impossible Date\n" + line + "\n"));
 	}
 	if (!checkValue(value))
 	{

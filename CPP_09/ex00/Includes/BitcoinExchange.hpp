@@ -4,6 +4,7 @@
 #include <iomanip> //Precision
 #include <stdbool.h> //Bool
 #include <limits>
+#include <ctime>
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -48,8 +49,7 @@ class BitcoinExchange
 	private:
 		bool				checkHeader(std::ifstream& file) const;
 		bool				checkFileFormat(const std::string& filename) const;
-		bool				checkDate(const long double& year, const long double& month, \
-								const long double& day) const;
+		bool				checkDate(int& year, int& month, int& day) const;
 		bool				checkValue(const long double &value) const;
 		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
 		bool				preContentCheck(std::ifstream& file) const; // Calls checkHeader(), checkFileFormat(),
