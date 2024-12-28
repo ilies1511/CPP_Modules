@@ -159,6 +159,7 @@ bool	BitcoinExchange::checkValue(const long double &value) const
 */
 bool BitcoinExchange::checkInputFile(void) const
 {
+	int	line_in_inputFile;
 	Log	log;
 	std::ifstream file(this->_InputFile);
 
@@ -168,33 +169,43 @@ bool BitcoinExchange::checkInputFile(void) const
 		return (false);
 	if (!checkHeader(file))
 		return (false);
-	std::string line;
+	line_in_inputFile = 1;
+	std::string line, stash;
 	while (std::getline(file, line))
 	{
+		//Ignores whitespace Lines
+		if (line.empty() || std::all_of(line.begin(), line.end(), ::isspace))
+		{
+			++line_in_inputFile;
+			continue ;
+		}
+
 		std::istringstream sstream(line);
 		char dash1, dash2, pipe;
-		int	year;
-		int	month;
-		int	day;
+		int	year, month, day;
 		long double	value;
-
+		++line_in_inputFile;
 		if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
 		{
-			log.complain("ERROR", "Bad Input\n", __FILE__, __FUNCTION__, __LINE__);
+			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
+			log.complain("ERROR", "Bad Input (line not in the right format)\n" + line, __FILE__, __FUNCTION__, __LINE__);
 			return (false);
 		}
 		if (dash1 != '-' || dash2 != '-' || pipe != '|')
 		{
-			log.complain("ERROR", "Bad Input\n", __FILE__, __FUNCTION__, __LINE__);
+			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
+			log.complain("ERROR", "Bad Input ('-', '|')\n" + line, __FILE__, __FUNCTION__, __LINE__);
 			return (false);
 		}
 		if (!checkDate(year, month, day))
 		{
+			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
 			log.complain("ERROR", "Bad Input\n" + line, __FILE__, __FUNCTION__, __LINE__);
 			return (false);
 		}
 		if (!checkValue(value))
 		{
+			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
 			log.complain("ERROR", "Wrong Value\n" + line, __FILE__, __FUNCTION__, __LINE__);
 			return (false);
 		}
