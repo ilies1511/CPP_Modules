@@ -38,30 +38,31 @@ class BitcoinExchange
 		size_t								_size;
 		const std::string					_DataBaseFile;
 		const std::string					_InputFile;
-	//Helpers
-	private:
 	//OCF
 	public:
 		BitcoinExchange(const std::string& filename);
 		BitcoinExchange(const BitcoinExchange &og);
 		BitcoinExchange &operator=(const BitcoinExchange &og);
 		~BitcoinExchange(void);
-	//Members-HelperFNCs
+	//Members-HelperFNCs -- BEGIN
+	private:
+		bool				checkHeader(std::ifstream& file) const;
+		bool				checkFileFormat(const std::string& filename) const;
+		bool				checkDate(const long double& year, const long double& month, \
+								const long double& day) const;
+		bool				checkValue(const long double &value) const;
+		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
+		bool				preContentCheck(std::ifstream& file) const; // Calls checkHeader(), checkFileFormat(),
 	public:
 		//Helpers
 		void				fileToMap(void);
 		long double			getExchangeRat(const std::string& key) const;
-		bool				checkInputFile(void) const;
-		bool				checkHeader(std::ifstream& file) const;
-		bool				checkFileFormat(const std::string& filename) const;
-		bool				checkDate(const long double& year, const long double& month, const long double& day) const;
-		bool				checkValue(const long double &value) const;
-		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
-		bool				preContentCheck(std::ifstream& file) const;
-		//gettersl
 		void				printMap(void) const;
+		bool				checkInputFile(void) const; //Entry Point for Parser
+		//getters
 		size_t				getSize(void) const;
 		const std::string&	getInputFile(void) const;
+	//Members-HelperFNCs -- END
 };
 
 
