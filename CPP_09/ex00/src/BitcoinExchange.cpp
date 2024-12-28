@@ -135,10 +135,6 @@ bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 
 bool	BitcoinExchange::checkDate(const long double& year, const long double& month, const long double& day) const
 {
-	(void)year;
-	(void)month;
-	(void)day;
-
 	//Check if Number is in Bound
 	if (year < 2009 || year > std::numeric_limits<double>::max()
 		|| month < 0 || month > 31 || day < 0 || day > 31)
@@ -155,7 +151,6 @@ bool	BitcoinExchange::checkValue(const long double &value) const
 
 bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile) const
 {
-	Log	log;
 	std::istringstream sstream(line);
 	char dash1, dash2, pipe;
 	int	year, month, day;
@@ -163,80 +158,76 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 
 	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
 	{
-		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		log.complain("ERROR", "Bad Input (line not in the right format)\n" + line, __FILE__, __FUNCTION__, __LINE__);
-		return (false);
+		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format)\n" + line + "\n"));
 	}
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
 	{
-		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		log.complain("ERROR", "Bad Input ('-', '|')\n" + line, __FILE__, __FUNCTION__, __LINE__);
-		return (false);
+		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|')\n" + line + "\n"));
 	}
 	if (!checkDate(year, month, day))
 	{
-		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		log.complain("ERROR", "Bad Input\n" + line, __FILE__, __FUNCTION__, __LINE__);
-		return (false);
+		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input\n" + line + "\n"));
 	}
 	if (!checkValue(value))
 	{
-		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		log.complain("ERROR", "Wrong Value\n" + line, __FILE__, __FUNCTION__, __LINE__);
-		return (false);
+		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Wrong Value\n" + line + "\n"));
 	}
 	return (true);
 }
 
 bool	BitcoinExchange::preContentCheck(std::ifstream& file) const
 {
-	Log	log;
-
 	if (!checkFileFormat(this->_InputFile)) // Datei endet mit .txt
-	{
-		log.complain("ERROR", "File must be a *.txt file\n", __FILE__, __FUNCTION__, __LINE__);
-		return (false);
-	}
+		throw (std::runtime_error("File must be a *.txt file"));
 	if (!file.is_open())
-	{
-		log.complain("ERROR", "Failed to open file " + this->_InputFile + "\n");
-		return (false);
-	}
+		throw (std::runtime_error("Failed to open file " + this->_InputFile));
 	if (!checkHeader(file))
-	{
-		log.complain("ERROR", "Wrong File Header\n");
-		return (false);
-	}
+		throw (std::runtime_error("Wrong File Header"));
 	return (true);
 }
 
 /*
-	Parser for the Input-File:
+	Entry Point-Parser for the Input-File:
 		Loop through input file, line by line and call appropriate functs to
 		check variables
 */
-bool BitcoinExchange::checkInputFile(void) const
+bool	BitcoinExchange::checkInputFile(void) const
 {
 	int	line_in_inputFile;
-	Log	log;
 	std::ifstream file(this->_InputFile);
 
-	if (!(this->preContentCheck(file)))
-		return (false);
+	try
+	{
+		this->preContentCheck(file);
+	}
+	catch(const std::exception& e)
+	{
+		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		exit (1);
+	}
 
 	line_in_inputFile = 1;
 	std::string line;
 	while (std::getline(file, line))
 	{
-		//Ignores whitespace Lines
 		if (line.empty() || std::all_of(line.begin(), line.end(), ::isspace))
 		{
 			++line_in_inputFile;
 			continue ;
 		}
 		++line_in_inputFile;
-		if (!(this->checkLine(line, &line_in_inputFile)))
-			return (false);
+		try
+		{
+			this->checkLine(line, &line_in_inputFile);
+		}
+		catch(const std::exception& e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
 	}
 	return (true);
 }
