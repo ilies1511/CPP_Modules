@@ -1,5 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include "printer.hpp"
+#include "Log.hpp"
 
 //OCF -- BEGIN
 BitcoinExchange::BitcoinExchange(const std::string& filename)
@@ -152,6 +153,41 @@ bool	BitcoinExchange::checkValue(const long double &value) const
 	return (true);
 }
 
+bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile) const
+{
+	Log	log;
+	std::istringstream sstream(line);
+	char dash1, dash2, pipe;
+	int	year, month, day;
+	long double	value;
+
+	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
+	{
+		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		log.complain("ERROR", "Bad Input (line not in the right format)\n" + line, __FILE__, __FUNCTION__, __LINE__);
+		return (false);
+	}
+	if (dash1 != '-' || dash2 != '-' || pipe != '|')
+	{
+		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		log.complain("ERROR", "Bad Input ('-', '|')\n" + line, __FILE__, __FUNCTION__, __LINE__);
+		return (false);
+	}
+	if (!checkDate(year, month, day))
+	{
+		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		log.complain("ERROR", "Bad Input\n" + line, __FILE__, __FUNCTION__, __LINE__);
+		return (false);
+	}
+	if (!checkValue(value))
+	{
+		std::cout << coloring ("Line in input file: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
+		log.complain("ERROR", "Wrong Value\n" + line, __FILE__, __FUNCTION__, __LINE__);
+		return (false);
+	}
+	return (true);
+}
+
 /*
 	Parser for the Input-File:
 		Loop through input file, line by line and call appropriate functs to
@@ -164,13 +200,22 @@ bool BitcoinExchange::checkInputFile(void) const
 	std::ifstream file(this->_InputFile);
 
 	if (!checkFileFormat(this->_InputFile)) // Datei endet mit .txt
+	{
+		log.complain("ERROR", "File must be a *.txt file\n");
 		return (false);
+	}
 	if (!file.is_open())
+	{
+		log.complain("ERROR", "File must be a *.txt file\n");
 		return (false);
+	}
 	if (!checkHeader(file))
+	{
+		log.complain("ERROR", "Wrong File Header\n");
 		return (false);
+	}
 	line_in_inputFile = 1;
-	std::string line, stash;
+	std::string line;
 	while (std::getline(file, line))
 	{
 		//Ignores whitespace Lines
@@ -179,36 +224,9 @@ bool BitcoinExchange::checkInputFile(void) const
 			++line_in_inputFile;
 			continue ;
 		}
-
-		std::istringstream sstream(line);
-		char dash1, dash2, pipe;
-		int	year, month, day;
-		long double	value;
 		++line_in_inputFile;
-		if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
-		{
-			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
-			log.complain("ERROR", "Bad Input (line not in the right format)\n" + line, __FILE__, __FUNCTION__, __LINE__);
+		if (!(this->checkLine(line, &line_in_inputFile)))
 			return (false);
-		}
-		if (dash1 != '-' || dash2 != '-' || pipe != '|')
-		{
-			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
-			log.complain("ERROR", "Bad Input ('-', '|')\n" + line, __FILE__, __FUNCTION__, __LINE__);
-			return (false);
-		}
-		if (!checkDate(year, month, day))
-		{
-			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
-			log.complain("ERROR", "Bad Input\n" + line, __FILE__, __FUNCTION__, __LINE__);
-			return (false);
-		}
-		if (!checkValue(value))
-		{
-			std::cout << coloring ("Line in input file: " + std::to_string(line_in_inputFile), PURPLE) << "\n";
-			log.complain("ERROR", "Wrong Value\n" + line, __FILE__, __FUNCTION__, __LINE__);
-			return (false);
-		}
 	}
 	return (true);
 }

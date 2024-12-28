@@ -56,7 +56,7 @@ class BitcoinExchange
 		bool				checkFileFormat(const std::string& filename) const;
 		bool				checkDate(const long double& year, const long double& month, const long double& day) const;
 		bool				checkValue(const long double &value) const;
-
+		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
 		//gettersl
 		void				printMap(void) const;
 		size_t				getSize(void) const;
