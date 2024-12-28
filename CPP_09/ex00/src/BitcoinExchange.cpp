@@ -141,7 +141,6 @@ bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 */
 bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
 {
-	std::cout << "ALO YEAR: " << year << "\n";
 	if (year < 2009 || year > std::numeric_limits<double>::max()
 		|| month < 1 || month > 12 || day < 1 | day > 31)
 		return (false);
@@ -179,6 +178,7 @@ bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
 */
 bool	BitcoinExchange::checkValue(const long double &value) const
 {
+	std::cout << "In checkValue, Value: " << value << "\n";
 	if (value < 0 || value > 1000)
 		return (false);
 	return (true);
@@ -202,6 +202,8 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
 		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format)\n" + line + "\n"));
 	}
+	if (!(sstream >> std::ws).eof())
+		throw std::runtime_error("Unexpected characters in line");
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
 	{
 		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
