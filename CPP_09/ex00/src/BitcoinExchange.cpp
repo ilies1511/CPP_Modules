@@ -188,6 +188,28 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 	return (true);
 }
 
+bool	BitcoinExchange::preContentCheck(std::ifstream& file) const
+{
+	Log	log;
+
+	if (!checkFileFormat(this->_InputFile)) // Datei endet mit .txt
+	{
+		log.complain("ERROR", "File must be a *.txt file\n", __FILE__, __FUNCTION__, __LINE__);
+		return (false);
+	}
+	if (!file.is_open())
+	{
+		log.complain("ERROR", "Failed to open file " + this->_InputFile + "\n");
+		return (false);
+	}
+	if (!checkHeader(file))
+	{
+		log.complain("ERROR", "Wrong File Header\n");
+		return (false);
+	}
+	return (true);
+}
+
 /*
 	Parser for the Input-File:
 		Loop through input file, line by line and call appropriate functs to
@@ -199,21 +221,9 @@ bool BitcoinExchange::checkInputFile(void) const
 	Log	log;
 	std::ifstream file(this->_InputFile);
 
-	if (!checkFileFormat(this->_InputFile)) // Datei endet mit .txt
-	{
-		log.complain("ERROR", "File must be a *.txt file\n");
+	if (!(this->preContentCheck(file)))
 		return (false);
-	}
-	if (!file.is_open())
-	{
-		log.complain("ERROR", "File must be a *.txt file\n");
-		return (false);
-	}
-	if (!checkHeader(file))
-	{
-		log.complain("ERROR", "Wrong File Header\n");
-		return (false);
-	}
+
 	line_in_inputFile = 1;
 	std::string line;
 	while (std::getline(file, line))
