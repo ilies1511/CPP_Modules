@@ -178,7 +178,7 @@ bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
 */
 bool	BitcoinExchange::checkValue(const long double &value) const
 {
-	std::cout << "In checkValue, Value: " << value << "\n";
+	// std::cout << "In checkValue, Value: " << value << "\n";
 	if (value < 0 || value > 1000)
 		return (false);
 	return (true);
@@ -198,27 +198,15 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 	long double	value;
 
 	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
-	{
-		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format)\n" + line + "\n"));
-	}
+		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format) ==> " + line + "\n"));
 	if (!(sstream >> std::ws).eof())
 		throw std::runtime_error("Unexpected characters in line");
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
-	{
-		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|')\n" + line + "\n"));
-	}
+		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|') ==> " + line + "\n"));
 	if (!checkDate(year, month, day))
-	{
-		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Impossible Date\n" + line + "\n"));
-	}
+		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Impossible Date ==> " + line + "\n"));
 	if (!checkValue(value))
-	{
-		std::cout << coloring ("Line in Input File: " + std::to_string(*line_in_inputFile), PURPLE) << "\n";
-		throw (std::runtime_error("Line " + std::to_string(*line_in_inputFile) + " - Wrong Value\n" + line + "\n"));
-	}
+		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Wrong Value ==> " + line + "\n"));
 	return (true);
 }
 
@@ -269,8 +257,12 @@ bool	BitcoinExchange::checkInputFile(void) const
 		}
 		catch(const std::exception& e)
 		{
-			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+			// printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+			std::cerr << e.what();
+			continue ;
 		}
+		//If Line correct, do this
+		this->calculate_ExchangeRateXValue(line);
 	}
 	return (true);
 }
