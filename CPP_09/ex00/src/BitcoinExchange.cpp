@@ -56,7 +56,7 @@ void	BitcoinExchange::fileToMap(void)
 			catch (const std::exception &e)
 			{
 				printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-				std::cout << coloring("Iteration: " + std::to_string(iter) + ", Line: " + line + "\n", YELLOW);
+				std::cout << coloring("Iteration: " + std::to_string(iter) + ", Line: " + line + "\n\n", YELLOW);
 			}
 		}
 		else

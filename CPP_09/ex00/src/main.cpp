@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/28 00:42:42 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/29 03:20:07 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,17 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		log.complain("ERROR", \
-		"Expected Program Input - csv file(database), storing different prices/dates", \
+		"Expected Program Input", \
 		__FILE__, __FUNCTION__, __LINE__);
-		log.complain("INFO", "Usage: ./btc <*.csv>");
+		log.complain("INFO", "Usage: ./btc <*.txt>");
 		return (1);
 	}
-	try
-	{
-		BitcoinExchange bitcoin(argv[1]);
-		bitcoin.fileToMap();
-		bitcoin.printMap();
-		std::cout << "Size: " << bitcoin.getSize() << "\n";
-		std::cout << "Exchange Rate: " << bitcoin.getExchangeRat("2022-03-29") << "\n";
-		if (bitcoin.checkInputFile())
-		{
-			std::cout << "TRUE\n";
-		}
-		else
-			std::cout << "FALSE\n";
-	}
-	catch(const std::exception& e)
-	{
-		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
-	}
+	BitcoinExchange bitcoin(argv[1]);
+	bitcoin.fileToMap();
+	// bitcoin.printMap();
+	// std::cout << "Size: " << bitcoin.getSize() << "\n";
+	// std::cout << "Exchange Rate: " << bitcoin.getExchangeRat("2022-03-29") << "\n";
+	if (bitcoin.checkInputFile())
+		std::cout << coloring("\nSUCCESS\n", GREEN);
 	return (0);
 }
