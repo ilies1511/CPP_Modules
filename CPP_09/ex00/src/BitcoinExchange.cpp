@@ -87,7 +87,7 @@ long double	BitcoinExchange::getExchangeRat(const std::string& key) const
 {
 	std::map<std::string, long double>::const_iterator it = this->_dataBase.lower_bound(key);
 	if (it == this->_dataBase.begin())
-		throw std::out_of_range("Error: bad input => " + key);
+		throw std::out_of_range("Error: Impossible Date => " + key + "\n");
 	return (it == this->_dataBase.end() || it->first != key) ? std::prev(it)->second : it->second;
 }
 
@@ -142,7 +142,8 @@ bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
 {
 	if (year < 2009 || year > std::numeric_limits<double>::max()
-		|| month < 1 || month > 12 || day < 1 | day > 31)
+		|| month < 1 || month > 12 || day < 1 | day > 31
+		|| (year <= 2009 && month <= 1 && day < 2))
 		return (false);
 
 	//Init tm-Struct (ctime lib)
@@ -200,7 +201,7 @@ bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile)
 	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format) ==> " + line + "\n"));
 	if (!(sstream >> std::ws).eof())
-		throw std::runtime_error("Unexpected characters in line");
+		throw std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Unexpected characters in line ==> " + line + "\n");
 	if (dash1 != '-' || dash2 != '-' || pipe != '|')
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|') ==> " + line + "\n"));
 	if (!checkDate(year, month, day))
@@ -254,6 +255,8 @@ bool	BitcoinExchange::checkInputFile(void) const
 		try
 		{
 			this->checkLine(line, &line_in_inputFile);
+			//If Line correct, calculate ExchangeRateXValue
+			this->calculate_ExchangeRateXValue(line);
 		}
 		catch(const std::exception& e)
 		{
@@ -261,8 +264,6 @@ bool	BitcoinExchange::checkInputFile(void) const
 			std::cerr << e.what();
 			continue ;
 		}
-		//If Line correct, do this
-		this->calculate_ExchangeRateXValue(line);
 	}
 	return (true);
 }

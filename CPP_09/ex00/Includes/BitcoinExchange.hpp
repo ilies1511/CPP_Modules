@@ -51,21 +51,19 @@ class BitcoinExchange
 		bool				checkFileFormat(const std::string& filename) const;
 		bool				checkDate(int& year, int& month, int& day) const;
 		bool				checkValue(const long double &value) const;
-		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
+		bool				checkLine(const std::string &line, int *line_in_inputFile) const; // Calls checkDate(), checkValue()
 		bool				preContentCheck(std::ifstream& file) const; // Calls checkHeader(), checkFileFormat(),
-		void				calculate_ExchangeRateXValue(std::string& line) const;
+		void				calculate_ExchangeRateXValue(std::string& line) const; // Calls getExchangeRat()
+		long double			getExchangeRat(const std::string& key) const;
 	public:
 		//Helpers
 		void				fileToMap(void);
-		long double			getExchangeRat(const std::string& key) const;
 		void				printMap(void) const;
-		bool				checkInputFile(void) const; //Entry Point for Parser
+		bool				checkInputFile(void) const; //Entry Point for Parser --> calls 1. preContentCheck(), 2. checkLine() in Loop until last line of Input File
 		//getters
 		size_t				getSize(void) const;
 		const std::string&	getInputFile(void) const;
 	//Members-HelperFNCs -- END
 };
-
-
 	// const	long double	&getValue(std::string key) const; //only read access
 	// long double			&getValue(std::string key); //read & write access
