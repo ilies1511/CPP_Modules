@@ -276,4 +276,30 @@ bool	BitcoinExchange::checkInputFile(void) const
 }
 // PARSER -- END
 
+bool is_atLeastTwoDigits(int number)
+{
+	return number >= 10;
+}
+void	BitcoinExchange::calculate_ExchangeRateXValue(std::string& line) const
+{
+	std::string key;
+	std::string year_str, month_str, day_str;
+	char dash1, dash2, pipe;
+	int	year, month, day;
+	long double	value, res;
+	std::istringstream sstream(line);
+
+	sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value;
+	month_str = std::to_string(month);
+ 	day_str =  std::to_string(day);
+	if (!is_atLeastTwoDigits(month))
+		month_str = "0" + month_str;
+	if (!is_atLeastTwoDigits(day))
+		day_str = "0" + day_str;
+	key = std::to_string(year) + dash1 + month_str + dash2 + day_str;
+	res = this->getExchangeRat(key) * value;
+	std::cout << coloring(key + " => " + std::to_string(value) + " = " + std::to_string(res) + "\n", GREEN);
+	// std::cout << key << " => " << value << " = " << res << "\n";
+}
+
 

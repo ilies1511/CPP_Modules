@@ -53,6 +53,7 @@ class BitcoinExchange
 		bool				checkValue(const long double &value) const;
 		bool				checkLine(const std::string &line, int *line_in_inputFile) const;
 		bool				preContentCheck(std::ifstream& file) const; // Calls checkHeader(), checkFileFormat(),
+		void				calculate_ExchangeRateXValue(std::string& line) const;
 	public:
 		//Helpers
 		void				fileToMap(void);
