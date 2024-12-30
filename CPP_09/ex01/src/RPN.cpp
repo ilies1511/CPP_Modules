@@ -59,6 +59,19 @@ void ReversePolishNotation::pushDigit(int x)
 {
 	this->_data.push(x);
 }
+
+void ReversePolishNotation::setString(const std::string& str)
+{
+	while (!(this->_data.empty()))
+		this->_data.pop();
+	this->_rawStr = str;
+}
+
+const int &ReversePolishNotation::getTop(void) const
+{
+	return (this->_data.top());
+}
+
 //Helper -- END
 
 //RPN-FUNCS -- BEGIN

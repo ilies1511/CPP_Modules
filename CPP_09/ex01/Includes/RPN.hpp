@@ -56,6 +56,8 @@ class ReversePolishNotation
 	public:
 		void printStack(void) const;
 		void pushDigit(int x);
+		void setString(const std::string& str);
+		const int &getTop(void) const;
 		// const std::string getRaInputStr(void) const;
 		//Getter, die mir zwei Elemente des Stacks rausgibt in Form von Pair
 };
