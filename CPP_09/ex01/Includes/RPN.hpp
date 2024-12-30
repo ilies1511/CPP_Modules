@@ -20,6 +20,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <regex>
+#include <unordered_set>
 
 //Own
 #include "printer.hpp"
@@ -30,7 +31,8 @@ class ReversePolishNotation
 	private:
 		std::stack<int> _data;
 		std::string _rawStr;
-		static const std::array<char, 4> _OperationTokens;
+		// static const std::array<char, 4> _OperationTokens;
+		static const std::unordered_set<char> _OperationTokens;
 	//OCF
 	public:
 		ReversePolishNotation(void); //Run own tests
@@ -53,7 +55,11 @@ class ReversePolishNotation
 	//Getters
 	public:
 		char getOperationToken(const size_t idx) const;
-		// const std::string getRaWInputStr(void) const;
+	//Test
+	public:
+		void printStack(void) const;
+		void pushDigit(int x);
+		// const std::string getRaInputStr(void) const;
 		//Getter, die mir zwei Elemente des Stacks rausgibt in Form von Pair
 };
 
