@@ -98,7 +98,10 @@ void	ReversePolishNotation::processInput(void)
 	{
 		while (ss >> token)
 		{
-			//Wenn aktueller String Zahl ist, dann range check
+			/*
+				Digit-Check:
+					Wenn aktueller String Zahl ist, dann Range-Check
+			*/
 			if (std::all_of(token.begin(), token.end(), ::isdigit))
 			{
 				int digit = std::stoi(token);
@@ -123,7 +126,7 @@ void	ReversePolishNotation::processInput(void)
 		}
 		//Am Ende muss nur noch ein Element im Stack sein
 		if (_data.size() != 1)
-			throw std::runtime_error("Error: Invalid RPN-Expression");
+			throw std::runtime_error("Error: Invalid RPN-Expression (n = Amount of Digits : k = n - 1 = Amount of Operation-Tokens)");
 		std::cout << coloring("Result: " + std::to_string(_data.top()) + "\n", GREEN);
 	}
 	catch(const std::exception& e)

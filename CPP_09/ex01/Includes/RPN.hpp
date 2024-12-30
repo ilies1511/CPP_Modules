@@ -52,9 +52,6 @@ class ReversePolishNotation
 				3. If '1.' recognized Operation Token, to operation, and push back to stack
 		*/
 		void	processInput(void);
-	//Getters
-	public:
-		char getOperationToken(const size_t idx) const;
 	//Test
 	public:
 		void printStack(void) const;
