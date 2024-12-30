@@ -140,7 +140,7 @@ void	ReversePolishNotation::processInput(void)
 		//Am Ende muss nur noch ein Element im Stack sein
 		if (_data.size() != 1)
 			throw std::runtime_error("Error: Invalid RPN-Expression (n = Amount of Digits : k = n - 1 = Amount of Operation-Tokens)");
-		std::cout << coloring("Result: " + std::to_string(_data.top()) + "\n", GREEN);
+		// std::cout << coloring("Result: " + std::to_string(_data.top()) + "\n", GREEN);
 	}
 	catch(const std::exception& e)
 	{
