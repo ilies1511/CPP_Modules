@@ -99,7 +99,6 @@ void	ReversePolishNotation::doOperation(char OperationToken)
 	}
 	// std::cout << b << OperationToken << a << " = " << res << "\n";
 	this->_data.push(res);
-	// this->printStack();
 }
 
 void	ReversePolishNotation::processInput(void)
@@ -123,7 +122,7 @@ void	ReversePolishNotation::processInput(void)
 				this->_data.push(digit);
 			}
 			/*
-				Token Check:
+				Operation-Token Check:
 					this->_OperationTokens.count(token[0]) --> checks wether
 					token in appropriate size + if token is in _OperationTokens
 			*/
