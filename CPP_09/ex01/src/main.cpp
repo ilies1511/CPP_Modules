@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/30 23:38:25 by iziane           ###   ########.fr       */
+/*   Updated: 2024/12/31 02:23:04 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,17 @@ int	main(int argc, char **argv)
 	}
 	else if (argc == 2)
 	{
-		printer::Header("Command Line Input Mode\n");
-		ReversePolishNotation	rpn(argv[1]);
-		rpn.processInput();
-		std::cout << coloring(std::to_string(rpn.getTop()) + "\n", GREEN);
+		try
+		{
+			printer::Header("Command Line Input Mode\n");
+			ReversePolishNotation	rpn(argv[1]);
+			rpn.processInput();
+			std::cout << coloring(std::to_string(rpn.getTop()) + "\n", GREEN);
+		}
+		catch(const std::exception& e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
 	}
 	else
 	{

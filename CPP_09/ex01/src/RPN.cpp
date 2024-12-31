@@ -143,7 +143,7 @@ void	ReversePolishNotation::processInput(void)
 	}
 	catch(const std::exception& e)
 	{
-		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		throw ;
 	}
 }
 //RPN-FUNCS -- END
