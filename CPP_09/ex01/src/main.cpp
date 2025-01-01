@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/31 02:23:04 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/01 23:51:55 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,16 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printer::Header("Test-Suit Mode\n");
-		testrunner::test_printStack();
-		testrunner::test_IST_SOLL();
+		try
+		{
+			printer::Header("Test-Suit Mode\n");
+			testrunner::test_printStack();
+			testrunner::test_IST_SOLL();
+		}
+		catch(const std::exception& e)
+		{
+			printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+		}
 	}
 	return (0);
 }
