@@ -39,7 +39,11 @@ void	BitcoinExchange::fileToMap(void)
 	if (!database.is_open())
 		throw (std::runtime_error("Failed to open Database File"));
 
-	std::string			line;
+	std::string	line;
+
+	//Skip Header: date,exchange_rate
+	if (getline(database, line) && line.compare("date,exchange_rate"))
+		throw (std::runtime_error("Errro: Invalid Header: " + line));
 	int	iter = 0;
 	while (getline(database, line))
 	{
@@ -296,7 +300,7 @@ void	BitcoinExchange::calculate_ExchangeRateXValue(std::string& line) const
 
 	sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value;
 	month_str = std::to_string(month);
- 	day_str =  std::to_string(day);
+	day_str =  std::to_string(day);
 	if (!is_atLeastTwoDigits(month))
 		month_str = "0" + month_str;
 	if (!is_atLeastTwoDigits(day))
