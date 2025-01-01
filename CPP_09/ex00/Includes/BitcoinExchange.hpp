@@ -49,7 +49,7 @@ class BitcoinExchange
 	private:
 		bool				checkHeader(std::ifstream& file) const;
 		bool				checkFileFormat(const std::string& filename) const;
-		bool				checkDate(int& year, int& month, int& day) const;
+		bool				checkDate(std::string &date) const;
 		bool				checkValue(const long double &value) const;
 		bool				checkLine(const std::string &line, int *line_in_inputFile) const; // Calls checkDate(), checkValue()
 		bool				preContentCheck(std::ifstream& file) const; // Calls checkHeader(), checkFileFormat(),

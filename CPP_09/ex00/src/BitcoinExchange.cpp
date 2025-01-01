@@ -139,19 +139,26 @@ bool	BitcoinExchange::checkHeader(std::ifstream& file) const
 				Moth:	01-12
 				Day:	01-31, + Leap Year Check + February (28/29)
 */
-bool	BitcoinExchange::checkDate(int &year, int &month, int &day) const
+bool	BitcoinExchange::checkDate(std::string &date) const
 {
+	// std::cout << "Date: " << date << "\n";
+	std::istringstream ss(date);
+	int year, month, day;
+	struct tm t = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+	ss >> std::get_time(&t, "%Y-%m-%d");
+	if (ss.fail())
+		return (false);
+	year = (t.tm_year + 1900);
+	month = (t.tm_mon + 1); // (0-11)
+	day = t.tm_mday;
+
+	// std::cout << "In checkDate:\n" << "Year: " << year \
+	// 	<< ", Month: " << month << ", Day: " << day << "\n";
 	if (year < 2009 || year > std::numeric_limits<double>::max()
-		|| month < 1 || month > 12 || day < 1 | day > 31
+		|| month < 1 || month > 12 || day < 1 || day > 31
 		|| (year <= 2009 && month <= 1 && day < 2))
 		return (false);
-
-	//Init tm-Struct (ctime lib)
-	struct tm t = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	t.tm_year = year - 1900;
-	t.tm_mon = month - 1; //(0 - 11)
-	t.tm_mday = day;
-
 	//Appling t on function mktime()
 	if (mktime(&t) == -1)
 		return (false);
@@ -194,17 +201,22 @@ bool	BitcoinExchange::checkValue(const long double &value) const
 bool	BitcoinExchange::checkLine(const std::string &line, int *line_in_inputFile) const
 {
 	std::istringstream sstream(line);
-	char dash1, dash2, pipe;
-	int	year, month, day;
+	// char dash1, dash2, pipe;
+	char pipe;
+	std::string date;
+	// int	year, month, day;
 	long double	value;
 
-	if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
+	// if (!(sstream >> year >> dash1 >> month >> dash2 >> day >> pipe >> value))
+	if (!(sstream >> date >> pipe >> value))
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input (line not in the right format) ==> " + line + "\n"));
 	if (!(sstream >> std::ws).eof())
 		throw std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Unexpected characters in line ==> " + line + "\n");
-	if (dash1 != '-' || dash2 != '-' || pipe != '|')
+	// if (dash1 != '-' || dash2 != '-' || pipe != '|')
+	if (pipe != '|')
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Bad Input ('-', '|') ==> " + line + "\n"));
-	if (!checkDate(year, month, day))
+	// if (!checkDate(year, month, day))
+	if (!checkDate(date))
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Impossible Date ==> " + line + "\n"));
 	if (!checkValue(value))
 		throw (std::runtime_error("Error: Line " + std::to_string(*line_in_inputFile) + " - Wrong Value ==> " + line + "\n"));
