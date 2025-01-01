@@ -90,7 +90,7 @@ void	ReversePolishNotation::doOperation(char OperationToken)
 		case '-': res = b - a; break;
 		case '*': res = b * a; break;
 		case '/':
-			if (b == 0)
+			if (a == 0)
 				throw (std::runtime_error("Error: can not divide by 0 !"));
 			res = b / a;
 			break;
