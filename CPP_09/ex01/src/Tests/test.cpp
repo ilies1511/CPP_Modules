@@ -6,11 +6,13 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/02 00:38:15 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/02 01:08:31 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Tests/test.hpp"
+#include <vector>
+#include "RPN.hpp"
 // #include "test.hpp"
 
 //IMPLEMENTATION
@@ -63,13 +65,20 @@ namespace testrunner
 		*/
 		ReversePolishNotation	rpn;
 
-		handle_try_catch("8 9 * 9 - 9 - 9 - 4 - 1 +", rpn);
-		handle_try_catch("7 7 * 7 -", rpn);
-		handle_try_catch("1 2 * 2 / 2 * 2 4 - +", rpn);
-		handle_try_catch("9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -", rpn);
-		handle_try_catch("1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /", rpn);
-		handle_try_catch("9 0 /", rpn);
-		handle_try_catch("9 1 * 2 / 0", rpn);
-		handle_try_catch("9 1 * 2 / 1 1 3", rpn);
+		const std::vector<std::string> tests = {
+			"8 9 * 9 - 9 - 9 - 4 - 1 +",
+			"7 7 * 7 -",
+			"1 2 * 2 / 2 * 2 4 - +",
+			"9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -",
+			"1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /",
+			"1 1 1 1 1 1 1 + + + + + +",
+			"9 1 * 2 / 2 3 4 5 * 6 + - + * ",
+			"  8   			9   *   9    -    9     -   9    -   4  -   1   +    ",
+			"9 0 /",
+			"9 1 * 2 / 0",
+			"9 1 * 2 / 1 1 3",
+		};
+		for (size_t i = 0; i < tests.size(); i++)
+			handle_try_catch(tests.at(i), rpn);
 	}
 } // namespace testrunnner
