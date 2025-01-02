@@ -6,20 +6,15 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/02 02:30:28 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/02 02:55:54 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-	--tool=memcheck		leaks, invalid reads/writes detection
-	--tool=callgrind	runtime profiling
-	--tool=cachegrind	cache profiling
-	--tool=massif		heap memory profiling
-	--tool=helgrind		locking order violation detection
-	--tool=drd			multithreading error detection
+	find . -type f -name 'Makefile' -execdir make fclean \;
 
-		Leaks Check:
-			dorker valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./ex03.out
+	Leaks Check:
+		dorker valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./ex03.out
 */
 
 #include "../Includes/Tests/test.hpp"
@@ -38,7 +33,7 @@ int	main(int argc, char **argv)
 		log.complain("ERROR", \
 		"Expected Program Input", \
 		__FILE__, __FUNCTION__, __LINE__);
-		log.complain("INFO", "Usage: ./PmergeMe <Input>");
+		log.complain("INFO", "Usage: ./PmergeMe <Input: Positive integer sequence>");
 		return (1);
 	}
 	//[...]
