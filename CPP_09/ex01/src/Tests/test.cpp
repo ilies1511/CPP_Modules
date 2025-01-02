@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:50:36 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/02 01:08:31 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/02 03:39:24 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ namespace testrunner
 		*/
 		ReversePolishNotation	rpn;
 
-		const std::vector<std::string> tests = {
+		const std::string tests[] = {
 			"8 9 * 9 - 9 - 9 - 4 - 1 +",
 			"7 7 * 7 -",
 			"1 2 * 2 / 2 * 2 4 - +",
@@ -76,9 +76,9 @@ namespace testrunner
 			"  8   			9   *   9    -    9     -   9    -   4  -   1   +    ",
 			"9 0 /",
 			"9 1 * 2 / 0",
-			"9 1 * 2 / 1 1 3",
+			"9 1 * 2 / 1 1 3"
 		};
-		for (size_t i = 0; i < tests.size(); i++)
-			handle_try_catch(tests.at(i), rpn);
+		for (size_t i = 0; i < (sizeof(tests) / sizeof(tests[0])) ; i++)
+			handle_try_catch(tests[i], rpn);
 	}
 } // namespace testrunnner
