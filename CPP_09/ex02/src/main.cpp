@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/02 01:31:33 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/02 02:30:28 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 {
 	Log	log("PmergeMe");
 
+	(void)argc;
+	(void)argv;
 	if (argc < 2)
 	{
 		log.complain("ERROR", \
