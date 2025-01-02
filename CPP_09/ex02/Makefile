@@ -46,15 +46,16 @@ ARFLAGS := -rcs
 
 # ANSI color codes
 GREEN := \033[0;32m
+MAGENTA := \033[0;35m
 BOLD := \033[1m
-NC := \033[0m # No Color
+NC := \033[0m # Reset
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 #$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	$(CPP) $(LDFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(BOLD)$(GREEN)Successful Compilation$(NC)"
+	@echo "$(GREEN)$(BOLD)Successful Compilation$(NC)"
 
 # Rule to compile .o files
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
@@ -70,6 +71,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	@echo "$(MAGENTA)$(BOLD)Executable + Object Files cleaned$(NC)"
 
 re: fclean submodule_update all
 
@@ -80,7 +82,7 @@ bonus: all
 
 san: fclean
 	make CFLAGS="$(CFLAGS_SAN)" LDFLAGS="$(LDFLAGS_SAN)"
-	@echo "$(BOLD)$(GREEN)Successful Compilation with fsan$(NC)"
+	@echo "$(GREEN)$(BOLD)Successful Compilation with fsan$(NC)"
 
 re_sub: submodule_rebuild
 
