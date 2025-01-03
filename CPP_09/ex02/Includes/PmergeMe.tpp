@@ -87,16 +87,26 @@ void PmergeMe<Container>::processInput()
 template <typename Container>
 void	PmergeMe<Container>::displayOutput()
 {
+	size_t	i;
 	std::cout << "Test displayOutput() in .tpp file\n";
 	std::chrono::high_resolution_clock::time_point	start;
 	std::chrono::high_resolution_clock::time_point	end;
 	std::chrono::duration<double, std::micro>		elapsed;
 
 	std::cout << "Before: ";
-	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it)
-		std::cout << *it << " ";
+	i = 0;
+	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it, ++i)
+	{
+		std::cout << *it;
+		if (_container.size() >= 300 && i == 5)
+		{
+			std::cout << " [...]\n";
+			break;
+		}
+		if (i < _container.size() - 1)
+			std::cout << " ";
+	}
 	std::cout << std::endl;
-
 	start = std::chrono::high_resolution_clock::now();
 	sort();
 	end = std::chrono::high_resolution_clock::now();
@@ -105,8 +115,18 @@ void	PmergeMe<Container>::displayOutput()
 		<< " elements with " << typeName<Container>() << ": " << elapsed.count() \
 			<< " us" << std::endl;
 	std::cout << "After: ";
-	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it)
-		std::cout << *it << " ";
+	i = 0;
+	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it, ++i)
+	{
+		std::cout << *it;
+		if (_container.size() >= 300 && i == 5)
+		{
+			std::cout << " [...]\n";
+			break;
+		}
+		if (i < _container.size() - 1)
+			std::cout << " ";
+	}
 	std::cout << std::endl;
 }
 
