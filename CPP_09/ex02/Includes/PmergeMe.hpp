@@ -41,7 +41,7 @@ class PmergeMe
 		virtual ~PmergeMe(void);
 	//Generic Member-FNCS
 	public:
-		bool			processInput();
+		void			processInput();
 		virtual void	sort() = 0;
 		void			displayOutput() const;
 };

@@ -12,7 +12,7 @@ PmergeMe<Container>::PmergeMe(int argc, char **argv)
 	}
 	catch(const std::exception& e)
 	{
-		throw (std::invalid_argument("Error processing input arguments."));
+		throw;
 	}
 }
 
@@ -50,7 +50,7 @@ PmergeMe<Container>::~PmergeMe(void)
 	Handels Input like: ./PmergeMe 13 42 1 "124 14" 43
 */
 template <typename Container>
-bool PmergeMe<Container>::processInput()
+void PmergeMe<Container>::processInput()
 {
 	int	number;
 	std::string	token;
@@ -59,28 +59,18 @@ bool PmergeMe<Container>::processInput()
 	for (int i = 1; i < _argc; i++)
 	{
 		std::istringstream	iss(_argv[i]);
-		// while (iss >> number)
 		while (iss >> token)
 		{
 			if (!std::all_of(token.begin(), token.end(), ::isdigit))
-			{
-				std::cerr << "Error: Invalid input value (non-integer): " << token << std::endl;
-				return (false);
-			}
+				throw (std::invalid_argument("Invalid input (non-integer): " + token));
 			number = std::stoi(token);
 			if (number <= 0 || number > std::numeric_limits<int>::max())
-			{
-				std::cerr << "Error: Invalid input value: " << _argv[i] << std::endl;
-				return (false);
-			}
+				throw (std::invalid_argument("Invalid input (out of range): " + token));
 			// this->_container.push_back(number);
 			this->_container.emplace_back(number);
 		}
 		if (iss.fail() && !iss.eof())
-		{
-			std::cerr << "Error: Invalid input value: " << _argv[i] << std::endl;
-			return (false);
-		}
+			throw (std::invalid_argument("Input parsing error for argument: " + std::string(_argv[i])));
 	}
 	std::cout << "POST insertion\n";
 	for (size_t i = 0; i < _container.size(); i++)
@@ -92,7 +82,7 @@ bool PmergeMe<Container>::processInput()
 		}
 	}
 	std::cout << "\n";
-	return (true);
+	// return (true);
 }
 
 template <typename Container>
