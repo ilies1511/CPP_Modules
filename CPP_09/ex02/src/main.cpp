@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/03 06:11:45 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/03 11:38:00 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ int	main(int argc, char **argv)
 	try
 	{
 		VectorPmergeMe vector(argc, argv);
-		// DequePmergeMe deque(argc, argv);
-		// deque.sort();
+		DequePmergeMe deque(argc, argv);
 		//[...]
+		// vector.processInput();
+		vector.displayOutput();
+		deque.displayOutput();
 	}
 	catch(const std::exception& e)
 	{

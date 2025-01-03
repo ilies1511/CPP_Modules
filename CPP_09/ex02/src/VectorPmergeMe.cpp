@@ -31,4 +31,3 @@ void	VectorPmergeMe::sort()
 {
 	std::cout << "In VectorPmergeMe sort()\n";
 }
-

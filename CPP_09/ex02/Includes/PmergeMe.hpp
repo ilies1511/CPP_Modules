@@ -21,6 +21,8 @@
 	//Exception
 #include <stdexcept>
 #include <chrono> //Time-Measurement
+#include "typeName.hpp"
+
 
 //Own
 #include "printer.hpp"
@@ -43,7 +45,7 @@ class PmergeMe
 	public:
 		void			processInput();
 		virtual void	sort() = 0;
-		void			displayOutput() const;
+		void			displayOutput();
 };
 
 //Definitions of template FNCs
