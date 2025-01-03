@@ -20,23 +20,31 @@
 #include <string>
 	//Exception
 #include <stdexcept>
+#include <chrono> //Time-Measurement
 
 //Own
 #include "printer.hpp"
 
-
+		// typedef std::pair<int, int>	Pair;
+template <typename Container>
 class PmergeMe
 {
-	private:
-		std::vector<int> _vector;
-		std::deque<int> _deque;
+	protected:
+		Container					_container;
+		int							_argc;
+		char						**_argv;
 	//OCF
 	public:
-		PmergeMe(void);
+		PmergeMe(int argc, char **argv);
 		PmergeMe(const PmergeMe &og);
 		PmergeMe &operator=(const PmergeMe &og);
-		~PmergeMe(void);
-	//Parser
+		virtual ~PmergeMe(void);
+	//Generic Member-FNCS
 	public:
-		bool checkInput(int argc, char **argv);
+		bool			processInput();
+		virtual void	sort() = 0;
+		void			displayOutput() const;
 };
+
+//Definitions of template FNCs
+#include "PmergeMe.tpp"
