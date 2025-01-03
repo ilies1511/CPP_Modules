@@ -6,6 +6,14 @@ PmergeMe<Container>::PmergeMe(int argc, char **argv)
 	: _container(), _argc(argc), _argv(argv)
 {
 	printer::ocf_printer("PmergeMe", printer::OCF_TYPE::DC);
+	try
+	{
+		processInput();
+	}
+	catch(const std::exception& e)
+	{
+		throw (std::invalid_argument("Error processing input arguments."));
+	}
 }
 
 template <typename Container>
@@ -37,10 +45,54 @@ PmergeMe<Container>::~PmergeMe(void)
 //OCF -- END
 
 //Member - FNCs Definition
+
+/*
+	Handels Input like: ./PmergeMe 13 42 1 "124 14" 43
+*/
 template <typename Container>
 bool PmergeMe<Container>::processInput()
 {
-	std::cout << "Test processInput() in .tpp file\n";
+	int	number;
+	std::string	token;
+
+	std::cout << "In Process Input\n";
+	for (int i = 1; i < _argc; i++)
+	{
+		std::istringstream	iss(_argv[i]);
+		// while (iss >> number)
+		while (iss >> token)
+		{
+			if (!std::all_of(token.begin(), token.end(), ::isdigit))
+			{
+				std::cerr << "Error: Invalid input value (non-integer): " << token << std::endl;
+				return (false);
+			}
+			number = std::stoi(token);
+			if (number <= 0 || number > std::numeric_limits<int>::max())
+			{
+				std::cerr << "Error: Invalid input value: " << _argv[i] << std::endl;
+				return (false);
+			}
+			// this->_container.push_back(number);
+			this->_container.emplace_back(number);
+		}
+		if (iss.fail() && !iss.eof())
+		{
+			std::cerr << "Error: Invalid input value: " << _argv[i] << std::endl;
+			return (false);
+		}
+	}
+	std::cout << "POST insertion\n";
+	for (size_t i = 0; i < _container.size(); i++)
+	{
+		std::cout << _container.at(i);
+		if (i < _container.size() - 1)
+		{
+			std::cout << " ";
+		}
+	}
+	std::cout << "\n";
+	return (true);
 }
 
 template <typename Container>

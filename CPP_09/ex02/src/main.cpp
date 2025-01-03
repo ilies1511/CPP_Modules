@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/03 05:06:35 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/03 06:11:45 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ int	main(int argc, char **argv)
 		log.complain("INFO", "Usage: ./PmergeMe <Input: Positive integer sequence>");
 		return (1);
 	}
-	VectorPmergeMe vector(argc, argv);
-	vector.sort();
-	DequePmergeMe deque(argc, argv);
-	deque.sort();
-	//[...]
+	try
+	{
+		VectorPmergeMe vector(argc, argv);
+		// DequePmergeMe deque(argc, argv);
+		// deque.sort();
+		//[...]
+	}
+	catch(const std::exception& e)
+	{
+		printer::LogException(e, __FILE__, __FUNCTION__, __LINE__);
+	}
 	return (0);
 }
