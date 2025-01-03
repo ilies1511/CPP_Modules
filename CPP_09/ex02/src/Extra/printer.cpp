@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:08 by iziane            #+#    #+#             */
-/*   Updated: 2024/12/07 21:34:09 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/03 06:47:35 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ namespace printer
 		std::cerr << coloring("File: ", YELLOW) << file << "\n";
 		std::cerr << coloring("Function: ", YELLOW) << function << "\n";
 		std::cerr << coloring("Line: ", YELLOW) << line << "\n";
-		std::cerr << coloring("Reason: ", YELLOW) << e.what() << "\n";
+		std::cerr << coloring("Reason: ", YELLOW) << coloring(e.what(), RED) << "\n";
 	}
 }
 
