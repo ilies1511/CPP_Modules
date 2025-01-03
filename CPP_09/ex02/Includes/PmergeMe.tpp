@@ -66,6 +66,8 @@ void PmergeMe<Container>::processInput()
 			number = std::stoi(token);
 			if (number <= 0 || number > std::numeric_limits<int>::max())
 				throw (std::invalid_argument("Invalid input (out of range): " + token));
+			if (std::find(this->_container.begin(), this->_container.end(), number) != this->_container.end())
+				throw std::invalid_argument("Duplicate input: " + token);
 			// this->_container.push_back(number);
 			this->_container.emplace_back(number);
 		}
