@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:34:08 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/03 06:47:35 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/03 12:12:22 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ namespace printer
 {
 	void ocf_printer(const std::string& class_name, OCF_TYPE type, const std::string& color)
 	{
+		(void)class_name;
+		(void)type;
+		(void)color;
+		#ifdef DEBUG
 		std::string str;
 		switch (type)
 		{
@@ -32,6 +36,7 @@ namespace printer
 			case OCF_TYPE::D:	str = "[" + class_name + "]: " + "Destructor called";	break;
 		}
 		std::cout << coloring(str, color) << "\n";
+		#endif
 	}
 
 	void PrintMessage(const std::string& message, MessageType type)

@@ -90,6 +90,10 @@ submodule_rebuild:
 	git submodule deinit -f .
 	git submodule update --init --recursive
 
+debug: clean
+debug: CFLAGS += -DDEBUG
+debug: $(NAME)
+
 -include $(OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re bonus re_sub submodule_rebuild san
+.PHONY: all clean fclean re bonus re_sub submodule_rebuild san debug
