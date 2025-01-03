@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/02 02:55:54 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/03 05:06:35 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #include "../Includes/Extra/printer.hpp"
 #include "Log.hpp"
 #include "PmergeMe.hpp"
+#include "VectorPmergeMe.hpp"
+#include "DequePmergeMe.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -36,6 +38,10 @@ int	main(int argc, char **argv)
 		log.complain("INFO", "Usage: ./PmergeMe <Input: Positive integer sequence>");
 		return (1);
 	}
+	VectorPmergeMe vector(argc, argv);
+	vector.sort();
+	DequePmergeMe deque(argc, argv);
+	deque.sort();
 	//[...]
 	return (0);
 }
