@@ -1,0 +1,15 @@
+Merge-Insertion (Ford Johson Algo):
+
+n = Amount of elements
+K = element
+
+Assuming we have 21 elements.
+
+1. We start comparing the 10 pairs
+	K1: K2, K3:4 ..., Kn-2, Kn-1
+
+2. Sorting the ten larger elements fo the pairs using merge Insertion
+
+3. That gives us following configuration:
+	Main-Chain --> a-elements (bigger elements of pairs sorted)
+	pend-Chain --> b-elements (Has to be Insorted using Jocobs-Thal & Binary-Search)
