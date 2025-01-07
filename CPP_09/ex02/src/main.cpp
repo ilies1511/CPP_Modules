@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/03 11:38:00 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/06 10:23:36 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	if (argc < 2)
+	if (argc < 3)
 	{
 		log.complain("ERROR", \
 		"Expected Program Input", \
