@@ -27,25 +27,29 @@
 //Own
 #include "printer.hpp"
 
-		// typedef std::pair<int, int>	Pair;
-template <typename Container>
+		// typedef std::pair<int, int>	Pair;make
+		template <typename Container>
 class PmergeMe
 {
 	protected:
 		Container					_container;
 		int							_argc;
 		char						**_argv;
+		//TODO: Add generic (const) iterator (should work for at least vector & deque)
 	//OCF
 	public:
 		PmergeMe(int argc, char **argv);
 		PmergeMe(const PmergeMe &og);
 		PmergeMe &operator=(const PmergeMe &og);
 		virtual ~PmergeMe(void);
+	public:
+		const Container& getContainer() const;
 	//Generic Member-FNCS
 	public:
 		void			processInput();
 		virtual void	sort() = 0;
 		void			displayOutput();
+		//TODO: Add checkIfSorted check --> double checks if its sorted by traversing through container // std::is_sorted(_container.begin(), _container.end());
 };
 
 //Definitions of template FNCs

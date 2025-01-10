@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/06 10:23:36 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/10 22:10:18 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int argc, char **argv)
 		//[...]
 		// vector.processInput();
 		vector.displayOutput();
+		if (!std::is_sorted(vector.getContainer().begin(), vector.getContainer().end()))
+			throw (std::runtime_error("Failed to sort sequence ! Still unsorted !"));
 		deque.displayOutput();
 	}
 	catch(const std::exception& e)

@@ -132,5 +132,11 @@ void	PmergeMe<Container>::displayOutput()
 	std::cout << std::endl;
 }
 
+template <typename Container>
+const Container& PmergeMe<Container>::getContainer() const
+{
+	return (_container);
+}
+
 // Template Definitons
 
