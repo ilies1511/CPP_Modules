@@ -20,6 +20,8 @@ class DequePmergeMe : public PmergeMe<std::deque<int>>
 		DequePmergeMe &operator=(const DequePmergeMe &og);
 		~DequePmergeMe(void);
 	//Memebers
+	private:
+		void	swap_pair(typename std::deque<int>::iterator it, int recursion_level);
 	public:
-		void sort(std::deque<int> &_container, int recursion_level) override;
+		void sort(std::deque<int> &_container, int pair_level) override;
 };
