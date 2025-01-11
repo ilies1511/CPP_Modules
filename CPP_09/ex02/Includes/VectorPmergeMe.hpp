@@ -14,5 +14,5 @@ class VectorPmergeMe : public PmergeMe<std::vector<int>>
 		~VectorPmergeMe(void);
 	//Memebers
 	public:
-		void	sort() override;
+		void sort(std::vector<int> &_container, int recursion_level) override;
 };

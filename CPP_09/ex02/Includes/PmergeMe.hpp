@@ -22,6 +22,7 @@
 #include <stdexcept>
 #include <chrono> //Time-Measurement
 #include "typeName.hpp"
+#include "cmath"
 
 
 //Own
@@ -43,12 +44,13 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &og);
 		virtual ~PmergeMe(void);
 	public:
-		const Container& getContainer() const;
+		Container& getContainer();
 	//Generic Member-FNCS
 	public:
 		void			processInput();
-		virtual void	sort() = 0;
+		virtual void	sort(Container &_container, int recursion_level) = 0;
 		void			displayOutput();
+		void 			printContainer(void);
 		//TODO: Add checkIfSorted check --> double checks if its sorted by traversing through container // std::is_sorted(_container.begin(), _container.end());
 };
 
