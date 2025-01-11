@@ -133,10 +133,22 @@ void	PmergeMe<Container>::displayOutput()
 }
 
 template <typename Container>
-const Container& PmergeMe<Container>::getContainer() const
+Container& PmergeMe<Container>::getContainer()
 {
 	return (_container);
 }
+template <typename Container>
+void PmergeMe<Container>::printContainer(void)
+{
+	size_t i = 0;
+	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it, i++)
+	{
+		std::cout << *it;
+		if (i < _container.size() - 1)
+			std::cout << " ";
+	}
+}
+
 
 // Template Definitons
 
