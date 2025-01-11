@@ -59,23 +59,24 @@ typename std::deque<int>::iterator next(typename std::deque<int>::iterator it, i
 	return (it);
 }
 
-void DequePmergeMe::sort(std::deque<int> &_container, int pair_level)
+void DequePmergeMe::sort(void)
 {
-	int			pair_units_nbr;
+	int			pair_units_nbr; //Amount of Pairs
 	bool		is_odd;
 	// int			interPairSize;
-	int			next_pairs;
-	Iterator	start;
-	Iterator	last;
-	Iterator	very_last;
-	Iterator	current_pair;
-	Iterator	next_pair;
+	int			next_pairs; //Steps to go until next pair
+	Iterator	start, last, very_last, current_pair, next_pair;
+	int			pair_level;
+	static int	recursion_level = 1; //TODO: add as private attribute in PmergeMe ?
 
+	pair_level = cal_interPairSize(recursion_level++);
 	is_odd = false;
 	pair_units_nbr = static_cast<int>(_container.size()) / pair_level; //Break condition
 
 	if (pair_units_nbr < 2)
 		return ;
+
+	std::cout << "Pair Level: " << pair_level << "\n";
 
 	is_odd = pair_units_nbr % 2 == 1;
 
@@ -102,8 +103,8 @@ void DequePmergeMe::sort(std::deque<int> &_container, int pair_level)
 		}
 	}
 	std::cout << "Post IterPAir Swap\n";
-	std::cout << "RdcursionsLEvel: " << pair_level << "\n";
+	// std::cout << "RdcursionsLEvel: " << pair_level << "\n";
 	this->printContainer();
-	sort(_container, pair_level * 2);
+	sort(); //Rekursive Call (davor: sort(_container, pair_level * 2))
 }
 //Sort -- END
