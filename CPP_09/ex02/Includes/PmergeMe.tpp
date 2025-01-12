@@ -149,6 +149,53 @@ void PmergeMe<Container>::printContainer(void)
 	}
 }
 
+// // template <typename Container>
+// // void PmergeMe<Container>::printContainerHoldingIterators(Container &container)
+// // {
+// // 	size_t i = 1;
+// // 	for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it, i++)
+// // 	{
+// // 		if (i % 2 != 0)
+// // 			std::cout << "(";
+// // 		std::cout << *(*it);
+// // 		if (i % 2 == 0)
+// // 			std::cout << ")";
+// // 		std::cout << " ";
+// // 	}
+// // 	std::cout << "\n";
+// // }
+
+// template <typename Container>
+// void PmergeMe<Container>::printContainerHoldingIterators(const Container &container)
+// {
+//     size_t i = 1;
+//     for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it, ++i)
+//     {
+//         if (i % 2 != 0)
+//             std::cout << "(";
+//         std::cout << **it; // Doppelt dereferenzieren, da *it ein Iterator ist
+//         if (i % 2 == 0)
+//             std::cout << ")";
+//         std::cout << " ";
+//     }
+//     std::cout << "\n";
+// }
+
+template <typename Container>
+void PmergeMe<Container>::printContainerHoldingIterators(const std::deque<typename Container::iterator> &container)
+{
+	size_t i = 1;
+	for (typename std::deque<typename Container::iterator>::const_iterator it = container.begin(); it != container.end(); ++it, ++i)
+	{
+		if (i % 2 != 0)
+			std::cout << "(";
+		std::cout << *(*it); // Doppelt dereferenzieren
+		if (i % 2 == 0)
+			std::cout << ")";
+		std::cout << " ";
+	}
+	std::cout << "\n";
+}
 
 // Template Definitons
 
