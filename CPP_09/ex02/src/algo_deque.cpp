@@ -6,11 +6,6 @@ int	cal_interPairSize(int recursion_level)
 	return (static_cast<int>(std::pow(2, recursion_level - 1)));
 }
 
-void	go2nextXPair(typename std::deque<int>::iterator it, int interPairSize)
-{
-	std::advance(it, interPairSize);
-}
-
 void	DequePmergeMe::swap_pair(typename std::deque<int>::iterator it, int pair_level)
 {
 	Iterator	start;
@@ -47,22 +42,6 @@ void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, st
 
 	printer::Header("In Insertion Part");
 	this->printContainer();
-	// /*
-	// 	Init main-chain with {b1, a1};
-	// */
-	// main_chain.insert(main_chain.end(), next(_container.begin(), pair_level - 1)); // Inserte den Iterator in main_chain (Iterator zeigt gerade auf letztes Element des Paares) --> b1
-	// main_chain.insert(main_chain.end(), next(_container.begin(), (pair_level * 2) - 1)); // Inserte den Iterator in main_chain (Iterator zeigt gerade auf letztes Element des Paares) --> a1
-
-	// std::cout << "Print Main-Chain 1: \n";
-	// this->printContainerHoldingIterators(main_chain);
-
-	// //Do Rest
-	// for (int i = 4; i <= pair_units_nbr; i += 2)
-	// {
-	// 	pend_chain.insert(pend_chain.end(), next(_container.begin(), pair_level * (i - 1) - 1));
-	// 	main_chain.insert(main_chain.end(), next(_container.begin(), pair_level * i - 1));
-	// }
-
 
 	printer::Header("Init MAIN -& PEND-CHAIN");
 	int pair_index = 2; // Startindex für die Paare (entspricht 2. und 4. Element)
@@ -81,10 +60,6 @@ void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, st
 			main_chain.insert(main_chain.end(), next(_container.begin(), pair_level * pair_index - 1));
 		}
 		pair_index += 2; // Erhöhe den Index um 2, um das nächste Paar zu verarbeiten
-		// printer::Header("Main-Chain");
-		// this->printContainerHoldingIterators(main_chain);
-		// printer::Header("Pend-Chain");
-		// this->printContainerHoldingIterators(pend_chain);
 	}
 	while (pair_index <= pair_units_nbr);
 	printer::Header("Main-Chain");
@@ -92,3 +67,33 @@ void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, st
 	printer::Header("Pend-Chain");
 	this->printContainerHoldingIterators(pend_chain);
 }
+
+void	DequePmergeMe::entryPoint_Insertion(std::deque<Iterator> &main_chain, \
+	std::deque<Iterator> &pend_chain, int &pair_level, int &pair_units_nbr, bool &is_odd, Iterator &very_last)
+{
+	init_main_and_pendChain(main_chain, pend_chain, pair_level, pair_units_nbr);
+	jacobsthal_based_insertion(main_chain, pend_chain);
+	sequential_based_insertion(main_chain, pend_chain);
+	if (is_odd)
+		odd_insertion(main_chain, very_last, pair_level);
+}
+
+void	DequePmergeMe::entryPoint_Merge(Iterator &start, Iterator &very_last, int &pair_level)
+{
+	int			next_pairs; //Steps to go until next pair
+	Iterator	current_pair, next_pair;
+
+	size_t i = 0;
+	next_pairs = 2 * pair_level;
+	for (Iterator it = start; it != very_last; std::advance(it, next_pairs), i++)
+	{
+		current_pair = next(it, pair_level - 1);
+		next_pair = next(it, pair_level * 2 - 1);
+		if (*current_pair > *next_pair)
+		{
+			swap_pair(current_pair, pair_level);
+		}
+	}
+}
+
+//ALGO-specific -- END
