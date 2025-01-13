@@ -36,6 +36,7 @@ class PmergeMe
 		Container					_container;
 		int							_argc;
 		char						**_argv;
+		Container					_jacobsthal_nbrs;
 		//TODO: Add generic (const) iterator (should work for at least vector & deque)
 	//typedefs for Iteraotrs
 	protected:
@@ -51,13 +52,16 @@ class PmergeMe
 		Container& getContainer();
 	//Generic Member-FNCS
 	public:
-		void			processInput();
+		void			processInput(void);
 		// virtual void	sort(Container &_container, int recursion_level) = 0;
 		virtual void	sort(void) = 0;
-		void			displayOutput();
+		void			displayOutput(void);
 		void 			printContainer(void);
 		void			printContainerHoldingIterators(const std::deque<typename Container::iterator> &container);
 		//TODO: Add checkIfSorted check --> double checks if its sorted by traversing through container // std::is_sorted(_container.begin(), _container.end());
+	//Methode
+	private:
+		void			initializeJacobsthalNumbers(void); //Gets calles in 'processInput()'
 };
 
 //Definitions of template FNCs
