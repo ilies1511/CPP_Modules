@@ -22,6 +22,7 @@ class DequePmergeMe : public PmergeMe<std::deque<int>>
 	//Memebers
 	private:
 		void	swap_pair(typename std::deque<int>::iterator it, int recursion_level);
+		void	init_main_and_pendChain(std::deque<Iterator> &main_chain, std::deque<Iterator> &pend_chain, int &pair_level, int &pair_units_nbr);
 	public:
 		// void sort(std::deque<int> &_container, int pair_level) override;
 		void sort(void) override;
