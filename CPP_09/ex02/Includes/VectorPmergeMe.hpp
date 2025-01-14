@@ -23,11 +23,6 @@ class VectorPmergeMe : public PmergeMe<std::vector<int>>
 		void	swap_pair(typename std::vector<int>::iterator it, int recursion_level);
 		void	entryPoint_Merge(Iterator &start, Iterator &very_last, int &pair_level);
 		void	reconstructContainer(std::vector<Iterator> &main_chain, int &pair_level);
-		// void	odd_insertion(std::vector<Iterator> &main_chain, std::vector<Iterator> &pend_chain);
 	public:
-		// void sort(std::vector<int> &_container, int pair_level) override;
 		void sort(void) override;
 };
-
-//Helper-FNCs Prototype
-// int		cal_interPairSize(int recursion_level);

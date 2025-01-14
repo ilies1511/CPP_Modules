@@ -34,7 +34,6 @@ bool _comp(T lv, T rv)
 void	VectorPmergeMe::reconstructContainer(std::vector<Iterator> &main_chain, int &pair_level)
 {
 	std::vector<int> copy;
-	// printer::Header("In reconstructContainer");
 	copy.reserve(_container.size());
 	for (auto it = main_chain.begin(); it != main_chain.end(); it++)
 	{
@@ -43,19 +42,8 @@ void	VectorPmergeMe::reconstructContainer(std::vector<Iterator> &main_chain, int
 			Iterator pair_start = *it;
 			std::advance(pair_start, -pair_level + i + 1);
 			copy.insert(copy.end(), *pair_start);
-			// printer::Header("Inner Loop");
-			// for (auto it = copy.begin(); it != copy.end(); ++it)
-			// 	std::cout << *it << " ";
 		}
-		// printer::Header("Outer Loop");
-		// for (auto it = copy.begin(); it != copy.end(); ++it)
-		// 	std::cout << *it << " ";
 	}
-	// printer::Header("After Nested Loop");
-	// for (auto it = copy.begin(); it != copy.end(); ++it)
-	// 	std::cout << *it << " ";
-
-	// Replace values in the original container
 	Iterator container_it = _container.begin();
 	std::vector<int>::iterator copy_it = copy.begin();
 	while (copy_it != copy.end())
@@ -64,8 +52,6 @@ void	VectorPmergeMe::reconstructContainer(std::vector<Iterator> &main_chain, int
 		container_it++;
 		copy_it++;
 	}
-	// printer::Header("POST COPY");
-	// this->printContainer();
 }
 
 void	VectorPmergeMe::odd_insertion(std::vector<Iterator> &main_chain, Iterator &very_last, int &pair_level)
@@ -77,8 +63,6 @@ void	VectorPmergeMe::odd_insertion(std::vector<Iterator> &main_chain, Iterator &
 
 void	VectorPmergeMe::sequential_based_insertion(std::vector<Iterator> &main_chain, std::vector<Iterator> &pend_chain)
 {
-	// printer::Header("In sequential_based_insertion");
-	// printContainerNormal();
 	for (size_t i = 0; i < pend_chain.size(); i++)
 	{
 		auto curr_pend = next(pend_chain.begin(), static_cast<typename std::vector<Iterator>::difference_type>(i));
@@ -97,23 +81,11 @@ void	VectorPmergeMe::jacobsthal_based_insertion(std::vector<Iterator> &main_chai
 	int offset;
 	int nbr_of_times;
 
-	// printer::Header("In jacobsthal_based_insertion");
-
-	// printer::Header("Main Chain");
-	// printContainerHoldingIterators(main_chain);
-	// printer::Header("Pend Chain");
-	// printContainerHoldingIterators(pend_chain);
-	// printer::Header("Print Container");
-	// printContainer();
 	prev_jacobsthal = this->_jacobsthal_nbrs.at(2); // 0 1 1 3 5
 	inserted_numbers = 0;
 	for (size_t k = 3;; k++)
 	{
-		// std::cout << "PRE JT at Call\n";
 		int curr_jacobsthal = this->_jacobsthal_nbrs.at(k);
-		// std::cout << "POST JT at Call\n";
-		// std::cout << "Current Jacobsthal_number: " << curr_jacobsthal << "\n";
-		// std::cout << "Prev Jacobsthal_number: " << prev_jacobsthal << "\n";
 		jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
 		offset = 0;
 		if (jacobsthal_diff > static_cast<int>(pend_chain.size()))
@@ -131,58 +103,32 @@ void	VectorPmergeMe::jacobsthal_based_insertion(std::vector<Iterator> &main_chai
 
 			offset += (inserted - main_chain.begin()) == curr_jacobsthal + inserted_numbers;
 			bound_it = next(main_chain.begin(), curr_jacobsthal + inserted_numbers - offset);
-			// printer::Header("In Number of TIMES LOOP");
-			// printer::Header("Main Chain");
-			// printContainerHoldingIterators(main_chain);
-			// printer::Header("Pend Chain");
-			// printContainerHoldingIterators(pend_chain);
-			// printer::Header("Print Container");
-			// printContainer();
 		}
 		prev_jacobsthal = curr_jacobsthal;
 		inserted_numbers += jacobsthal_diff;
 		offset = 0;
 	}
-	// printer::Header("POST jacobsthal_based_insertion");
-	// printer::Header("Main Chain");
-	// printContainerHoldingIterators(main_chain);
-	// printer::Header("Pend Chain");
-	// printContainerHoldingIterators(pend_chain);
-	// printer::Header("Print Container");
-	// printContainer();
 }
 
 void	VectorPmergeMe::init_main_and_pendChain(std::vector<Iterator> &main_chain, \
 	std::vector<Iterator> &pend_chain, int &pair_level, int &pair_units_nbr)
 {
-	// printer::Header("In Insertion Part");
-	// this->printContainer();
-
-	// printer::Header("Init MAIN -& PEND-CHAIN");
 	int pair_index = 2; // Startindex für die Paare (entspricht 2. und 4. Element)
 	do
 	{
 		if (pair_index == 2)
 		{
-			// Initialisierung der main_chain mit den ersten beiden Elementen (b1, a1)
 			main_chain.insert(main_chain.end(), next(_container.begin(), pair_level - 1)); // b1
 			main_chain.insert(main_chain.end(), next(_container.begin(), (pair_level * 2) - 1)); // a1
-			// std::cout << "Print Main-Chain 1: \n";
 		}
 		else
 		{
 			pend_chain.insert(pend_chain.end(), next(_container.begin(), pair_level * (pair_index - 1) - 1));
 			main_chain.insert(main_chain.end(), next(_container.begin(), pair_level * pair_index - 1));
 		}
-		pair_index += 2; // Erhöhe den Index um 2, um das nächste Paar zu verarbeiten
+		pair_index += 2;
 	}
 	while (pair_index <= pair_units_nbr);
-
-	// printer::Header("Main-Chain");
-	// this->printContainerHoldingIterators_plus(main_chain, static_cast<int>(main_chain.size()));
-	// std::cout << coloring("Single Elements in Pend: " + std::to_string(pend_chain.size()) + "\n", PURPLE);
-	// printer::Header("Pend-Chain");
-	// this->printContainerHoldingIterators_plus(pend_chain, static_cast<int>(pend_chain.size()));
 }
 
 void	VectorPmergeMe::entryPoint_Insertion(std::vector<Iterator> &main_chain, \
