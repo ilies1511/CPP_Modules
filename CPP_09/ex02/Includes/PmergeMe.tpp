@@ -158,6 +158,14 @@ void PmergeMe<Container>::printContainer(void)
 	std::cout << "\n";
 }
 
+template <typename Container>
+void PmergeMe<Container>::printContainerNormal(void)
+{
+	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << "\n";
+}
+
 // // template <typename Container>
 // // void PmergeMe<Container>::printContainerHoldingIterators(Container &container)
 // // {
@@ -189,6 +197,26 @@ void PmergeMe<Container>::printContainer(void)
 //     }
 //     std::cout << "\n";
 // }
+
+template <typename Container>
+void PmergeMe<Container>::printContainerHoldingIterators_plus(const std::deque<typename Container::iterator> &container, int single_elements)
+{
+	size_t i = 1;
+	int count = 0; // Counter for grouping elements
+	for (typename std::deque<typename Container::iterator>::const_iterator it = container.begin(); it != container.end(); ++it, ++i)
+	{
+		if (count < single_elements)
+		{
+			std::cout << "(" << *(*it) << ") "; // Wrap each element in parentheses
+			count++;
+		}
+		if (count == single_elements)
+		{
+			count = 0; // Reset count for the next group
+		}
+	}
+	std::cout << "\n";
+}
 
 template <typename Container>
 void PmergeMe<Container>::printContainerHoldingIterators(const std::deque<typename Container::iterator> &container)
