@@ -1,6 +1,7 @@
 #include "DequePmergeMe.hpp"
 
 //Sort -- BEGIN
+//Helpers -- BEGIN
 int	cal_interPairSize(int recursion_level)
 {
 	return (static_cast<int>(std::pow(2, recursion_level - 1)));
@@ -31,15 +32,132 @@ bool _comp(T lv, T rv)
 {
 	return (*lv < *rv);
 }
+//Helpers -- END
 
-void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, std::deque<Iterator> &pend_chain, int &pair_level, int &pair_units_nbr)
+//ALGO-specific -- BEGIN
+void	DequePmergeMe::reconstructContainer(std::deque<Iterator> &main_chain, int &pair_level)
 {
-	// std::deque<Iterator> main_chain;
-	// std::deque<Iterator> pend_chain;
+	std::vector<int> copy;
+	printer::Header("In reconstructContainer");
+	copy.reserve(_container.size());
+	for (auto it = main_chain.begin(); it != main_chain.end(); it++)
+	{
+		for (int i = 0; i < pair_level; i++)
+		{
+			Iterator pair_start = *it;
+			std::advance(pair_start, -pair_level + i + 1);
+			copy.insert(copy.end(), *pair_start);
+			printer::Header("Inner Loop");
+			for (auto it = copy.begin(); it != copy.end(); ++it)
+				std::cout << *it << " ";
+		}
+		printer::Header("Outer Loop");
+		for (auto it = copy.begin(); it != copy.end(); ++it)
+			std::cout << *it << " ";
+	}
+	printer::Header("After Nested Loop");
+	for (auto it = copy.begin(); it != copy.end(); ++it)
+		std::cout << *it << " ";
+	/* Replace values in the original _container. */
+	Iterator container_it = _container.begin();
+	std::vector<int>::iterator copy_it = copy.begin();
+	while (copy_it != copy.end())
+	{
+		*container_it = *copy_it;
+		container_it++;
+		copy_it++;
+	}
+	printer::Header("POST COPY");
+	this->printContainer();
+}
 
-	// main_chain.insert(startpunkt, von (z.b Container a.begin), bis((z.b Container a.end))); --> Inserten einer Range ab Startpunkt
-	// main_chain.insert(startpunkt, das_element); --> Inserten eines einzelnen Elements
+void	DequePmergeMe::odd_insertion(std::deque<Iterator> &main_chain, Iterator &very_last, int &pair_level)
+{
+	auto odd_pair = next(very_last, pair_level - 1);
+	auto idx = std::upper_bound(main_chain.begin(), main_chain.end(), odd_pair, _comp<Iterator>);
+	main_chain.insert(idx, odd_pair);
+}
 
+void	DequePmergeMe::sequential_based_insertion(std::deque<Iterator> &main_chain, std::deque<Iterator> &pend_chain)
+{
+	printer::Header("In sequential_based_insertion");
+	printContainerNormal();
+	for (size_t i = 0; i < pend_chain.size(); i++)
+	{
+		auto curr_pend = next(pend_chain.begin(), static_cast<typename std::deque<Iterator>::difference_type>(i));
+		auto curr_bound = next(main_chain.begin(), static_cast<typename std::deque<Iterator>::difference_type>(main_chain.size() - pend_chain.size() + i));
+		auto idx = std::upper_bound(main_chain.begin(), curr_bound, *curr_pend, _comp<Iterator>);
+		main_chain.insert(idx, *curr_pend);
+	}
+}
+
+
+void	DequePmergeMe::jacobsthal_based_insertion(std::deque<Iterator> &main_chain, std::deque<Iterator> &pend_chain)
+{
+	int	prev_jacobsthal;
+	int	inserted_numbers;
+	int	jacobsthal_diff;
+	int offset;
+	int nbr_of_times;
+
+	printer::Header("In jacobsthal_based_insertion");
+
+	printer::Header("Main Chain");
+	printContainerHoldingIterators(main_chain);
+	printer::Header("Pend Chain");
+	printContainerHoldingIterators(pend_chain);
+	printer::Header("Print Container");
+	printContainer();
+	prev_jacobsthal = this->_jacobsthal_nbrs.at(2); // 0 1 1 3 5
+	inserted_numbers = 0;
+	for (size_t k = 3;; k++)
+	{
+		// std::cout << "PRE JT at Call\n";
+		int curr_jacobsthal = this->_jacobsthal_nbrs.at(k);
+		// std::cout << "POST JT at Call\n";
+		std::cout << "Current Jacobsthal_number: " << curr_jacobsthal << "\n";
+		std::cout << "Prev Jacobsthal_number: " << prev_jacobsthal << "\n";
+		jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
+		offset = 0;
+		if (jacobsthal_diff > static_cast<int>(pend_chain.size()))
+			break;
+		nbr_of_times = jacobsthal_diff;
+		auto pend_it = next(pend_chain.begin(), jacobsthal_diff - 1);
+		auto bound_it =	next(main_chain.begin(), curr_jacobsthal + inserted_numbers);
+		while (nbr_of_times)
+		{
+			auto idx = std::upper_bound(main_chain.begin(), bound_it, *pend_it, _comp<Iterator>);
+			auto inserted = main_chain.insert(idx, *pend_it);
+			nbr_of_times--;
+			pend_it = pend_chain.erase(pend_it);
+			std::advance(pend_it, -1);
+
+			offset += (inserted - main_chain.begin()) == curr_jacobsthal + inserted_numbers;
+			bound_it = next(main_chain.begin(), curr_jacobsthal + inserted_numbers - offset);
+			printer::Header("In Number of TIMES LOOP");
+			printer::Header("Main Chain");
+			printContainerHoldingIterators(main_chain);
+			printer::Header("Pend Chain");
+			printContainerHoldingIterators(pend_chain);
+			printer::Header("Print Container");
+			printContainer();
+		}
+		prev_jacobsthal = curr_jacobsthal;
+		inserted_numbers += jacobsthal_diff;
+		offset = 0;
+	}
+	printer::Header("POST jacobsthal_based_insertion");
+	printer::Header("Main Chain");
+	printContainerHoldingIterators(main_chain);
+	printer::Header("Pend Chain");
+	printContainerHoldingIterators(pend_chain);
+	printer::Header("Print Container");
+	printContainer();
+}
+
+void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, \
+	std::deque<Iterator> &pend_chain, int &pair_level, int &pair_units_nbr)
+{
 	printer::Header("In Insertion Part");
 	this->printContainer();
 
