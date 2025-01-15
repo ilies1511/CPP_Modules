@@ -62,6 +62,7 @@ class PmergeMe
 		void			printContainerHoldingIterators(const std::deque<typename Container::iterator> &container);
 		void			printContainerHoldingIterators_plus(const std::deque<typename Container::iterator> &container, int single_elements);
 		void			validateSorting(const Container& container, const std::string& type);
+		void			printContainerWithLimit(const Container &container, size_t limit = 300) const;
 		//TODO: Add checkIfSorted check --> double checks if its sorted by traversing through container // std::is_sorted(_container.begin(), _container.end());
 	//Methode
 	private:

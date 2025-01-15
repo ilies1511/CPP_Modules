@@ -56,7 +56,6 @@ void PmergeMe<Container>::processInput()
 	int	number;
 	std::string	token;
 
-	std::cout << "In Process Input\n";
 	for (int i = 1; i < _argc; i++)
 	{
 		std::istringstream	iss(_argv[i]);
@@ -75,7 +74,8 @@ void PmergeMe<Container>::processInput()
 		if (iss.fail() && !iss.eof())
 			throw (std::invalid_argument("Input parsing error for argument: " + std::string(_argv[i])));
 	}
-	// std::cout << "POST insertion\n";
+	#ifdef DEBUG
+	std::cout << "In Process Input\n";
 	for (size_t i = 0; i < _container.size(); i++)
 	{
 		std::cout << _container.at(i);
@@ -85,56 +85,49 @@ void PmergeMe<Container>::processInput()
 		}
 	}
 	std::cout << "\n";
-
+	#endif
 	// Initialisiere die Jacobsthal-Zahlen
 	initializeJacobsthalNumbers();
 }
 
 template <typename Container>
+void PmergeMe<Container>::printContainerWithLimit(const Container &container, size_t limit) const
+{
+	size_t i = 0;
+	for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it, ++i)
+	{
+		std::cout << *it;
+		if (container.size() >= limit && i == 5)
+		{
+			std::cout << " [...]\n";
+			break;
+		}
+		if (i < container.size() - 1)
+			std::cout << " ";
+	}
+	std::cout << std::endl;
+}
+
+template <typename Container>
 void	PmergeMe<Container>::displayOutput()
 {
-	size_t	i;
 	// std::cout << "Test displayOutput() in .tpp file\n";
 	std::chrono::high_resolution_clock::time_point	start;
 	std::chrono::high_resolution_clock::time_point	end;
 	std::chrono::duration<double, std::micro>		elapsed;
 
 	std::cout << "Before: ";
-	i = 0;
-	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it, ++i)
-	{
-		std::cout << *it;
-		if (_container.size() >= 300 && i == 5)
-		{
-			std::cout << " [...]\n";
-			break;
-		}
-		if (i < _container.size() - 1)
-			std::cout << " ";
-	}
-	std::cout << std::endl;
+	printContainerWithLimit(_container);
 	start = std::chrono::high_resolution_clock::now();
 	// sort(this->_container, 1);
 	sort();
 	end = std::chrono::high_resolution_clock::now();
 	elapsed = end - start;
-	std::cout << "Time to process a range of " << _container.size() \
-		<< " elements with " << typeName<Container>() << ": " << elapsed.count() \
-			<< " us" << std::endl;
+	std::cout	<< "Time to process a range of " << _container.size() \
+				<< " elements with " << typeName<Container>() << ": " << elapsed.count() \
+				<< " us" << std::endl;
 	std::cout << "After: ";
-	i = 0;
-	for (typename Container::const_iterator it = _container.begin(); it != _container.end(); ++it, ++i)
-	{
-		std::cout << *it;
-		if (_container.size() >= 300 && i == 5)
-		{
-			std::cout << " [...]\n";
-			break;
-		}
-		if (i < _container.size() - 1)
-			std::cout << " ";
-	}
-	std::cout << std::endl;
+	printContainerWithLimit(_container);
 }
 
 template <typename Container>
@@ -209,6 +202,7 @@ void validateSorting(const Container& container, const std::string& type)
 		std::cout << std::endl;
 		throw std::runtime_error(type + " Container not Sorted!");
 	}
+	std::cout << coloring("Sequence sorted !\n", GREEN);
 }
 
 template <typename Container>
@@ -278,11 +272,13 @@ void PmergeMe<Container>::initializeJacobsthalNumbers()
 			break;
 	}
 	// Debug Printer
+	#ifdef DEBUG
 	std::cout << "Jacobsthal Numbers: ";
 	for (const auto &num : _jacobsthal_nbrs)
 	{
 		std::cout << num << " ";
 	}
 	std::cout << std::endl;
+	#endif
 }
 // Template Definitons
