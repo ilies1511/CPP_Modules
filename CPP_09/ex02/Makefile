@@ -95,6 +95,12 @@ debug: clean
 debug: CFLAGS += -DDEBUG
 debug: $(NAME)
 
+test: $(NAME)
+	@echo "Running test with randomly generated input..."
+	@ARGS=`jot -r 3000 1 1000 | tr '\n' ' '`; \
+	echo "./$(NAME) $$ARGS"; \
+	./$(NAME) $$ARGS
+
 -include $(OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re bonus re_sub submodule_rebuild san debug
+.PHONY: all clean fclean re bonus re_sub submodule_rebuild san debug test
