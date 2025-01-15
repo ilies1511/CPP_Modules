@@ -35,41 +35,57 @@ bool _comp(T lv, T rv)
 //Helpers -- END
 
 //ALGO-specific -- BEGIN
+// void	DequePmergeMe::reconstructContainer(std::deque<Iterator> &main_chain, int &pair_level)
+// {
+// 	std::vector<int> copy;
+// 	// printer::Header("In reconstructContainer");
+// 	copy.reserve(_container.size());
+// 	for (auto it = main_chain.begin(); it != main_chain.end(); it++)
+// 	{
+// 		for (int i = 0; i < pair_level; i++)
+// 		{
+// 			Iterator pair_start = *it;
+// 			std::advance(pair_start, -pair_level + i + 1);
+// 			copy.insert(copy.end(), *pair_start);
+// 			// printer::Header("Inner Loop");
+// 			// for (auto it = copy.begin(); it != copy.end(); ++it)
+// 			// 	std::cout << *it << " ";
+// 		}
+// 		// printer::Header("Outer Loop");
+// 		// for (auto it = copy.begin(); it != copy.end(); ++it)
+// 		// 	std::cout << *it << " ";
+// 	}
+// 	// printer::Header("After Nested Loop");
+// 	// for (auto it = copy.begin(); it != copy.end(); ++it)
+// 	// 	std::cout << *it << " ";
+
+// 	// Replace values in the original container
+// 	Iterator container_it = _container.begin();
+// 	std::vector<int>::iterator copy_it = copy.begin();
+// 	while (copy_it != copy.end())
+// 	{
+// 		*container_it = *copy_it;
+// 		container_it++;
+// 		copy_it++;
+// 	}
+// 	// printer::Header("POST COPY");
+// 	// this->printContainer();
+// }
+
 void	DequePmergeMe::reconstructContainer(std::deque<Iterator> &main_chain, int &pair_level)
 {
 	std::vector<int> copy;
-	// printer::Header("In reconstructContainer");
 	copy.reserve(_container.size());
-	for (auto it = main_chain.begin(); it != main_chain.end(); it++)
+	for (const auto &it : main_chain)
 	{
-		for (int i = 0; i < pair_level; i++)
+		for (int i = 0; i < pair_level; ++i)
 		{
-			Iterator pair_start = *it;
+			Iterator pair_start = it;
 			std::advance(pair_start, -pair_level + i + 1);
-			copy.insert(copy.end(), *pair_start);
-			// printer::Header("Inner Loop");
-			// for (auto it = copy.begin(); it != copy.end(); ++it)
-			// 	std::cout << *it << " ";
+			copy.push_back(*pair_start);
 		}
-		// printer::Header("Outer Loop");
-		// for (auto it = copy.begin(); it != copy.end(); ++it)
-		// 	std::cout << *it << " ";
 	}
-	// printer::Header("After Nested Loop");
-	// for (auto it = copy.begin(); it != copy.end(); ++it)
-	// 	std::cout << *it << " ";
-
-	// Replace values in the original container
-	Iterator container_it = _container.begin();
-	std::vector<int>::iterator copy_it = copy.begin();
-	while (copy_it != copy.end())
-	{
-		*container_it = *copy_it;
-		container_it++;
-		copy_it++;
-	}
-	// printer::Header("POST COPY");
-	// this->printContainer();
+	std::copy(copy.begin(), copy.end(), _container.begin());
 }
 
 void	DequePmergeMe::odd_insertion(std::deque<Iterator> &main_chain, Iterator &very_last, int &pair_level)
