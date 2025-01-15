@@ -9,6 +9,7 @@ class DequePmergeMe : public PmergeMe<std::deque<int>>
 	public:
 	//OCF
 	public:
+		DequePmergeMe(void);
 		DequePmergeMe(int argc, char **argv);
 		DequePmergeMe(const DequePmergeMe &og);
 		DequePmergeMe &operator=(const DequePmergeMe &og);
@@ -41,7 +42,7 @@ class DequePmergeMe : public PmergeMe<std::deque<int>>
 		// void	odd_insertion(std::deque<Iterator> &main_chain, std::deque<Iterator> &pend_chain);
 	public:
 		// void sort(std::deque<int> &_container, int pair_level) override;
-		void sort(void) override;
+		void	sort(void) override;
 };
 
-int		cal_interPairSize(int recursion_level);
+// int		cal_interPairSize(int recursion_level);

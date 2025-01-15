@@ -8,6 +8,7 @@ class VectorPmergeMe : public PmergeMe<std::vector<int>>
 {
 	//OCF
 	public:
+		VectorPmergeMe(void);
 		VectorPmergeMe(int argc, char **argv);
 		VectorPmergeMe(const VectorPmergeMe &og);
 		VectorPmergeMe &operator=(const VectorPmergeMe &og);

@@ -44,6 +44,7 @@ class PmergeMe
 		typedef typename Container::const_iterator ConstIterator;
 	//OCF
 	public:
+		PmergeMe(void);
 		PmergeMe(int argc, char **argv); //TODO: Add default constructor and init Container with random values
 		PmergeMe(const PmergeMe &og);
 		PmergeMe &operator=(const PmergeMe &og);

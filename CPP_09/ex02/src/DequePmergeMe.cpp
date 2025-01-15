@@ -1,6 +1,11 @@
 #include "DequePmergeMe.hpp"
 
 //OCF -- BEGIN
+DequePmergeMe::DequePmergeMe(void) : PmergeMe()
+{
+	printer::ocf_printer("VectorPmergeMe", printer::OCF_TYPE::DC);
+}
+
 DequePmergeMe::DequePmergeMe(int argc, char **argv) : PmergeMe(argc, argv)//, chains{0, 0, {}, {}, {}, {}, {}, {}, {}}
 {
 	printer::ocf_printer("DequePmergeMe", printer::OCF_TYPE::DC);
@@ -48,10 +53,10 @@ void DequePmergeMe::sort(void)
 	is_odd = false;
 	pair_units_nbr = static_cast<int>(_container.size()) / pair_level; //Break condition
 
-	if (pair_units_nbr < 2) //BREAK-CONDITION: less than 2 pairs
+	if (pair_units_nbr < 2) //BREAK-CONDTION: less than 2 pairs
 		return ;
 
-	std::cout << "Pair Level: " << pair_level << "\n";
+	// std::cout << "Pair Level: " << pair_level << "\n";
 
 	is_odd = pair_units_nbr % 2 == 1;
 
@@ -60,24 +65,25 @@ void DequePmergeMe::sort(void)
 	very_last = next(last, -(is_odd * pair_level));
 
 	entryPoint_Merge(start, very_last, pair_level);
-	std::cout << "Post IterPAir Swap\n";
-	// std::cout << "RdcursionsLEvel: " << pair_level << "\n";
-	this->printContainer();
+	// std::cout << "Post IterPAir Swap\n";
+	// // std::cout << "RdcursionsLEvel: " << pair_level << "\n";
+	// this->printContainer();
 	sort(); //RECURSIV call until BREAK-CONDITION
 
 	std::deque<Iterator> main_chain;
 	std::deque<Iterator> pend_chain;
 
-	printer::Header("In Insertion Part");
-	this->printContainer();
+	// printer::Header("In Insertion Part");
+	// this->printContainer();
 	entryPoint_Insertion(main_chain, pend_chain, pair_level, pair_units_nbr, is_odd, very_last);
-	printer::Header("PRE Reconstruction");
-	this->printContainer();
+	// printer::Header("POST Insertion Part");
+	// this->printContainer();
 
+	// printer::Header("PRE Reconstruction");
+	// this->printContainer();
 	reconstructContainer(main_chain, pair_level);
-
-	printer::Header("POST Reconstruction");
-	this->printContainer();
+	// printer::Header("POST Reconstruction");
+	// this->printContainer();
 	// exit(1);
 }
 //Sort -- END

@@ -1,6 +1,11 @@
 #include "VectorPmergeMe.hpp"
 
 //OCF -- BEGIN
+VectorPmergeMe::VectorPmergeMe(void) : PmergeMe()
+{
+	printer::ocf_printer("VectorPmergeMe", printer::OCF_TYPE::DC);
+}
+
 VectorPmergeMe::VectorPmergeMe(int argc, char **argv) : PmergeMe(argc, argv)
 {
 	printer::ocf_printer("VectorPmergeMe", printer::OCF_TYPE::DC);

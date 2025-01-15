@@ -2,6 +2,14 @@
 
 //OCF -- BEGIN
 template <typename Container>
+PmergeMe<Container>::PmergeMe(void)
+	: _container(), _argc(0), _argv(nullptr), _jacobsthal_nbrs()
+{
+	printer::ocf_printer("PmergeMe", printer::OCF_TYPE::DC);
+	std::cout << coloring("[INFO]: Default constructor called. Members initialized to default values !\n", BLUE);
+}
+
+template <typename Container>
 PmergeMe<Container>::PmergeMe(int argc, char **argv)
 	: _container(), _argc(argc), _argv(argv), _jacobsthal_nbrs()
 {
