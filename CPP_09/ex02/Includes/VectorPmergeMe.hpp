@@ -24,5 +24,5 @@ class VectorPmergeMe : public PmergeMe<std::vector<int>>
 		void	entryPoint_Merge(Iterator &start, Iterator &very_last, int &pair_level);
 		void	reconstructContainer(std::vector<Iterator> &main_chain, int &pair_level);
 	public:
-		void sort(void) override;
+		void	sort(void) override;
 };

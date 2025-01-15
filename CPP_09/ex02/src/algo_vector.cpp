@@ -30,29 +30,47 @@ bool _comp(T lv, T rv)
 }
 //Helpers -- END
 
+// void	VectorPmergeMe::reconstructContainer(std::vector<Iterator> &main_chain, int &pair_level)
+// {
+// 	// std::vector<int> copy;
+// 	// copy.reserve(_container.size());
+// 	// for (auto it = main_chain.begin(); it != main_chain.end(); it++)
+// 	// {
+// 	// 	for (int i = 0; i < pair_level; i++)
+// 	// 	{
+// 	// 		Iterator pair_start = *it;
+// 	// 		std::advance(pair_start, -pair_level + i + 1);
+// 	// 		copy.insert(copy.end(), *pair_start);
+// 	// 	}
+// 	// }
+// 	// Iterator container_it = _container.begin();
+// 	// std::vector<int>::iterator copy_it = copy.begin();
+// 	// while (copy_it != copy.end())
+// 	// {
+// 	// 	*container_it = *copy_it;
+// 	// 	container_it++;
+// 	// 	copy_it++;
+// 	// }
+// }
+
 //ALGO-specific -- BEGIN
 void	VectorPmergeMe::reconstructContainer(std::vector<Iterator> &main_chain, int &pair_level)
 {
 	std::vector<int> copy;
 	copy.reserve(_container.size());
-	for (auto it = main_chain.begin(); it != main_chain.end(); it++)
+	for (const auto &it : main_chain)
 	{
-		for (int i = 0; i < pair_level; i++)
+		for (int i = 0; i < pair_level; ++i)
 		{
-			Iterator pair_start = *it;
+			Iterator pair_start = it;
 			std::advance(pair_start, -pair_level + i + 1);
-			copy.insert(copy.end(), *pair_start);
+			copy.push_back(*pair_start);
 		}
 	}
-	Iterator container_it = _container.begin();
-	std::vector<int>::iterator copy_it = copy.begin();
-	while (copy_it != copy.end())
-	{
-		*container_it = *copy_it;
-		container_it++;
-		copy_it++;
-	}
+	std::copy(copy.begin(), copy.end(), _container.begin());
 }
+
+
 
 void	VectorPmergeMe::odd_insertion(std::vector<Iterator> &main_chain, Iterator &very_last, int &pair_level)
 {
@@ -79,28 +97,25 @@ void	VectorPmergeMe::jacobsthal_based_insertion(std::vector<Iterator> &main_chai
 	int	inserted_numbers;
 	int	jacobsthal_diff;
 	int offset;
-	int nbr_of_times;
+	int curr_jacobsthal;
 
 	prev_jacobsthal = this->_jacobsthal_nbrs.at(2); // 0 1 1 3 5
 	inserted_numbers = 0;
 	for (size_t k = 3;; k++)
 	{
-		int curr_jacobsthal = this->_jacobsthal_nbrs.at(k);
+		curr_jacobsthal = this->_jacobsthal_nbrs.at(k);
 		jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
 		offset = 0;
 		if (jacobsthal_diff > static_cast<int>(pend_chain.size()))
 			break;
-		nbr_of_times = jacobsthal_diff;
 		auto pend_it = next(pend_chain.begin(), jacobsthal_diff - 1);
 		auto bound_it =	next(main_chain.begin(), curr_jacobsthal + inserted_numbers);
-		while (nbr_of_times)
+		for (int i = 0; i < jacobsthal_diff; i++)
 		{
 			auto idx = std::upper_bound(main_chain.begin(), bound_it, *pend_it, _comp<Iterator>);
 			auto inserted = main_chain.insert(idx, *pend_it);
-			nbr_of_times--;
 			pend_it = pend_chain.erase(pend_it);
 			std::advance(pend_it, -1);
-
 			offset += (inserted - main_chain.begin()) == curr_jacobsthal + inserted_numbers;
 			bound_it = next(main_chain.begin(), curr_jacobsthal + inserted_numbers - offset);
 		}
