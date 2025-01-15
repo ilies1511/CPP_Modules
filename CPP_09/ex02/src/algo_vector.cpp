@@ -151,7 +151,8 @@ void	VectorPmergeMe::entryPoint_Insertion(std::vector<Iterator> &main_chain, \
 {
 	init_main_and_pendChain(main_chain, pend_chain, pair_level, pair_units_nbr);
 	jacobsthal_based_insertion(main_chain, pend_chain);
-	sequential_based_insertion(main_chain, pend_chain);
+	if (!pend_chain.empty())
+		sequential_based_insertion(main_chain, pend_chain);
 	if (is_odd)
 		odd_insertion(main_chain, very_last, pair_level);
 }

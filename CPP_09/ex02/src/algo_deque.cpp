@@ -166,12 +166,6 @@ void	DequePmergeMe::init_main_and_pendChain(std::deque<Iterator> &main_chain, \
 		pair_index += 2; // Erhöhe den Index um 2, um das nächste Paar zu verarbeiten
 	}
 	while (pair_index <= pair_units_nbr);
-
-	// printer::Header("Main-Chain");
-	// this->printContainerHoldingIterators_plus(main_chain, static_cast<int>(main_chain.size()));
-	// std::cout << coloring("Single Elements in Pend: " + std::to_string(pend_chain.size()) + "\n", PURPLE);
-	// printer::Header("Pend-Chain");
-	// this->printContainerHoldingIterators_plus(pend_chain, static_cast<int>(pend_chain.size()));
 }
 
 void	DequePmergeMe::entryPoint_Insertion(std::deque<Iterator> &main_chain, \
@@ -179,7 +173,8 @@ void	DequePmergeMe::entryPoint_Insertion(std::deque<Iterator> &main_chain, \
 {
 	init_main_and_pendChain(main_chain, pend_chain, pair_level, pair_units_nbr);
 	jacobsthal_based_insertion(main_chain, pend_chain);
-	sequential_based_insertion(main_chain, pend_chain);
+	if (!pend_chain.empty())
+		sequential_based_insertion(main_chain, pend_chain);
 	if (is_odd)
 		odd_insertion(main_chain, very_last, pair_level);
 }
