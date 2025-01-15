@@ -55,11 +55,13 @@ class PmergeMe
 		void			processInput(void);
 		// virtual void	sort(Container &_container, int recursion_level) = 0;
 		virtual void	sort(void) = 0;
+		int				cal_interPairSize(int recursion_level);
 		void			displayOutput(void);
 		void			printContainer(void);
 		void			printContainerNormal(void);
 		void			printContainerHoldingIterators(const std::deque<typename Container::iterator> &container);
 		void			printContainerHoldingIterators_plus(const std::deque<typename Container::iterator> &container, int single_elements);
+		void			validateSorting(const Container& container, const std::string& type);
 		//TODO: Add checkIfSorted check --> double checks if its sorted by traversing through container // std::is_sorted(_container.begin(), _container.end());
 	//Methode
 	private:

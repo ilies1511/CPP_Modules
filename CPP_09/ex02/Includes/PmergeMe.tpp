@@ -199,6 +199,25 @@ void PmergeMe<Container>::printContainerNormal(void)
 // }
 
 template <typename Container>
+void validateSorting(const Container& container, const std::string& type)
+{
+	if (!std::is_sorted(container.begin(), container.end()))
+	{
+		std::cout << type << " Container not sorted: ";
+		for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
+			std::cout << *it << " ";
+		std::cout << std::endl;
+		throw std::runtime_error(type + " Container not Sorted!");
+	}
+}
+
+template <typename Container>
+int PmergeMe<Container>::cal_interPairSize(int recursion_level)
+{
+	return (static_cast<int>(std::pow(2, recursion_level - 1)));
+}
+
+template <typename Container>
 void PmergeMe<Container>::printContainerHoldingIterators_plus(const std::deque<typename Container::iterator> &container, int single_elements)
 {
 	size_t i = 1;
