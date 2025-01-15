@@ -101,6 +101,27 @@ test: $(NAME)
 	echo "./$(NAME) $$ARGS"; \
 	./$(NAME) $$ARGS
 
+test_cases: $(NAME)
+	@echo "Running specific test cases..."
+	@echo "Test Case 1: Alternating High and Low"
+	@./$(NAME) 1 1000 2 999 3 998 4 997 5 996 6 995 7 994 8 993 9 992 10 991
+	@echo "Test Case 2: Highly Repeated Numbers"
+	@./$(NAME) 5 5 5 10 10 10 15 15 15 20 20 20 25 25 25 30 30 30
+	@echo "Test Case 3: Sparse Numbers"
+	@./$(NAME) 1 10000 2 9999 3 9998 4 9997 5 9996 6 9995 7 9994 8 9993 9 9992
+	@echo "Test Case 4: Nearly Sorted with Single Swaps"
+	@./$(NAME) 1 2 3 4 5 7 6 8 9 10 12 11 14 13 16 15 18 17 20 19
+	@echo "Test Case 5: Random Large Numbers"
+	@./$(NAME) 12345 987 65432 321 45678 789 23456 987 34567 123 56789 321 67890 456
+	@echo "Test Case 6: All Identical Except One"
+	@./$(NAME) 100 100 100 100 100 100 100 100 100 100 101
+	@echo "Test Case 7: Zig-Zag Pattern"
+	@./$(NAME) 1 100 2 99 3 98 4 97 5 96 6 95 7 94 8 93 9 92 10
+	@echo "Test Case 8: Reverse Alternating"
+	@./$(NAME) 10 1 9 2 8 3 7 4 6 5 15 6 14 7 13 8 12 9 11 10
+	@echo "Test Case 9: Mixed Patterns"
+	@./$(NAME) 5 1 9 2 8 4 7 3 6 0 10 20 30 40 50 15 25 35 45
+
 -include $(OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re bonus re_sub submodule_rebuild san debug test
+.PHONY: all clean fclean re bonus re_sub submodule_rebuild san debug test test_cases
