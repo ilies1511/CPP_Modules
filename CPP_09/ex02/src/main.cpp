@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:47:28 by iziane            #+#    #+#             */
-/*   Updated: 2025/01/10 22:10:18 by iziane           ###   ########.fr       */
+/*   Updated: 2025/01/15 00:59:13 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
 #include "VectorPmergeMe.hpp"
 #include "DequePmergeMe.hpp"
 
+/*
+	Odd Sequence: 9 1 8 2 7 3 6 4 5 0
+	Even Sequence: 9 1 8 2 7 3 6 4 5
+*/
 int	main(int argc, char **argv)
 {
 	Log	log("PmergeMe");
 
-	(void)argc;
-	(void)argv;
 	if (argc < 3)
 	{
 		log.complain("ERROR", \
@@ -42,12 +44,11 @@ int	main(int argc, char **argv)
 	{
 		VectorPmergeMe vector(argc, argv);
 		DequePmergeMe deque(argc, argv);
-		//[...]
-		// vector.processInput();
+
 		vector.displayOutput();
-		if (!std::is_sorted(vector.getContainer().begin(), vector.getContainer().end()))
-			throw (std::runtime_error("Failed to sort sequence ! Still unsorted !"));
 		deque.displayOutput();
+		validateSorting(deque.getContainer(), "Deque");
+		validateSorting(vector.getContainer(), "Vector");
 	}
 	catch(const std::exception& e)
 	{
