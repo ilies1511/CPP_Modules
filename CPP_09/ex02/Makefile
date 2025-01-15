@@ -28,7 +28,7 @@ EXTRA := $(addprefix Extra/, $(EXTRA_FILES))
 TEST_FILES := test.cpp
 TEST := $(addprefix Tests/, $(TEST_FILES))
 
-SRC :=	main.cpp PmergeMe.cpp VectorPmergeMe.cpp DequePmergeMe.cpp \
+SRC :=	main.cpp VectorPmergeMe.cpp DequePmergeMe.cpp \
 		algo_deque.cpp algo_vector.cpp
 SRCS := $(addprefix src/, $(SRC) $(EXTRA) $(TEST))
 
